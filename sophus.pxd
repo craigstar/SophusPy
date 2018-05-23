@@ -9,3 +9,4 @@ cdef extern from "<sophus/so3.hpp>" namespace "Sophus":
         SO3(const SO3&) except +
         SO3(const Map[Matrix3d]&) except +
         
+        Matrix3d& matrix()
