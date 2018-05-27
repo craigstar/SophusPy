@@ -21,14 +21,20 @@ cdef extern from "<sophus/se3.hpp>" namespace "Sophus":
         # copy constructor
         SE3(const SE3&) except +
         SE3(const Map[Matrix4d]&) except +
+        SE3(const SO3&, const Map[Vector3d]&) except +
         
+        SE3 mul "operator*"(const SE3&)
+        SE3 mul_assign "operator*="(const SE3&)
+        Vector3d mul "operator*"(const Map[Vector3d]&)
+
         Matrix4d& matrix()
 
-        # Vector3d log()
         SE3 inverse()
+        VectorXd log()
         Vector3d translation()
         Matrix4d rotationMatrix()
 
         void setRotationMatrix(const Map[Matrix3d]&)
 
-        SE3 mul "operator*"(const SE3&)
+        @staticmethod
+        SE3[Scalar] exp(const Map[VectorXd]&)
