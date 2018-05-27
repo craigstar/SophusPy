@@ -52,6 +52,7 @@ cdef class SO3:
 
     def inverse(self):
         so3 = SO3()
+        del so3.thisptr
         so3.thisptr = new _SO3d(self.thisptr.inverse())
         return so3
 
@@ -90,18 +91,21 @@ cdef class SE3:
 
     def __mul__(SE3 x, other):
         """
-        SE3 * SE3 or SE3 * point (3*1 np.ndarray)
+        SE3 * SE3 or SE3 * point (3*N np.ndarray)
         return None means input type Error
         ------------------------------
-        In: SE3, SE3 or 3*1 np.ndarray
+        In: SE3, SE3 or np.ndarray (3,) or (N, 3)
         Out: SE3 or (3,) np.ndarray
         ------------------------------
         """
         cdef SE3 ostr
 
         if type(other) is np.ndarray:
-            other = __tofloat64(other)
-            return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
+            if other.size == 3:
+                other = __tofloat64(other)
+                return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
+            else:
+                pass
         elif type(other) is SE3:
             ostr = <SE3> other
             res = SE3()
@@ -117,6 +121,7 @@ cdef class SE3:
 
     def inverse(self):
         se3 = SE3()
+        del se3.thisptr
         se3.thisptr = new _SE3d(self.thisptr.inverse())
         return se3
 
@@ -134,13 +139,15 @@ cdef class SE3:
         R = __tofortran(R)
         return self.thisptr.setRotationMatrix(Map[Matrix3d](R))
 
-    # def setTranslation(self, np.ndarray t):
-    #     t = __tofloat64(t)
-    #     so3 = SO3(self.rotationMatrix())
-    #     self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
+    def setTranslation(self, np.ndarray t):
+        t = __tofloat64(t)
+        so3 = SO3(self.rotationMatrix())
+        del self.thisptr
+        self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
 
     @staticmethod
     def exp(np.ndarray arr):
         res = SE3()
+        del res.thisptr
         res.thisptr = new _SE3d(_SE3d.exp(Map[VectorXd](arr)))
         return res

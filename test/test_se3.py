@@ -98,3 +98,19 @@ class TestSE3(unittest.TestCase):
         T = sp.SE3(self.Tnp)
         Tprime = sp.SE3.exp(T.log())
         self.assertTrue(np.allclose(T.matrix(), Tprime.matrix()))
+
+    def test_setTranslation(self):
+        T = sp.SE3()
+        T.setTranslation(np.ones(3))
+        Tprime = np.eye(4)
+        Tprime[:3, 3] = np.ones(3)
+        self.assertTrue(np.allclose(T.matrix(), Tprime))
+
+        # test input can be any data numpy data type
+        T = sp.SE3()
+        T.setTranslation(np.ones(3, dtype=int))
+        Tprime = np.eye(4)
+        Tprime[:3, 3] = np.ones(3)
+        self.assertTrue(np.allclose(T.matrix(), Tprime))
+
+    

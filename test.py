@@ -8,14 +8,7 @@ Tnp = np.array([[-0.02495988040066277, 0.01720436961811805,   0.9995404014027787
                 [ -0.9973639407428014, 0.06771608759556018, -0.02607107950853105,  798.7780129474496],
                 [                   0,                   0,                    0,                  1]])
 
-T1 = sp.SE3()
-# T2 = sp.SE3(Tnp)
+T = sp.SE3(Tnp)
+T.setTranslation(np.ones(3, dtype=int))
 
-R = np.eye(3)
-t = np.array([1,2,1])
-
-# print(T1 * np.ones(3))
-# print(T1 * T2)
-
-T3 = sp.SE3(R, t)
-print(T3)
+print(T)
