@@ -5,15 +5,17 @@ from cython.operator cimport dereference as deref
 from sophus_def cimport SO3 as _SO3
 from sophus_def cimport SE3 as _SE3
 
+DTYPE = np.float64
+
 ctypedef _SO3[double] _SO3d # double precision SO3
 ctypedef _SE3[double] _SE3d # double precision SE3
+ctypedef np.float64_t DTYPE_t
 
 # helper functions
-def __tofloat64(np.ndarray arr):
+def __checkfloat64(np.ndarray arr):
     """make sure arr is float64, which corresponds to <double>"""
-    if arr.dtype == np.float64:
-        return arr
-    return arr.astype(np.float64)
+    if arr.dtype != np.float64:
+        raise "arr has to be float64!!!"
 
 def __tofortran(np.ndarray arr):
     """Eigency expects 'F_CONTIGUOUS' layout, convert if this is not the case"""
@@ -31,7 +33,7 @@ cdef class SO3:
             ostr = <SO3> other
             self.thisptr = new _SO3d(deref(ostr.thisptr))
         elif other is not None and type(other) is np.ndarray:
-            other = __tofloat64(other)
+            __checkfloat64(other)
             other = __tofortran(other)
             self.thisptr = new _SO3d(Map[Matrix3d](other))
         else:
@@ -59,11 +61,10 @@ cdef class SO3:
 cdef class SE3:
     cdef _SE3d *thisptr
 
-    def __cinit__(self, other=None, np.ndarray t=None):
+    def __cinit__(self, other=None, np.ndarray[DTYPE_t, ndim=1] t=None):
         cdef SE3 ostr
         if t is not None and type(other) is np.ndarray:
             # compose R and t into T (4*4)
-            t = __tofloat64(t)
             so3 = SO3(other)
             self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
         elif other is not None and type(other) is SE3:
@@ -102,7 +103,7 @@ cdef class SE3:
 
         if type(other) is np.ndarray:
             if other.size == 3:
-                other = __tofloat64(other)
+                __checkfloat64(other)
                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
             else:
                 pass
@@ -134,13 +135,11 @@ cdef class SE3:
     def rotationMatrix(self):
         return ndarray(self.thisptr.rotationMatrix())
 
-    def setRotationMatrix(self, np.ndarray R):
-        R = __tofloat64(R)
+    def setRotationMatrix(self, np.ndarray[DTYPE_t, ndim=2] R):
         R = __tofortran(R)
         return self.thisptr.setRotationMatrix(Map[Matrix3d](R))
 
-    def setTranslation(self, np.ndarray t):
-        t = __tofloat64(t)
+    def setTranslation(self, np.ndarray[DTYPE_t, ndim=1] t):
         so3 = SO3(self.rotationMatrix())
         del self.thisptr
         self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))

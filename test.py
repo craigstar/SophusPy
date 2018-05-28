@@ -9,6 +9,7 @@ Tnp = np.array([[-0.02495988040066277, 0.01720436961811805,   0.9995404014027787
                 [                   0,                   0,                    0,                  1]])
 
 T = sp.SE3(Tnp)
-T.setTranslation(np.ones(3, dtype=int))
-
+T.setTranslation(np.ones(3, dtype=np.float64))
+T.setRotationMatrix(np.eye(3))
+print(T * np.ones((3,1)))
 print(T)
