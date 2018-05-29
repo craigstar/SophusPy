@@ -1,7 +1,8 @@
 import numpy as np
-import sophus as sp
-
 import unittest
+import pytest
+
+import sophus as sp
 
 class TestSO3(unittest.TestCase):
 	def setUp(self):
@@ -24,9 +25,22 @@ class TestSO3(unittest.TestCase):
 
 	def test_str(self):
 		R = sp.SO3(self.Rnp)
-		self.assertEqual(R.__str__(), np.array_str(self.Rnp))
+		self.assertEqual(str(R), np.array_str(self.Rnp))
 
 	def test_inverse(self):
 		R = sp.SO3(self.Rnp)
 		R_inv = R.inverse()
 		self.assertTrue(np.allclose(R_inv.matrix(), self.Rnp.T))
+
+	def test_log(self):
+		R1 = sp.SO3()
+		R2 = sp.SO3(self.Rnp)
+		self.assertTrue(np.allclose(R1.log(), np.zeros(3)))
+		self.assertTrue(np.allclose(R2.log(), np.array([0.06646925, 1.59563459, 0.04069513])))
+		
+	def test_type_fault(self):
+		with pytest.raises(TypeError):
+			sp.SO3(np.eye(3, dtype=np.float32))
+
+		with pytest.raises(TypeError):
+			sp.SO3(np.eye(3, dtype=int))

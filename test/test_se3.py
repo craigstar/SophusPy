@@ -1,5 +1,6 @@
 import numpy as np
 import unittest
+import pytest
 
 import sophus as sp
 
@@ -33,15 +34,9 @@ class TestSE3(unittest.TestCase):
         T1 = sp.SE3(self.Rnp, self.t)
         self.assertTrue(np.allclose(T1.matrix(), self.Tnp))
 
-        # test input can be any data numpy data type
-        T2 = sp.SE3(np.eye(3, dtype=int), np.arange(3))
-        T2_groundtruth = np.eye(4, dtype=np.float64)
-        T2_groundtruth[:3, 3] = np.arange(3)
-        self.assertTrue(np.allclose(T2.matrix(), T2_groundtruth))
-
     def test_str(self):
         T = sp.SE3(self.Tnp)
-        self.assertEqual(T.__str__(), np.array_str(self.Tnp))
+        self.assertEqual(str(T), np.array_str(self.Tnp))
 
     def test_inverse(self):
         T = sp.SE3(self.Tnp)
@@ -64,11 +59,22 @@ class TestSE3(unittest.TestCase):
         T = sp.SE3(self.Tnp)
         self.assertTrue(np.allclose(T.rotationMatrix(), self.Tnp[:3, :3]))
 
+    def test_matrix3x4(self):
+        T = sp.SE3(self.Tnp)
+        self.assertTrue(np.allclose(T.matrix3x4(), self.Tnp[:3]))
+
     def test_setRotationMatrix(self):
         T = sp.SE3()
         T.setRotationMatrix(self.Rnp)
         self.Tnp[:3, 3] = np.zeros(3)
         self.assertTrue(np.allclose(T.matrix(), self.Tnp))
+
+    def test_setTranslation(self):
+        T = sp.SE3()
+        T.setTranslation(np.ones(3))
+        Tprime = np.eye(4)
+        Tprime[:3, 3] = np.ones(3)
+        self.assertTrue(np.allclose(T.matrix(), Tprime))
 
     def test_mul_SE3(self):
         T1 = sp.SE3(self.Tnp)
@@ -97,13 +103,26 @@ class TestSE3(unittest.TestCase):
         Tprime = sp.SE3.exp(T.log())
         self.assertTrue(np.allclose(T.matrix(), Tprime.matrix()))
 
-    def test_setTranslation(self):
-        T = sp.SE3()
-        T.setTranslation(np.ones(3))
-        Tprime = np.eye(4)
-        Tprime[:3, 3] = np.ones(3)
-        self.assertTrue(np.allclose(T.matrix(), Tprime))
+    def test_constructor_type_fault(self):
+        with pytest.raises(TypeError):
+            sp.SE3(np.eye(4, dtype=np.float32))
 
-    def test_matrix3x4(self):
-        T = sp.SE3(self.Tnp)
-        self.assertTrue(np.allclose(T.matrix3x4(), self.Tnp[:3]))
+        with pytest.raises(TypeError):
+            sp.SE3(np.eye(4, dtype=int))
+
+        with pytest.raises(TypeError):
+            sp.SE3(np.eye(3, dtype=np.float32), np.ones(3))
+
+        with pytest.raises(ValueError):
+            sp.SE3(np.eye(3), np.ones(3, dtype=np.float32))
+
+    def test_set_type_fault(self):
+        T = sp.SE3()
+        with pytest.raises(ValueError):
+            T.setRotationMatrix(np.eye(3, dtype=np.float32))
+
+        with pytest.raises(ValueError):
+            T.setTranslation(np.ones(3, dtype=np.float32))
+
+        with pytest.raises(ValueError):
+            sp.SE3.exp(np.zeros(6, dtype=np.float32))

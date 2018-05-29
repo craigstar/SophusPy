@@ -107,3 +107,4 @@ venv.bak/
 
 # build
 **/build/
+**/sophus.cpp
