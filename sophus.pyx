@@ -72,6 +72,7 @@ cdef class SE3:
             ostr = <SE3> other
             self.thisptr = new _SE3d(deref(ostr.thisptr))
         elif other is not None and type(other) is np.ndarray:
+            __isfloat64(other)
             other = __tofortran(other)
             self.thisptr = new _SE3d(Map[Matrix4d](other))
         else:
@@ -94,19 +95,21 @@ cdef class SE3:
         """
         SE3 * SE3 or SE3 * point (3*N np.ndarray)
         return None means input type Error
-        ------------------------------
+        -----------------------------------------
         In: SE3, SE3 or np.ndarray (3,) or (N, 3)
         Out: SE3 or (3,) np.ndarray
-        ------------------------------
+        -----------------------------------------
         """
         cdef SE3 ostr
 
         if type(other) is np.ndarray:
+            __isfloat64(other)
             if other.size == 3:
                 __checkfloat64(other)
                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
             else:
-                pass
+                other = np.hstack((other, np.ones((len(other), 1)))).T
+                return x.matrix3x4().dot(other).T
         elif type(other) is SE3:
             ostr = <SE3> other
             res = SE3()
@@ -119,6 +122,9 @@ cdef class SE3:
 
     def matrix(self):
         return ndarray(self.thisptr.matrix())
+
+    def matrix3x4(self):
+        return ndarray(self.thisptr.matrix3x4())
 
     def inverse(self):
         se3 = SE3()

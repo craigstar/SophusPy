@@ -13,3 +13,8 @@ T.setTranslation(np.ones(3, dtype=np.float64))
 T.setRotationMatrix(np.eye(3))
 print(T * np.ones((3,1)))
 print(T)
+
+pt = np.ones((2,3))
+pts = sp.SE3(Tnp) * pt
+
+print(pts)

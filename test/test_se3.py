@@ -70,13 +70,6 @@ class TestSE3(unittest.TestCase):
         self.Tnp[:3, 3] = np.zeros(3)
         self.assertTrue(np.allclose(T.matrix(), self.Tnp))
 
-        # test input can be any data numpy data type
-        T = sp.SE3(self.Tnp)
-        R = np.eye(3, dtype=np.float32)
-        T.setRotationMatrix(R)
-        self.Tnp[:3, :3] = np.eye(3)
-        self.assertTrue(np.allclose(T.matrix(), self.Tnp))
-
     def test_mul_SE3(self):
         T1 = sp.SE3(self.Tnp)
         T2 = sp.SE3()
@@ -87,6 +80,11 @@ class TestSE3(unittest.TestCase):
         T = sp.SE3()
         pt = T * np.ones(3)
         self.assertTrue(np.allclose(pt, np.ones(3)))
+
+    def test_mul_points(self):
+        T = sp.SE3()
+        pt = T * np.ones((4, 3))
+        self.assertTrue(np.allclose(pt, np.ones((4, 3))))
 
     def test_imul_SE3(self):
         T1 = sp.SE3(self.Tnp)
@@ -106,11 +104,6 @@ class TestSE3(unittest.TestCase):
         Tprime[:3, 3] = np.ones(3)
         self.assertTrue(np.allclose(T.matrix(), Tprime))
 
-        # test input can be any data numpy data type
-        T = sp.SE3()
-        T.setTranslation(np.ones(3, dtype=int))
-        Tprime = np.eye(4)
-        Tprime[:3, 3] = np.ones(3)
-        self.assertTrue(np.allclose(T.matrix(), Tprime))
-
-    
+    def test_matrix3x4(self):
+        T = sp.SE3(self.Tnp)
+        self.assertTrue(np.allclose(T.matrix3x4(), self.Tnp[:3]))

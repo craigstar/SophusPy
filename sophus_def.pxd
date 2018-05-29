@@ -28,6 +28,7 @@ cdef extern from "<sophus/se3.hpp>" namespace "Sophus":
         Vector3d mul "operator*"(const Map[Vector3d]&)
 
         Matrix4d& matrix()
+        MatrixXd& matrix3x4()
 
         SE3 inverse()
         VectorXd log()
