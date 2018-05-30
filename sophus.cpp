@@ -1094,7 +1094,7 @@ typedef unsigned char __pyx_t_7eigency_4core_uchar;
  * ctypedef _SE3[double] _SE3d # double precision SE3
  * ctypedef np.float64_t DTYPE_t             # <<<<<<<<<<<<<<
  * 
- * # helper functions
+ * 
  */
 typedef __pyx_t_5numpy_float64_t __pyx_t_6sophus_DTYPE_t;
 /* Declarations.proto */
@@ -1180,12 +1180,12 @@ typedef Sophus::SO3<double>  __pyx_t_6sophus__SO3d;
  */
 typedef Sophus::SE3<double>  __pyx_t_6sophus__SE3d;
 
-/* "sophus.pyx":26
- *     return np.asfortranarray(arr)
+/* "sophus.pyx":28
+ * 
  * 
  * cdef class SO3:             # <<<<<<<<<<<<<<
- *     cdef _SO3d *thisptr
- * 
+ *     """Class of SO3"""
+ *     cdef _SO3d *thisptr         # pointer of C++ SO3<double> instance
  */
 struct __pyx_obj_6sophus_SO3 {
   PyObject_HEAD
@@ -1193,12 +1193,12 @@ struct __pyx_obj_6sophus_SO3 {
 };
 
 
-/* "sophus.pyx":61
- *         return so3
+/* "sophus.pyx":99
+ * 
  * 
  * cdef class SE3:             # <<<<<<<<<<<<<<
- *     cdef _SE3d *thisptr
- * 
+ *     """Class of SE3"""
+ *     cdef _SE3d *thisptr         # pointer of C++ SE3<double> instance
  */
 struct __pyx_obj_6sophus_SE3 {
   PyObject_HEAD
@@ -1774,13 +1774,17 @@ static PyObject *__pyx_builtin_ValueError;
 static PyObject *__pyx_builtin_range;
 static PyObject *__pyx_builtin_RuntimeError;
 static PyObject *__pyx_builtin_ImportError;
+static const char __pyx_k_T[] = "T";
 static const char __pyx_k_t[] = "t";
 static const char __pyx_k_np[] = "np";
 static const char __pyx_k_arr[] = "arr";
+static const char __pyx_k_dot[] = "dot";
 static const char __pyx_k_exp[] = "exp";
 static const char __pyx_k_res[] = "res";
+static const char __pyx_k_copy[] = "copy";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "__name__";
+static const char __pyx_k_ones[] = "ones";
 static const char __pyx_k_size[] = "size";
 static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_DTYPE[] = "DTYPE";
@@ -1790,6 +1794,7 @@ static const char __pyx_k_numpy[] = "numpy";
 static const char __pyx_k_other[] = "other";
 static const char __pyx_k_range[] = "range";
 static const char __pyx_k_ravel[] = "ravel";
+static const char __pyx_k_hstack[] = "hstack";
 static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_matrix[] = "matrix";
 static const char __pyx_k_reduce[] = "__reduce__";
@@ -1799,6 +1804,7 @@ static const char __pyx_k_getstate[] = "__getstate__";
 static const char __pyx_k_setstate[] = "__setstate__";
 static const char __pyx_k_TypeError[] = "TypeError";
 static const char __pyx_k_array_str[] = "array_str";
+static const char __pyx_k_matrix3x4[] = "matrix3x4";
 static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
 static const char __pyx_k_tofortran[] = "__tofortran";
 static const char __pyx_k_ValueError[] = "ValueError";
@@ -1818,6 +1824,7 @@ static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C cont
 static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
 static const char __pyx_k_unknown_dtype_code_in_numpy_pxd[] = "unknown dtype code in numpy.pxd (%d)";
 static const char __pyx_k_Format_string_allocated_too_shor[] = "Format string allocated too short, see comment in numpy.pxd";
+static const char __pyx_k_Input_is_not_the_excepted_type_o[] = "Input is not the excepted type or dimension";
 static const char __pyx_k_Non_native_byte_order_not_suppor[] = "Non-native byte order not supported";
 static const char __pyx_k_ndarray_is_not_Fortran_contiguou[] = "ndarray is not Fortran contiguous";
 static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
@@ -1828,8 +1835,10 @@ static PyObject *__pyx_n_s_DTYPE;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor;
 static PyObject *__pyx_kp_u_Format_string_allocated_too_shor_2;
 static PyObject *__pyx_n_s_ImportError;
+static PyObject *__pyx_kp_s_Input_is_not_the_excepted_type_o;
 static PyObject *__pyx_kp_u_Non_native_byte_order_not_suppor;
 static PyObject *__pyx_n_s_RuntimeError;
+static PyObject *__pyx_n_s_T;
 static PyObject *__pyx_n_s_TypeError;
 static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_n_s_arr;
@@ -1838,14 +1847,18 @@ static PyObject *__pyx_n_s_array_str;
 static PyObject *__pyx_n_s_asfortranarray;
 static PyObject *__pyx_n_s_checkfloat64;
 static PyObject *__pyx_n_s_cline_in_traceback;
+static PyObject *__pyx_n_s_copy;
+static PyObject *__pyx_n_s_dot;
 static PyObject *__pyx_n_s_dtype;
 static PyObject *__pyx_n_s_exp;
 static PyObject *__pyx_n_s_flags;
 static PyObject *__pyx_n_s_float64;
 static PyObject *__pyx_n_s_getstate;
+static PyObject *__pyx_n_s_hstack;
 static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_matrix;
+static PyObject *__pyx_n_s_matrix3x4;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_u_ndarray_is_not_C_contiguous;
 static PyObject *__pyx_kp_u_ndarray_is_not_Fortran_contiguou;
@@ -1854,6 +1867,7 @@ static PyObject *__pyx_n_s_np;
 static PyObject *__pyx_n_s_numpy;
 static PyObject *__pyx_kp_s_numpy_core_multiarray_failed_to;
 static PyObject *__pyx_kp_s_numpy_core_umath_failed_to_impor;
+static PyObject *__pyx_n_s_ones;
 static PyObject *__pyx_n_s_other;
 static PyObject *__pyx_n_s_range;
 static PyObject *__pyx_n_s_ravel;
@@ -1888,19 +1902,21 @@ static PyObject *__pyx_pf_6sophus_3SE3_4__str__(struct __pyx_obj_6sophus_SE3 *__
 static PyObject *__pyx_pf_6sophus_3SE3_6__mul__(struct __pyx_obj_6sophus_SE3 *__pyx_v_x, PyObject *__pyx_v_other); /* proto */
 static PyObject *__pyx_pf_6sophus_3SE3_8__imul__(struct __pyx_obj_6sophus_SE3 *__pyx_v_self, struct __pyx_obj_6sophus_SE3 *__pyx_v_y); /* proto */
 static PyObject *__pyx_pf_6sophus_3SE3_10matrix(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6sophus_3SE3_12inverse(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6sophus_3SE3_14log(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6sophus_3SE3_16translation(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6sophus_3SE3_18rotationMatrix(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6sophus_3SE3_20setRotationMatrix(struct __pyx_obj_6sophus_SE3 *__pyx_v_self, PyArrayObject *__pyx_v_R); /* proto */
-static PyObject *__pyx_pf_6sophus_3SE3_22setTranslation(struct __pyx_obj_6sophus_SE3 *__pyx_v_self, PyArrayObject *__pyx_v_t); /* proto */
-static PyObject *__pyx_pf_6sophus_3SE3_24exp(PyArrayObject *__pyx_v_arr); /* proto */
-static PyObject *__pyx_pf_6sophus_3SE3_26__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_6sophus_3SE3_28__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6sophus_SE3 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_12matrix3x4(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_14inverse(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_16log(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_18translation(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_20rotationMatrix(struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_22setRotationMatrix(struct __pyx_obj_6sophus_SE3 *__pyx_v_self, PyArrayObject *__pyx_v_R); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_24setTranslation(struct __pyx_obj_6sophus_SE3 *__pyx_v_self, PyArrayObject *__pyx_v_t); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_26exp(PyArrayObject *__pyx_v_arr); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_28__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6sophus_SE3 *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_6sophus_3SE3_30__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6sophus_SE3 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
 static int __pyx_pf_5numpy_7ndarray___getbuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
 static void __pyx_pf_5numpy_7ndarray_2__releasebuffer__(PyArrayObject *__pyx_v_self, Py_buffer *__pyx_v_info); /* proto */
 static PyObject *__pyx_tp_new_6sophus_SO3(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
 static PyObject *__pyx_tp_new_6sophus_SE3(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_int_1;
 static PyObject *__pyx_int_3;
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
@@ -1923,12 +1939,12 @@ static PyObject *__pyx_codeobj__17;
 static PyObject *__pyx_codeobj__19;
 /* Late includes */
 
-/* "sophus.pyx":15
+/* "sophus.pyx":16
  * 
  * # helper functions
  * def __checkfloat64(np.ndarray arr):             # <<<<<<<<<<<<<<
  *     """make sure arr is float64, which corresponds to <double>"""
- *     if arr.dtype != np.float64:
+ *     if arr.dtype != DTYPE:
  */
 
 /* Python wrapper */
@@ -1939,7 +1955,7 @@ static PyObject *__pyx_pw_6sophus_1__checkfloat64(PyObject *__pyx_self, PyObject
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__checkfloat64 (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_arr), __pyx_ptype_5numpy_ndarray, 1, "arr", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_arr), __pyx_ptype_5numpy_ndarray, 1, "arr", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
   __pyx_r = __pyx_pf_6sophus___checkfloat64(__pyx_self, ((PyArrayObject *)__pyx_v_arr));
 
   /* function exit code */
@@ -1960,52 +1976,49 @@ static PyObject *__pyx_pf_6sophus___checkfloat64(CYTHON_UNUSED PyObject *__pyx_s
   int __pyx_t_4;
   __Pyx_RefNannySetupContext("__checkfloat64", 0);
 
-  /* "sophus.pyx":17
+  /* "sophus.pyx":18
  * def __checkfloat64(np.ndarray arr):
  *     """make sure arr is float64, which corresponds to <double>"""
- *     if arr.dtype != np.float64:             # <<<<<<<<<<<<<<
+ *     if arr.dtype != DTYPE:             # <<<<<<<<<<<<<<
  *         raise "arr has to be float64!!!"
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_arr), __pyx_n_s_dtype); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_arr), __pyx_n_s_dtype); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_DTYPE); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_float64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 17, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = PyObject_RichCompare(__pyx_t_1, __pyx_t_3, Py_NE); __Pyx_XGOTREF(__pyx_t_2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_t_1, __pyx_t_2, Py_NE); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 17, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (unlikely(__pyx_t_4)) {
 
-    /* "sophus.pyx":18
+    /* "sophus.pyx":19
  *     """make sure arr is float64, which corresponds to <double>"""
- *     if arr.dtype != np.float64:
+ *     if arr.dtype != DTYPE:
  *         raise "arr has to be float64!!!"             # <<<<<<<<<<<<<<
  * 
  * def __tofortran(np.ndarray arr):
  */
     __Pyx_Raise(__pyx_kp_s_arr_has_to_be_float64, 0, 0, 0);
-    __PYX_ERR(0, 18, __pyx_L1_error)
+    __PYX_ERR(0, 19, __pyx_L1_error)
 
-    /* "sophus.pyx":17
+    /* "sophus.pyx":18
  * def __checkfloat64(np.ndarray arr):
  *     """make sure arr is float64, which corresponds to <double>"""
- *     if arr.dtype != np.float64:             # <<<<<<<<<<<<<<
+ *     if arr.dtype != DTYPE:             # <<<<<<<<<<<<<<
  *         raise "arr has to be float64!!!"
  * 
  */
   }
 
-  /* "sophus.pyx":15
+  /* "sophus.pyx":16
  * 
  * # helper functions
  * def __checkfloat64(np.ndarray arr):             # <<<<<<<<<<<<<<
  *     """make sure arr is float64, which corresponds to <double>"""
- *     if arr.dtype != np.float64:
+ *     if arr.dtype != DTYPE:
  */
 
   /* function exit code */
@@ -2023,7 +2036,7 @@ static PyObject *__pyx_pf_6sophus___checkfloat64(CYTHON_UNUSED PyObject *__pyx_s
   return __pyx_r;
 }
 
-/* "sophus.pyx":20
+/* "sophus.pyx":21
  *         raise "arr has to be float64!!!"
  * 
  * def __tofortran(np.ndarray arr):             # <<<<<<<<<<<<<<
@@ -2039,7 +2052,7 @@ static PyObject *__pyx_pw_6sophus_3__tofortran(PyObject *__pyx_self, PyObject *_
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__tofortran (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_arr), __pyx_ptype_5numpy_ndarray, 1, "arr", 0))) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_arr), __pyx_ptype_5numpy_ndarray, 1, "arr", 0))) __PYX_ERR(0, 21, __pyx_L1_error)
   __pyx_r = __pyx_pf_6sophus_2__tofortran(__pyx_self, ((PyArrayObject *)__pyx_v_arr));
 
   /* function exit code */
@@ -2062,24 +2075,24 @@ static PyObject *__pyx_pf_6sophus_2__tofortran(CYTHON_UNUSED PyObject *__pyx_sel
   PyObject *__pyx_t_6 = NULL;
   __Pyx_RefNannySetupContext("__tofortran", 0);
 
-  /* "sophus.pyx":22
+  /* "sophus.pyx":23
  * def __tofortran(np.ndarray arr):
  *     """Eigency expects 'F_CONTIGUOUS' layout, convert if this is not the case"""
  *     if not arr.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
  *         return arr
  *     return np.asfortranarray(arr)
  */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_arr), __pyx_n_s_flags); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_arr), __pyx_n_s_flags); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_C_CONTIGUOUS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_n_s_C_CONTIGUOUS); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_4 = ((!__pyx_t_3) != 0);
   if (__pyx_t_4) {
 
-    /* "sophus.pyx":23
+    /* "sophus.pyx":24
  *     """Eigency expects 'F_CONTIGUOUS' layout, convert if this is not the case"""
  *     if not arr.flags['C_CONTIGUOUS']:
  *         return arr             # <<<<<<<<<<<<<<
@@ -2091,7 +2104,7 @@ static PyObject *__pyx_pf_6sophus_2__tofortran(CYTHON_UNUSED PyObject *__pyx_sel
     __pyx_r = ((PyObject *)__pyx_v_arr);
     goto __pyx_L0;
 
-    /* "sophus.pyx":22
+    /* "sophus.pyx":23
  * def __tofortran(np.ndarray arr):
  *     """Eigency expects 'F_CONTIGUOUS' layout, convert if this is not the case"""
  *     if not arr.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -2100,17 +2113,17 @@ static PyObject *__pyx_pf_6sophus_2__tofortran(CYTHON_UNUSED PyObject *__pyx_sel
  */
   }
 
-  /* "sophus.pyx":24
+  /* "sophus.pyx":25
  *     if not arr.flags['C_CONTIGUOUS']:
  *         return arr
  *     return np.asfortranarray(arr)             # <<<<<<<<<<<<<<
  * 
- * cdef class SO3:
+ * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_asfortranarray); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_1, __pyx_n_s_asfortranarray); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 25, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_t_1 = NULL;
@@ -2124,13 +2137,13 @@ static PyObject *__pyx_pf_6sophus_2__tofortran(CYTHON_UNUSED PyObject *__pyx_sel
     }
   }
   if (!__pyx_t_1) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, ((PyObject *)__pyx_v_arr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_5, ((PyObject *)__pyx_v_arr)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_1, ((PyObject *)__pyx_v_arr)};
-      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
@@ -2138,19 +2151,19 @@ static PyObject *__pyx_pf_6sophus_2__tofortran(CYTHON_UNUSED PyObject *__pyx_sel
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_5)) {
       PyObject *__pyx_temp[2] = {__pyx_t_1, ((PyObject *)__pyx_v_arr)};
-      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyCFunction_FastCall(__pyx_t_5, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_GOTREF(__pyx_t_2);
     } else
     #endif
     {
-      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 24, __pyx_L1_error)
+      __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 25, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GIVEREF(__pyx_t_1); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_1); __pyx_t_1 = NULL;
       __Pyx_INCREF(((PyObject *)__pyx_v_arr));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_arr));
       PyTuple_SET_ITEM(__pyx_t_6, 0+1, ((PyObject *)__pyx_v_arr));
-      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
+      __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     }
@@ -2160,7 +2173,7 @@ static PyObject *__pyx_pf_6sophus_2__tofortran(CYTHON_UNUSED PyObject *__pyx_sel
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "sophus.pyx":20
+  /* "sophus.pyx":21
  *         raise "arr has to be float64!!!"
  * 
  * def __tofortran(np.ndarray arr):             # <<<<<<<<<<<<<<
@@ -2182,12 +2195,12 @@ static PyObject *__pyx_pf_6sophus_2__tofortran(CYTHON_UNUSED PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "sophus.pyx":29
- *     cdef _SO3d *thisptr
+/* "sophus.pyx":32
+ *     cdef _SO3d *thisptr         # pointer of C++ SO3<double> instance
  * 
  *     def __cinit__(self, other=None):             # <<<<<<<<<<<<<<
- *         cdef SO3 ostr
- *         if other is not None and type(other) is SO3:
+ *         """
+ *         Constructor, accept 3 types of input
  */
 
 /* Python wrapper */
@@ -2219,7 +2232,7 @@ static int __pyx_pw_6sophus_3SO3_1__cinit__(PyObject *__pyx_v_self, PyObject *__
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 29, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 32, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2233,7 +2246,7 @@ static int __pyx_pw_6sophus_3SO3_1__cinit__(PyObject *__pyx_v_self, PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 29, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 32, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("sophus.SO3.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -2262,9 +2275,9 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
   __Pyx_RefNannySetupContext("__cinit__", 0);
   __Pyx_INCREF(__pyx_v_other);
 
-  /* "sophus.pyx":31
- *     def __cinit__(self, other=None):
- *         cdef SO3 ostr
+  /* "sophus.pyx":41
+ *         cdef SO3 ostr           # define an instance of SO3
+ * 
  *         if other is not None and type(other) is SO3:             # <<<<<<<<<<<<<<
  *             # Copy constructor
  *             ostr = <SO3> other
@@ -2282,7 +2295,7 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "sophus.pyx":33
+    /* "sophus.pyx":43
  *         if other is not None and type(other) is SO3:
  *             # Copy constructor
  *             ostr = <SO3> other             # <<<<<<<<<<<<<<
@@ -2294,24 +2307,24 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
     __pyx_v_ostr = ((struct __pyx_obj_6sophus_SO3 *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "sophus.pyx":34
+    /* "sophus.pyx":44
  *             # Copy constructor
  *             ostr = <SO3> other
  *             self.thisptr = new _SO3d(deref(ostr.thisptr))             # <<<<<<<<<<<<<<
  *         elif other is not None and type(other) is np.ndarray:
- *             __checkfloat64(other)
+ *             # 3*3 np.array constructor
  */
     try {
       __pyx_t_5 = new __pyx_t_6sophus__SO3d((*__pyx_v_ostr->thisptr));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 34, __pyx_L1_error)
+      __PYX_ERR(0, 44, __pyx_L1_error)
     }
     __pyx_v_self->thisptr = __pyx_t_5;
 
-    /* "sophus.pyx":31
- *     def __cinit__(self, other=None):
- *         cdef SO3 ostr
+    /* "sophus.pyx":41
+ *         cdef SO3 ostr           # define an instance of SO3
+ * 
  *         if other is not None and type(other) is SO3:             # <<<<<<<<<<<<<<
  *             # Copy constructor
  *             ostr = <SO3> other
@@ -2319,12 +2332,12 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
     goto __pyx_L3;
   }
 
-  /* "sophus.pyx":35
+  /* "sophus.pyx":45
  *             ostr = <SO3> other
  *             self.thisptr = new _SO3d(deref(ostr.thisptr))
  *         elif other is not None and type(other) is np.ndarray:             # <<<<<<<<<<<<<<
+ *             # 3*3 np.array constructor
  *             __checkfloat64(other)
- *             other = __tofortran(other)
  */
   __pyx_t_2 = (__pyx_v_other != Py_None);
   __pyx_t_3 = (__pyx_t_2 != 0);
@@ -2339,14 +2352,14 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "sophus.pyx":36
- *             self.thisptr = new _SO3d(deref(ostr.thisptr))
+    /* "sophus.pyx":47
  *         elif other is not None and type(other) is np.ndarray:
+ *             # 3*3 np.array constructor
  *             __checkfloat64(other)             # <<<<<<<<<<<<<<
  *             other = __tofortran(other)
  *             self.thisptr = new _SO3d(Map[Matrix3d](other))
  */
-    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_checkfloat64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_checkfloat64); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 47, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_7 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -2359,13 +2372,13 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
       }
     }
     if (!__pyx_t_7) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_v_other};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
@@ -2373,19 +2386,19 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_7, __pyx_v_other};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
       #endif
       {
-        __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 36, __pyx_L1_error)
+        __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
         __Pyx_INCREF(__pyx_v_other);
         __Pyx_GIVEREF(__pyx_v_other);
         PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_other);
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
@@ -2393,14 +2406,14 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "sophus.pyx":37
- *         elif other is not None and type(other) is np.ndarray:
+    /* "sophus.pyx":48
+ *             # 3*3 np.array constructor
  *             __checkfloat64(other)
  *             other = __tofortran(other)             # <<<<<<<<<<<<<<
  *             self.thisptr = new _SO3d(Map[Matrix3d](other))
  *         else:
  */
-    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_tofortran); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 37, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_tofortran); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 48, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -2413,13 +2426,13 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
       }
     }
     if (!__pyx_t_8) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_other};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
@@ -2427,19 +2440,19 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_6)) {
         PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_other};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_6, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
       #endif
       {
-        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 37, __pyx_L1_error)
+        __pyx_t_7 = PyTuple_New(1+1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 48, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_8); __pyx_t_8 = NULL;
         __Pyx_INCREF(__pyx_v_other);
         __Pyx_GIVEREF(__pyx_v_other);
         PyTuple_SET_ITEM(__pyx_t_7, 0+1, __pyx_v_other);
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_7, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 48, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       }
@@ -2448,39 +2461,39 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
     __Pyx_DECREF_SET(__pyx_v_other, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "sophus.pyx":38
+    /* "sophus.pyx":49
  *             __checkfloat64(other)
  *             other = __tofortran(other)
  *             self.thisptr = new _SO3d(Map[Matrix3d](other))             # <<<<<<<<<<<<<<
  *         else:
  *             # default to 3*3 identity matrix
  */
-    if (!(likely(((__pyx_v_other) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_other, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 38, __pyx_L1_error)
+    if (!(likely(((__pyx_v_other) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_other, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 49, __pyx_L1_error)
     try {
       __pyx_t_9 = eigency::Map<Eigen::Matrix3d> (((PyArrayObject *)__pyx_v_other));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 38, __pyx_L1_error)
+      __PYX_ERR(0, 49, __pyx_L1_error)
     }
     try {
       __pyx_t_5 = new __pyx_t_6sophus__SO3d(__pyx_t_9);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 38, __pyx_L1_error)
+      __PYX_ERR(0, 49, __pyx_L1_error)
     }
     __pyx_v_self->thisptr = __pyx_t_5;
 
-    /* "sophus.pyx":35
+    /* "sophus.pyx":45
  *             ostr = <SO3> other
  *             self.thisptr = new _SO3d(deref(ostr.thisptr))
  *         elif other is not None and type(other) is np.ndarray:             # <<<<<<<<<<<<<<
+ *             # 3*3 np.array constructor
  *             __checkfloat64(other)
- *             other = __tofortran(other)
  */
     goto __pyx_L3;
   }
 
-  /* "sophus.pyx":41
+  /* "sophus.pyx":52
  *         else:
  *             # default to 3*3 identity matrix
  *             self.thisptr = new _SO3d()             # <<<<<<<<<<<<<<
@@ -2492,18 +2505,18 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
       __pyx_t_5 = new __pyx_t_6sophus__SO3d();
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 41, __pyx_L1_error)
+      __PYX_ERR(0, 52, __pyx_L1_error)
     }
     __pyx_v_self->thisptr = __pyx_t_5;
   }
   __pyx_L3:;
 
-  /* "sophus.pyx":29
- *     cdef _SO3d *thisptr
+  /* "sophus.pyx":32
+ *     cdef _SO3d *thisptr         # pointer of C++ SO3<double> instance
  * 
  *     def __cinit__(self, other=None):             # <<<<<<<<<<<<<<
- *         cdef SO3 ostr
- *         if other is not None and type(other) is SO3:
+ *         """
+ *         Constructor, accept 3 types of input
  */
 
   /* function exit code */
@@ -2523,12 +2536,12 @@ static int __pyx_pf_6sophus_3SO3___cinit__(struct __pyx_obj_6sophus_SO3 *__pyx_v
   return __pyx_r;
 }
 
-/* "sophus.pyx":43
+/* "sophus.pyx":54
  *             self.thisptr = new _SO3d()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         """deconstructor"""
  *         del self.thisptr
- * 
  */
 
 /* Python wrapper */
@@ -2546,37 +2559,41 @@ static void __pyx_pf_6sophus_3SO3_2__dealloc__(struct __pyx_obj_6sophus_SO3 *__p
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "sophus.pyx":44
- * 
+  /* "sophus.pyx":56
  *     def __dealloc__(self):
+ *         """deconstructor"""
  *         del self.thisptr             # <<<<<<<<<<<<<<
  * 
  *     def __str__(self):
  */
   delete __pyx_v_self->thisptr;
 
-  /* "sophus.pyx":43
+  /* "sophus.pyx":54
  *             self.thisptr = new _SO3d()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         """deconstructor"""
  *         del self.thisptr
- * 
  */
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-/* "sophus.pyx":46
+/* "sophus.pyx":58
  *         del self.thisptr
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
- *         return np.array_str(self.matrix())
- * 
+ *         """
+ *         string representation of SO3
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6sophus_3SO3_5__str__(PyObject *__pyx_v_self); /*proto*/
+static char __pyx_doc_6sophus_3SO3_4__str__[] = "\n        string representation of SO3\n        ----------------------------\n        Out: str\n        ----------------------------\n        ";
+#if CYTHON_COMPILING_IN_CPYTHON
+struct wrapperbase __pyx_wrapperbase_6sophus_3SO3_4__str__;
+#endif
 static PyObject *__pyx_pw_6sophus_3SO3_5__str__(PyObject *__pyx_v_self) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -2598,20 +2615,20 @@ static PyObject *__pyx_pf_6sophus_3SO3_4__str__(struct __pyx_obj_6sophus_SO3 *__
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("__str__", 0);
 
-  /* "sophus.pyx":47
- * 
- *     def __str__(self):
+  /* "sophus.pyx":65
+ *         ----------------------------
+ *         """
  *         return np.array_str(self.matrix())             # <<<<<<<<<<<<<<
  * 
  *     def matrix(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 65, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -2624,10 +2641,10 @@ static PyObject *__pyx_pf_6sophus_3SO3_4__str__(struct __pyx_obj_6sophus_SO3 *__
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 65, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -2642,14 +2659,14 @@ static PyObject *__pyx_pf_6sophus_3SO3_4__str__(struct __pyx_obj_6sophus_SO3 *__
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -2658,20 +2675,20 @@ static PyObject *__pyx_pf_6sophus_3SO3_4__str__(struct __pyx_obj_6sophus_SO3 *__
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 47, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 65, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -2681,12 +2698,12 @@ static PyObject *__pyx_pf_6sophus_3SO3_4__str__(struct __pyx_obj_6sophus_SO3 *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sophus.pyx":46
+  /* "sophus.pyx":58
  *         del self.thisptr
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
- *         return np.array_str(self.matrix())
- * 
+ *         """
+ *         string representation of SO3
  */
 
   /* function exit code */
@@ -2704,16 +2721,17 @@ static PyObject *__pyx_pf_6sophus_3SO3_4__str__(struct __pyx_obj_6sophus_SO3 *__
   return __pyx_r;
 }
 
-/* "sophus.pyx":49
+/* "sophus.pyx":67
  *         return np.array_str(self.matrix())
  * 
  *     def matrix(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.matrix())
- * 
+ *         """
+ *         Returns and 3*3 np.ndarray matrix
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6sophus_3SO3_7matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6sophus_3SO3_6matrix[] = "\n        Returns and 3*3 np.ndarray matrix\n        ---------------------------------\n        Out: np.ndarray (3*3)\n        ---------------------------------\n        ";
 static PyObject *__pyx_pw_6sophus_3SO3_7matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -2729,33 +2747,58 @@ static PyObject *__pyx_pf_6sophus_3SO3_6matrix(struct __pyx_obj_6sophus_SO3 *__p
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("matrix", 0);
 
-  /* "sophus.pyx":50
- * 
- *     def matrix(self):
- *         return ndarray(self.thisptr.matrix())             # <<<<<<<<<<<<<<
+  /* "sophus.pyx":74
+ *         ---------------------------------
+ *         """
+ *         return ndarray(self.thisptr.matrix()).copy()             # <<<<<<<<<<<<<<
  * 
  *     def log(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->matrix())); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->matrix())); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  if (__pyx_t_2) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else {
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+  }
   __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sophus.pyx":49
+  /* "sophus.pyx":67
  *         return np.array_str(self.matrix())
  * 
  *     def matrix(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.matrix())
- * 
+ *         """
+ *         Returns and 3*3 np.ndarray matrix
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_AddTraceback("sophus.SO3.matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -2764,16 +2807,17 @@ static PyObject *__pyx_pf_6sophus_3SO3_6matrix(struct __pyx_obj_6sophus_SO3 *__p
   return __pyx_r;
 }
 
-/* "sophus.pyx":52
- *         return ndarray(self.thisptr.matrix())
+/* "sophus.pyx":76
+ *         return ndarray(self.thisptr.matrix()).copy()
  * 
  *     def log(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.log())
- * 
+ *         """
+ *         Lie algebra log
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6sophus_3SO3_9log(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6sophus_3SO3_8log[] = "\n        Lie algebra log\n        --------------------\n        Out: np.ndarray (3,)\n        --------------------\n        ";
 static PyObject *__pyx_pw_6sophus_3SO3_9log(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -2789,33 +2833,81 @@ static PyObject *__pyx_pf_6sophus_3SO3_8log(struct __pyx_obj_6sophus_SO3 *__pyx_
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("log", 0);
 
-  /* "sophus.pyx":53
- * 
- *     def log(self):
- *         return ndarray(self.thisptr.log())             # <<<<<<<<<<<<<<
+  /* "sophus.pyx":83
+ *         --------------------
+ *         """
+ *         return ndarray(self.thisptr.log()).ravel().copy()             # <<<<<<<<<<<<<<
  * 
  *     def inverse(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->log())); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_3 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->log())); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ravel); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  if (__pyx_t_3) {
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  } else {
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 83, __pyx_L1_error)
+  }
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 83, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  if (__pyx_t_2) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else {
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 83, __pyx_L1_error)
+  }
   __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sophus.pyx":52
- *         return ndarray(self.thisptr.matrix())
+  /* "sophus.pyx":76
+ *         return ndarray(self.thisptr.matrix()).copy()
  * 
  *     def log(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.log())
- * 
+ *         """
+ *         Lie algebra log
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_AddTraceback("sophus.SO3.log", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -2824,16 +2916,17 @@ static PyObject *__pyx_pf_6sophus_3SO3_8log(struct __pyx_obj_6sophus_SO3 *__pyx_
   return __pyx_r;
 }
 
-/* "sophus.pyx":55
- *         return ndarray(self.thisptr.log())
+/* "sophus.pyx":85
+ *         return ndarray(self.thisptr.log()).ravel().copy()
  * 
  *     def inverse(self):             # <<<<<<<<<<<<<<
- *         so3 = SO3()
- *         del so3.thisptr
+ *         """
+ *         Inverse of a 3*3 othogonal matrix
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6sophus_3SO3_11inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6sophus_3SO3_10inverse[] = "\n        Inverse of a 3*3 othogonal matrix\n        is the transpose of it\n        ---------------------------------\n        Out: SO3\n        ---------------------------------\n        ";
 static PyObject *__pyx_pw_6sophus_3SO3_11inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -2853,30 +2946,30 @@ static PyObject *__pyx_pf_6sophus_3SO3_10inverse(struct __pyx_obj_6sophus_SO3 *_
   __pyx_t_6sophus__SO3d *__pyx_t_2;
   __Pyx_RefNannySetupContext("inverse", 0);
 
-  /* "sophus.pyx":56
- * 
- *     def inverse(self):
+  /* "sophus.pyx":93
+ *         ---------------------------------
+ *         """
  *         so3 = SO3()             # <<<<<<<<<<<<<<
- *         del so3.thisptr
+ *         del so3.thisptr         # clear pointer before assignment
  *         so3.thisptr = new _SO3d(self.thisptr.inverse())
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6sophus_SO3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6sophus_SO3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 93, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_so3 = ((struct __pyx_obj_6sophus_SO3 *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "sophus.pyx":57
- *     def inverse(self):
+  /* "sophus.pyx":94
+ *         """
  *         so3 = SO3()
- *         del so3.thisptr             # <<<<<<<<<<<<<<
+ *         del so3.thisptr         # clear pointer before assignment             # <<<<<<<<<<<<<<
  *         so3.thisptr = new _SO3d(self.thisptr.inverse())
  *         return so3
  */
   delete __pyx_v_so3->thisptr;
 
-  /* "sophus.pyx":58
+  /* "sophus.pyx":95
  *         so3 = SO3()
- *         del so3.thisptr
+ *         del so3.thisptr         # clear pointer before assignment
  *         so3.thisptr = new _SO3d(self.thisptr.inverse())             # <<<<<<<<<<<<<<
  *         return so3
  * 
@@ -2885,28 +2978,28 @@ static PyObject *__pyx_pf_6sophus_3SO3_10inverse(struct __pyx_obj_6sophus_SO3 *_
     __pyx_t_2 = new __pyx_t_6sophus__SO3d(__pyx_v_self->thisptr->inverse());
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 58, __pyx_L1_error)
+    __PYX_ERR(0, 95, __pyx_L1_error)
   }
   __pyx_v_so3->thisptr = __pyx_t_2;
 
-  /* "sophus.pyx":59
- *         del so3.thisptr
+  /* "sophus.pyx":96
+ *         del so3.thisptr         # clear pointer before assignment
  *         so3.thisptr = new _SO3d(self.thisptr.inverse())
  *         return so3             # <<<<<<<<<<<<<<
  * 
- * cdef class SE3:
+ * 
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(((PyObject *)__pyx_v_so3));
   __pyx_r = ((PyObject *)__pyx_v_so3);
   goto __pyx_L0;
 
-  /* "sophus.pyx":55
- *         return ndarray(self.thisptr.log())
+  /* "sophus.pyx":85
+ *         return ndarray(self.thisptr.log()).ravel().copy()
  * 
  *     def inverse(self):             # <<<<<<<<<<<<<<
- *         so3 = SO3()
- *         del so3.thisptr
+ *         """
+ *         Inverse of a 3*3 othogonal matrix
  */
 
   /* function exit code */
@@ -3028,12 +3121,12 @@ static PyObject *__pyx_pf_6sophus_3SO3_14__setstate_cython__(CYTHON_UNUSED struc
   return __pyx_r;
 }
 
-/* "sophus.pyx":64
- *     cdef _SE3d *thisptr
+/* "sophus.pyx":103
+ *     cdef _SE3d *thisptr         # pointer of C++ SE3<double> instance
  * 
  *     def __cinit__(self, other=None, np.ndarray[DTYPE_t, ndim=1] t=None):             # <<<<<<<<<<<<<<
- *         cdef SE3 ostr
- *         if t is not None and type(other) is np.ndarray:
+ *         """
+ *         Constructor, accept 4 types of input
  */
 
 /* Python wrapper */
@@ -3075,7 +3168,7 @@ static int __pyx_pw_6sophus_3SE3_1__cinit__(PyObject *__pyx_v_self, PyObject *__
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 64, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 103, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3092,13 +3185,13 @@ static int __pyx_pw_6sophus_3SE3_1__cinit__(PyObject *__pyx_v_self, PyObject *__
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 64, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 103, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("sophus.SE3.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_t), __pyx_ptype_5numpy_ndarray, 1, "t", 0))) __PYX_ERR(0, 64, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_t), __pyx_ptype_5numpy_ndarray, 1, "t", 0))) __PYX_ERR(0, 103, __pyx_L1_error)
   __pyx_r = __pyx_pf_6sophus_3SE3___cinit__(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self), __pyx_v_other, __pyx_v_t);
 
   /* function exit code */
@@ -3135,15 +3228,15 @@ static int __pyx_pf_6sophus_3SE3___cinit__(struct __pyx_obj_6sophus_SE3 *__pyx_v
   __pyx_pybuffernd_t.rcbuffer = &__pyx_pybuffer_t;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_t.rcbuffer->pybuffer, (PyObject*)__pyx_v_t, &__Pyx_TypeInfo_nn___pyx_t_6sophus_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 64, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_t.rcbuffer->pybuffer, (PyObject*)__pyx_v_t, &__Pyx_TypeInfo_nn___pyx_t_6sophus_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 103, __pyx_L1_error)
   }
   __pyx_pybuffernd_t.diminfo[0].strides = __pyx_pybuffernd_t.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_t.diminfo[0].shape = __pyx_pybuffernd_t.rcbuffer->pybuffer.shape[0];
 
-  /* "sophus.pyx":66
- *     def __cinit__(self, other=None, np.ndarray[DTYPE_t, ndim=1] t=None):
- *         cdef SE3 ostr
+  /* "sophus.pyx":112
+ *         """
+ *         cdef SE3 ostr           # define an instance of SE3
  *         if t is not None and type(other) is np.ndarray:             # <<<<<<<<<<<<<<
- *             # compose R and t into T (4*4)
+ *             # compose R (3*3) and t (3,) into T (4*4)
  *             so3 = SO3(other)
  */
   __pyx_t_2 = (((PyObject *)__pyx_v_t) != Py_None);
@@ -3159,55 +3252,55 @@ static int __pyx_pf_6sophus_3SE3___cinit__(struct __pyx_obj_6sophus_SE3 *__pyx_v
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "sophus.pyx":68
+    /* "sophus.pyx":114
  *         if t is not None and type(other) is np.ndarray:
- *             # compose R and t into T (4*4)
+ *             # compose R (3*3) and t (3,) into T (4*4)
  *             so3 = SO3(other)             # <<<<<<<<<<<<<<
  *             self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
- *         elif other is not None and type(other) is SE3:
+ *         elif other is not None and type(other) is np.ndarray:
  */
-    __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_6sophus_SO3), __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 68, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_6sophus_SO3), __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 114, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_v_so3 = ((struct __pyx_obj_6sophus_SO3 *)__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "sophus.pyx":69
- *             # compose R and t into T (4*4)
+    /* "sophus.pyx":115
+ *             # compose R (3*3) and t (3,) into T (4*4)
  *             so3 = SO3(other)
  *             self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))             # <<<<<<<<<<<<<<
- *         elif other is not None and type(other) is SE3:
- *             # Copy constructor
+ *         elif other is not None and type(other) is np.ndarray:
+ *             # 4*4 np.array constructor
  */
     try {
       __pyx_t_5 = eigency::Map<Eigen::Vector3d> (((PyArrayObject *)__pyx_v_t));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 69, __pyx_L1_error)
+      __PYX_ERR(0, 115, __pyx_L1_error)
     }
     try {
       __pyx_t_6 = new __pyx_t_6sophus__SE3d((*__pyx_v_so3->thisptr), __pyx_t_5);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 69, __pyx_L1_error)
+      __PYX_ERR(0, 115, __pyx_L1_error)
     }
     __pyx_v_self->thisptr = __pyx_t_6;
 
-    /* "sophus.pyx":66
- *     def __cinit__(self, other=None, np.ndarray[DTYPE_t, ndim=1] t=None):
- *         cdef SE3 ostr
+    /* "sophus.pyx":112
+ *         """
+ *         cdef SE3 ostr           # define an instance of SE3
  *         if t is not None and type(other) is np.ndarray:             # <<<<<<<<<<<<<<
- *             # compose R and t into T (4*4)
+ *             # compose R (3*3) and t (3,) into T (4*4)
  *             so3 = SO3(other)
  */
     goto __pyx_L3;
   }
 
-  /* "sophus.pyx":70
+  /* "sophus.pyx":116
  *             so3 = SO3(other)
  *             self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
- *         elif other is not None and type(other) is SE3:             # <<<<<<<<<<<<<<
- *             # Copy constructor
- *             ostr = <SE3> other
+ *         elif other is not None and type(other) is np.ndarray:             # <<<<<<<<<<<<<<
+ *             # 4*4 np.array constructor
+ *             __checkfloat64(other)
  */
   __pyx_t_2 = (__pyx_v_other != Py_None);
   __pyx_t_3 = (__pyx_t_2 != 0);
@@ -3216,77 +3309,20 @@ static int __pyx_pf_6sophus_3SE3___cinit__(struct __pyx_obj_6sophus_SE3 *__pyx_v
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L6_bool_binop_done;
   }
-  __pyx_t_3 = (((PyObject *)Py_TYPE(__pyx_v_other)) == ((PyObject *)__pyx_ptype_6sophus_SE3));
+  __pyx_t_3 = (((PyObject *)Py_TYPE(__pyx_v_other)) == ((PyObject *)__pyx_ptype_5numpy_ndarray));
   __pyx_t_2 = (__pyx_t_3 != 0);
   __pyx_t_1 = __pyx_t_2;
   __pyx_L6_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "sophus.pyx":72
- *         elif other is not None and type(other) is SE3:
- *             # Copy constructor
- *             ostr = <SE3> other             # <<<<<<<<<<<<<<
- *             self.thisptr = new _SE3d(deref(ostr.thisptr))
+    /* "sophus.pyx":118
  *         elif other is not None and type(other) is np.ndarray:
- */
-    __pyx_t_4 = __pyx_v_other;
-    __Pyx_INCREF(__pyx_t_4);
-    __pyx_v_ostr = ((struct __pyx_obj_6sophus_SE3 *)__pyx_t_4);
-    __pyx_t_4 = 0;
-
-    /* "sophus.pyx":73
- *             # Copy constructor
- *             ostr = <SE3> other
- *             self.thisptr = new _SE3d(deref(ostr.thisptr))             # <<<<<<<<<<<<<<
- *         elif other is not None and type(other) is np.ndarray:
- *             other = __tofortran(other)
- */
-    try {
-      __pyx_t_6 = new __pyx_t_6sophus__SE3d((*__pyx_v_ostr->thisptr));
-    } catch(...) {
-      __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 73, __pyx_L1_error)
-    }
-    __pyx_v_self->thisptr = __pyx_t_6;
-
-    /* "sophus.pyx":70
- *             so3 = SO3(other)
- *             self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
- *         elif other is not None and type(other) is SE3:             # <<<<<<<<<<<<<<
- *             # Copy constructor
- *             ostr = <SE3> other
- */
-    goto __pyx_L3;
-  }
-
-  /* "sophus.pyx":74
- *             ostr = <SE3> other
- *             self.thisptr = new _SE3d(deref(ostr.thisptr))
- *         elif other is not None and type(other) is np.ndarray:             # <<<<<<<<<<<<<<
+ *             # 4*4 np.array constructor
+ *             __checkfloat64(other)             # <<<<<<<<<<<<<<
  *             other = __tofortran(other)
  *             self.thisptr = new _SE3d(Map[Matrix4d](other))
  */
-  __pyx_t_2 = (__pyx_v_other != Py_None);
-  __pyx_t_3 = (__pyx_t_2 != 0);
-  if (__pyx_t_3) {
-  } else {
-    __pyx_t_1 = __pyx_t_3;
-    goto __pyx_L8_bool_binop_done;
-  }
-  __pyx_t_3 = (((PyObject *)Py_TYPE(__pyx_v_other)) == ((PyObject *)__pyx_ptype_5numpy_ndarray));
-  __pyx_t_2 = (__pyx_t_3 != 0);
-  __pyx_t_1 = __pyx_t_2;
-  __pyx_L8_bool_binop_done:;
-  if (__pyx_t_1) {
-
-    /* "sophus.pyx":75
- *             self.thisptr = new _SE3d(deref(ostr.thisptr))
- *         elif other is not None and type(other) is np.ndarray:
- *             other = __tofortran(other)             # <<<<<<<<<<<<<<
- *             self.thisptr = new _SE3d(Map[Matrix4d](other))
- *         else:
- */
-    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_tofortran); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 75, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_checkfloat64); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
@@ -3299,13 +3335,13 @@ static int __pyx_pf_6sophus_3SE3___cinit__(struct __pyx_obj_6sophus_SE3 *__pyx_v
       }
     }
     if (!__pyx_t_8) {
-      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     } else {
       #if CYTHON_FAST_PYCALL
       if (PyFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_other};
-        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
@@ -3313,60 +3349,171 @@ static int __pyx_pf_6sophus_3SE3___cinit__(struct __pyx_obj_6sophus_SE3 *__pyx_v
       #if CYTHON_FAST_PYCCALL
       if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
         PyObject *__pyx_temp[2] = {__pyx_t_8, __pyx_v_other};
-        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_XDECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else
       #endif
       {
-        __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 75, __pyx_L1_error)
+        __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_9);
         __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
         __Pyx_INCREF(__pyx_v_other);
         __Pyx_GIVEREF(__pyx_v_other);
         PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_v_other);
-        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 75, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_9, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
         __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
+      }
+    }
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+
+    /* "sophus.pyx":119
+ *             # 4*4 np.array constructor
+ *             __checkfloat64(other)
+ *             other = __tofortran(other)             # <<<<<<<<<<<<<<
+ *             self.thisptr = new _SE3d(Map[Matrix4d](other))
+ *         elif other is not None and type(other) is SE3:
+ */
+    __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_tofortran); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_9 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_7))) {
+      __pyx_t_9 = PyMethod_GET_SELF(__pyx_t_7);
+      if (likely(__pyx_t_9)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_7);
+        __Pyx_INCREF(__pyx_t_9);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_7, function);
+      }
+    }
+    if (!__pyx_t_9) {
+      __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_7, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_4);
+    } else {
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_7)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_other};
+        __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_GOTREF(__pyx_t_4);
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_7)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_9, __pyx_v_other};
+        __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_7, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
+        __Pyx_GOTREF(__pyx_t_4);
+      } else
+      #endif
+      {
+        __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 119, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_8);
+        __Pyx_GIVEREF(__pyx_t_9); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_9); __pyx_t_9 = NULL;
+        __Pyx_INCREF(__pyx_v_other);
+        __Pyx_GIVEREF(__pyx_v_other);
+        PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_other);
+        __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_7, __pyx_t_8, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_4);
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
     }
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __Pyx_DECREF_SET(__pyx_v_other, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "sophus.pyx":76
- *         elif other is not None and type(other) is np.ndarray:
+    /* "sophus.pyx":120
+ *             __checkfloat64(other)
  *             other = __tofortran(other)
  *             self.thisptr = new _SE3d(Map[Matrix4d](other))             # <<<<<<<<<<<<<<
- *         else:
- *             # default to 4*4 identity matrix
+ *         elif other is not None and type(other) is SE3:
+ *             # Copy constructor
  */
-    if (!(likely(((__pyx_v_other) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_other, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 76, __pyx_L1_error)
+    if (!(likely(((__pyx_v_other) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_other, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 120, __pyx_L1_error)
     try {
       __pyx_t_10 = eigency::Map<Eigen::Matrix4d> (((PyArrayObject *)__pyx_v_other));
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 76, __pyx_L1_error)
+      __PYX_ERR(0, 120, __pyx_L1_error)
     }
     try {
       __pyx_t_6 = new __pyx_t_6sophus__SE3d(__pyx_t_10);
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 76, __pyx_L1_error)
+      __PYX_ERR(0, 120, __pyx_L1_error)
     }
     __pyx_v_self->thisptr = __pyx_t_6;
 
-    /* "sophus.pyx":74
- *             ostr = <SE3> other
- *             self.thisptr = new _SE3d(deref(ostr.thisptr))
+    /* "sophus.pyx":116
+ *             so3 = SO3(other)
+ *             self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
  *         elif other is not None and type(other) is np.ndarray:             # <<<<<<<<<<<<<<
- *             other = __tofortran(other)
- *             self.thisptr = new _SE3d(Map[Matrix4d](other))
+ *             # 4*4 np.array constructor
+ *             __checkfloat64(other)
  */
     goto __pyx_L3;
   }
 
-  /* "sophus.pyx":79
+  /* "sophus.pyx":121
+ *             other = __tofortran(other)
+ *             self.thisptr = new _SE3d(Map[Matrix4d](other))
+ *         elif other is not None and type(other) is SE3:             # <<<<<<<<<<<<<<
+ *             # Copy constructor
+ *             ostr = <SE3> other
+ */
+  __pyx_t_2 = (__pyx_v_other != Py_None);
+  __pyx_t_3 = (__pyx_t_2 != 0);
+  if (__pyx_t_3) {
+  } else {
+    __pyx_t_1 = __pyx_t_3;
+    goto __pyx_L8_bool_binop_done;
+  }
+  __pyx_t_3 = (((PyObject *)Py_TYPE(__pyx_v_other)) == ((PyObject *)__pyx_ptype_6sophus_SE3));
+  __pyx_t_2 = (__pyx_t_3 != 0);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L8_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "sophus.pyx":123
+ *         elif other is not None and type(other) is SE3:
+ *             # Copy constructor
+ *             ostr = <SE3> other             # <<<<<<<<<<<<<<
+ *             self.thisptr = new _SE3d(deref(ostr.thisptr))
+ *         else:
+ */
+    __pyx_t_4 = __pyx_v_other;
+    __Pyx_INCREF(__pyx_t_4);
+    __pyx_v_ostr = ((struct __pyx_obj_6sophus_SE3 *)__pyx_t_4);
+    __pyx_t_4 = 0;
+
+    /* "sophus.pyx":124
+ *             # Copy constructor
+ *             ostr = <SE3> other
+ *             self.thisptr = new _SE3d(deref(ostr.thisptr))             # <<<<<<<<<<<<<<
+ *         else:
+ *             # default to 4*4 identity matrix
+ */
+    try {
+      __pyx_t_6 = new __pyx_t_6sophus__SE3d((*__pyx_v_ostr->thisptr));
+    } catch(...) {
+      __Pyx_CppExn2PyErr();
+      __PYX_ERR(0, 124, __pyx_L1_error)
+    }
+    __pyx_v_self->thisptr = __pyx_t_6;
+
+    /* "sophus.pyx":121
+ *             other = __tofortran(other)
+ *             self.thisptr = new _SE3d(Map[Matrix4d](other))
+ *         elif other is not None and type(other) is SE3:             # <<<<<<<<<<<<<<
+ *             # Copy constructor
+ *             ostr = <SE3> other
+ */
+    goto __pyx_L3;
+  }
+
+  /* "sophus.pyx":127
  *         else:
  *             # default to 4*4 identity matrix
  *             self.thisptr = new _SE3d()             # <<<<<<<<<<<<<<
@@ -3378,18 +3525,18 @@ static int __pyx_pf_6sophus_3SE3___cinit__(struct __pyx_obj_6sophus_SE3 *__pyx_v
       __pyx_t_6 = new __pyx_t_6sophus__SE3d();
     } catch(...) {
       __Pyx_CppExn2PyErr();
-      __PYX_ERR(0, 79, __pyx_L1_error)
+      __PYX_ERR(0, 127, __pyx_L1_error)
     }
     __pyx_v_self->thisptr = __pyx_t_6;
   }
   __pyx_L3:;
 
-  /* "sophus.pyx":64
- *     cdef _SE3d *thisptr
+  /* "sophus.pyx":103
+ *     cdef _SE3d *thisptr         # pointer of C++ SE3<double> instance
  * 
  *     def __cinit__(self, other=None, np.ndarray[DTYPE_t, ndim=1] t=None):             # <<<<<<<<<<<<<<
- *         cdef SE3 ostr
- *         if t is not None and type(other) is np.ndarray:
+ *         """
+ *         Constructor, accept 4 types of input
  */
 
   /* function exit code */
@@ -3419,12 +3566,12 @@ static int __pyx_pf_6sophus_3SE3___cinit__(struct __pyx_obj_6sophus_SE3 *__pyx_v
   return __pyx_r;
 }
 
-/* "sophus.pyx":81
+/* "sophus.pyx":129
  *             self.thisptr = new _SE3d()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         """deconstructor"""
  *         del self.thisptr
- * 
  */
 
 /* Python wrapper */
@@ -3442,28 +3589,28 @@ static void __pyx_pf_6sophus_3SE3_2__dealloc__(struct __pyx_obj_6sophus_SE3 *__p
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "sophus.pyx":82
- * 
+  /* "sophus.pyx":131
  *     def __dealloc__(self):
+ *         """deconstructor"""
  *         del self.thisptr             # <<<<<<<<<<<<<<
  * 
  *     def __str__(self):
  */
   delete __pyx_v_self->thisptr;
 
-  /* "sophus.pyx":81
+  /* "sophus.pyx":129
  *             self.thisptr = new _SE3d()
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
+ *         """deconstructor"""
  *         del self.thisptr
- * 
  */
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
 }
 
-/* "sophus.pyx":84
+/* "sophus.pyx":133
  *         del self.thisptr
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -3498,7 +3645,7 @@ static PyObject *__pyx_pf_6sophus_3SE3_4__str__(struct __pyx_obj_6sophus_SE3 *__
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("__str__", 0);
 
-  /* "sophus.pyx":91
+  /* "sophus.pyx":140
  *         ----------------------------
  *         """
  *         return np.array_str(self.matrix())             # <<<<<<<<<<<<<<
@@ -3506,12 +3653,12 @@ static PyObject *__pyx_pf_6sophus_3SE3_4__str__(struct __pyx_obj_6sophus_SE3 *__
  *     def __mul__(SE3 x, other):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_array_str); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 91, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_matrix); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_5 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
@@ -3524,10 +3671,10 @@ static PyObject *__pyx_pf_6sophus_3SE3_4__str__(struct __pyx_obj_6sophus_SE3 *__
     }
   }
   if (__pyx_t_5) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   } else {
-    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 140, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -3542,14 +3689,14 @@ static PyObject *__pyx_pf_6sophus_3SE3_4__str__(struct __pyx_obj_6sophus_SE3 *__
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -3558,20 +3705,20 @@ static PyObject *__pyx_pf_6sophus_3SE3_4__str__(struct __pyx_obj_6sophus_SE3 *__
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
       PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_t_2};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     } else
     #endif
     {
-      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
       __Pyx_GIVEREF(__pyx_t_2);
       PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_t_2);
       __pyx_t_2 = 0;
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 91, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     }
@@ -3581,7 +3728,7 @@ static PyObject *__pyx_pf_6sophus_3SE3_4__str__(struct __pyx_obj_6sophus_SE3 *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sophus.pyx":84
+  /* "sophus.pyx":133
  *         del self.thisptr
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -3604,17 +3751,17 @@ static PyObject *__pyx_pf_6sophus_3SE3_4__str__(struct __pyx_obj_6sophus_SE3 *__
   return __pyx_r;
 }
 
-/* "sophus.pyx":93
+/* "sophus.pyx":142
  *         return np.array_str(self.matrix())
  * 
  *     def __mul__(SE3 x, other):             # <<<<<<<<<<<<<<
  *         """
- *         SE3 * SE3 or SE3 * point (3*N np.ndarray)
+ *         SE3 * SE3 or SE3 * point (3, np.ndarray)
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6sophus_3SE3_7__mul__(PyObject *__pyx_v_x, PyObject *__pyx_v_other); /*proto*/
-static char __pyx_doc_6sophus_3SE3_6__mul__[] = "\n        SE3 * SE3 or SE3 * point (3*N np.ndarray)\n        return None means input type Error\n        ------------------------------\n        In: SE3, SE3 or np.ndarray (3,) or (N, 3)\n        Out: SE3 or (3,) np.ndarray\n        ------------------------------\n        ";
+static char __pyx_doc_6sophus_3SE3_6__mul__[] = "\n        SE3 * SE3 or SE3 * point (3, np.ndarray)\n        sor SE3 * points (N*3 np.ndarray)\n        return None means input type Error\n        -----------------------------------------\n        In: SE3, SE3 or np.ndarray (3,) or (N, 3)\n        Out: SE3 or (3,) np.ndarray\n        -----------------------------------------\n        ";
 #if CYTHON_COMPILING_IN_CPYTHON
 struct wrapperbase __pyx_wrapperbase_6sophus_3SE3_6__mul__;
 #endif
@@ -3622,7 +3769,7 @@ static PyObject *__pyx_pw_6sophus_3SE3_7__mul__(PyObject *__pyx_v_x, PyObject *_
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__mul__ (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x), __pyx_ptype_6sophus_SE3, 1, "x", 0))) __PYX_ERR(0, 93, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_x), __pyx_ptype_6sophus_SE3, 1, "x", 0))) __PYX_ERR(0, 142, __pyx_L1_error)
   __pyx_r = __pyx_pf_6sophus_3SE3_6__mul__(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_x), ((PyObject *)__pyx_v_other));
 
   /* function exit code */
@@ -3646,44 +3793,249 @@ static PyObject *__pyx_pf_6sophus_3SE3_6__mul__(struct __pyx_obj_6sophus_SE3 *__
   PyObject *__pyx_t_5 = NULL;
   PyObject *__pyx_t_6 = NULL;
   eigency::Map<Eigen::Vector3d>  __pyx_t_7;
+  PyObject *__pyx_t_8 = NULL;
+  Py_ssize_t __pyx_t_9;
+  PyObject *__pyx_t_10 = NULL;
+  PyObject *__pyx_t_11 = NULL;
   __Pyx_RefNannySetupContext("__mul__", 0);
+  __Pyx_INCREF(__pyx_v_other);
 
-  /* "sophus.pyx":104
- *         cdef SE3 ostr
+  /* "sophus.pyx":154
+ *         cdef SE3 ostr           # define an instance of SE3
  * 
  *         if type(other) is np.ndarray:             # <<<<<<<<<<<<<<
+ *             __checkfloat64(other)
  *             if other.size == 3:
- *                 __checkfloat64(other)
  */
   __pyx_t_1 = (((PyObject *)Py_TYPE(__pyx_v_other)) == ((PyObject *)__pyx_ptype_5numpy_ndarray));
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "sophus.pyx":105
+    /* "sophus.pyx":155
  * 
  *         if type(other) is np.ndarray:
- *             if other.size == 3:             # <<<<<<<<<<<<<<
- *                 __checkfloat64(other)
- *                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
+ *             __checkfloat64(other)             # <<<<<<<<<<<<<<
+ *             if other.size == 3:
+ *                 # SE3 * [x, y, z]
  */
-    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_checkfloat64); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 155, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    if (!__pyx_t_5) {
+      __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_v_other); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+    } else {
+      #if CYTHON_FAST_PYCALL
+      if (PyFunction_Check(__pyx_t_4)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_other};
+        __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_GOTREF(__pyx_t_3);
+      } else
+      #endif
+      #if CYTHON_FAST_PYCCALL
+      if (__Pyx_PyFastCFunction_Check(__pyx_t_4)) {
+        PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_other};
+        __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_4, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+        __Pyx_GOTREF(__pyx_t_3);
+      } else
+      #endif
+      {
+        __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_6);
+        __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
+        __Pyx_INCREF(__pyx_v_other);
+        __Pyx_GIVEREF(__pyx_v_other);
+        PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_other);
+        __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_6, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 155, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      }
+    }
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+
+    /* "sophus.pyx":156
+ *         if type(other) is np.ndarray:
+ *             __checkfloat64(other)
+ *             if other.size == 3:             # <<<<<<<<<<<<<<
+ *                 # SE3 * [x, y, z]
+ *                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel().copy()
+ */
+    __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_other, __pyx_n_s_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_3, 3, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_EqObjC(__pyx_t_3, __pyx_int_3, 3, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 105, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 156, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (__pyx_t_2) {
 
-      /* "sophus.pyx":106
- *         if type(other) is np.ndarray:
+      /* "sophus.pyx":158
  *             if other.size == 3:
- *                 __checkfloat64(other)             # <<<<<<<<<<<<<<
- *                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
+ *                 # SE3 * [x, y, z]
+ *                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel().copy()             # <<<<<<<<<<<<<<
  *             else:
+ *                 # SE3 * [[x1, y1, z1], ..., [xn, yn, zn]] (N*3) np.array
  */
-      __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_checkfloat64); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 106, __pyx_L1_error)
+      __Pyx_XDECREF(__pyx_r);
+      if (!(likely(((__pyx_v_other) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_other, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 158, __pyx_L1_error)
+      try {
+        __pyx_t_7 = eigency::Map<Eigen::Vector3d> (((PyArrayObject *)__pyx_v_other));
+      } catch(...) {
+        __Pyx_CppExn2PyErr();
+        __PYX_ERR(0, 158, __pyx_L1_error)
+      }
+      __pyx_t_6 = ((PyObject *)eigency::ndarray(__pyx_v_x->thisptr->operator*(__pyx_t_7))); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_ravel); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_6 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
+        __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_5);
+        if (likely(__pyx_t_6)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+          __Pyx_INCREF(__pyx_t_6);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_5, function);
+        }
+      }
+      if (__pyx_t_6) {
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_6); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      } else {
+        __pyx_t_3 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 158, __pyx_L1_error)
+      }
       __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_copy); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 158, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_5))) {
+        __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_5);
+        if (likely(__pyx_t_3)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_5);
+          __Pyx_INCREF(__pyx_t_3);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_5, function);
+        }
+      }
+      if (__pyx_t_3) {
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_5, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      } else {
+        __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_5); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 158, __pyx_L1_error)
+      }
+      __Pyx_GOTREF(__pyx_t_4);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_r = __pyx_t_4;
+      __pyx_t_4 = 0;
+      goto __pyx_L0;
+
+      /* "sophus.pyx":156
+ *         if type(other) is np.ndarray:
+ *             __checkfloat64(other)
+ *             if other.size == 3:             # <<<<<<<<<<<<<<
+ *                 # SE3 * [x, y, z]
+ *                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel().copy()
+ */
+    }
+
+    /* "sophus.pyx":161
+ *             else:
+ *                 # SE3 * [[x1, y1, z1], ..., [xn, yn, zn]] (N*3) np.array
+ *                 other = np.hstack((other, np.ones((len(other), 1)))).T             # <<<<<<<<<<<<<<
+ *                 return x.matrix3x4().dot(other).T
+ *         elif type(other) is SE3:
+ */
+    /*else*/ {
+      __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_5);
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_n_s_hstack); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
+      __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+      __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_np); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_8 = __Pyx_PyObject_GetAttrStr(__pyx_t_6, __pyx_n_s_ones); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+      __pyx_t_9 = PyObject_Length(__pyx_v_other); if (unlikely(__pyx_t_9 == ((Py_ssize_t)-1))) __PYX_ERR(0, 161, __pyx_L1_error)
+      __pyx_t_6 = PyInt_FromSsize_t(__pyx_t_9); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_6);
+      __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_10);
+      __Pyx_GIVEREF(__pyx_t_6);
+      PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_6);
+      __Pyx_INCREF(__pyx_int_1);
+      __Pyx_GIVEREF(__pyx_int_1);
+      PyTuple_SET_ITEM(__pyx_t_10, 1, __pyx_int_1);
+      __pyx_t_6 = 0;
+      __pyx_t_6 = NULL;
+      if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_8))) {
+        __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_8);
+        if (likely(__pyx_t_6)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_8);
+          __Pyx_INCREF(__pyx_t_6);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_8, function);
+        }
+      }
+      if (!__pyx_t_6) {
+        __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_8, __pyx_t_10); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        __Pyx_GOTREF(__pyx_t_5);
+      } else {
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_8)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_10};
+          __pyx_t_5 = __Pyx_PyFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_8)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_6, __pyx_t_10};
+          __pyx_t_5 = __Pyx_PyCFunction_FastCall(__pyx_t_8, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
+        } else
+        #endif
+        {
+          __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 161, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_11);
+          __Pyx_GIVEREF(__pyx_t_6); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_6); __pyx_t_6 = NULL;
+          __Pyx_GIVEREF(__pyx_t_10);
+          PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_t_10);
+          __pyx_t_10 = 0;
+          __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_8, __pyx_t_11, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 161, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_5);
+          __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+        }
+      }
+      __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+      __pyx_t_8 = PyTuple_New(2); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_8);
+      __Pyx_INCREF(__pyx_v_other);
+      __Pyx_GIVEREF(__pyx_v_other);
+      PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_v_other);
+      __Pyx_GIVEREF(__pyx_t_5);
+      PyTuple_SET_ITEM(__pyx_t_8, 1, __pyx_t_5);
+      __pyx_t_5 = 0;
       __pyx_t_5 = NULL;
       if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
         __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_3);
@@ -3695,218 +4047,262 @@ static PyObject *__pyx_pf_6sophus_3SE3_6__mul__(struct __pyx_obj_6sophus_SE3 *__
         }
       }
       if (!__pyx_t_5) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_other); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __Pyx_GOTREF(__pyx_t_4);
       } else {
         #if CYTHON_FAST_PYCALL
         if (PyFunction_Check(__pyx_t_3)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_other};
-          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
+          PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_8};
+          __pyx_t_4 = __Pyx_PyFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         } else
         #endif
         #if CYTHON_FAST_PYCCALL
         if (__Pyx_PyFastCFunction_Check(__pyx_t_3)) {
-          PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_v_other};
-          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
+          PyObject *__pyx_temp[2] = {__pyx_t_5, __pyx_t_8};
+          __pyx_t_4 = __Pyx_PyCFunction_FastCall(__pyx_t_3, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
           __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_GOTREF(__pyx_t_4);
+          __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         } else
         #endif
         {
-          __pyx_t_6 = PyTuple_New(1+1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 106, __pyx_L1_error)
-          __Pyx_GOTREF(__pyx_t_6);
-          __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_5); __pyx_t_5 = NULL;
-          __Pyx_INCREF(__pyx_v_other);
-          __Pyx_GIVEREF(__pyx_v_other);
-          PyTuple_SET_ITEM(__pyx_t_6, 0+1, __pyx_v_other);
-          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_6, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
+          __pyx_t_11 = PyTuple_New(1+1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 161, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_11);
+          __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_11, 0, __pyx_t_5); __pyx_t_5 = NULL;
+          __Pyx_GIVEREF(__pyx_t_8);
+          PyTuple_SET_ITEM(__pyx_t_11, 0+1, __pyx_t_8);
+          __pyx_t_8 = 0;
+          __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_11, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_4);
-          __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+          __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
         }
       }
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_T); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 161, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __Pyx_DECREF_SET(__pyx_v_other, __pyx_t_3);
+      __pyx_t_3 = 0;
 
-      /* "sophus.pyx":107
- *             if other.size == 3:
- *                 __checkfloat64(other)
- *                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()             # <<<<<<<<<<<<<<
- *             else:
- *                 pass
+      /* "sophus.pyx":162
+ *                 # SE3 * [[x1, y1, z1], ..., [xn, yn, zn]] (N*3) np.array
+ *                 other = np.hstack((other, np.ones((len(other), 1)))).T
+ *                 return x.matrix3x4().dot(other).T             # <<<<<<<<<<<<<<
+ *         elif type(other) is SE3:
+ *             # SE3 * SE3
  */
       __Pyx_XDECREF(__pyx_r);
-      if (!(likely(((__pyx_v_other) == Py_None) || likely(__Pyx_TypeTest(__pyx_v_other, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 107, __pyx_L1_error)
-      try {
-        __pyx_t_7 = eigency::Map<Eigen::Vector3d> (((PyArrayObject *)__pyx_v_other));
-      } catch(...) {
-        __Pyx_CppExn2PyErr();
-        __PYX_ERR(0, 107, __pyx_L1_error)
-      }
-      __pyx_t_3 = ((PyObject *)eigency::ndarray(__pyx_v_x->thisptr->operator*(__pyx_t_7))); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 107, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ravel); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L1_error)
-      __Pyx_GOTREF(__pyx_t_6);
-      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-      __pyx_t_3 = NULL;
-      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_6))) {
-        __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_6);
-        if (likely(__pyx_t_3)) {
-          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_6);
-          __Pyx_INCREF(__pyx_t_3);
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_x), __pyx_n_s_matrix3x4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 162, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __pyx_t_8 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_11))) {
+        __pyx_t_8 = PyMethod_GET_SELF(__pyx_t_11);
+        if (likely(__pyx_t_8)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_11);
+          __Pyx_INCREF(__pyx_t_8);
           __Pyx_INCREF(function);
-          __Pyx_DECREF_SET(__pyx_t_6, function);
+          __Pyx_DECREF_SET(__pyx_t_11, function);
         }
       }
-      if (__pyx_t_3) {
-        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
-        __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      if (__pyx_t_8) {
+        __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else {
-        __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_6); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyObject_CallNoArg(__pyx_t_11); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
       }
       __Pyx_GOTREF(__pyx_t_4);
-      __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      __pyx_r = __pyx_t_4;
-      __pyx_t_4 = 0;
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_dot); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 162, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+      __pyx_t_4 = NULL;
+      if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_11))) {
+        __pyx_t_4 = PyMethod_GET_SELF(__pyx_t_11);
+        if (likely(__pyx_t_4)) {
+          PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_11);
+          __Pyx_INCREF(__pyx_t_4);
+          __Pyx_INCREF(function);
+          __Pyx_DECREF_SET(__pyx_t_11, function);
+        }
+      }
+      if (!__pyx_t_4) {
+        __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_11, __pyx_v_other); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_3);
+      } else {
+        #if CYTHON_FAST_PYCALL
+        if (PyFunction_Check(__pyx_t_11)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_other};
+          __pyx_t_3 = __Pyx_PyFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_GOTREF(__pyx_t_3);
+        } else
+        #endif
+        #if CYTHON_FAST_PYCCALL
+        if (__Pyx_PyFastCFunction_Check(__pyx_t_11)) {
+          PyObject *__pyx_temp[2] = {__pyx_t_4, __pyx_v_other};
+          __pyx_t_3 = __Pyx_PyCFunction_FastCall(__pyx_t_11, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+          __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
+          __Pyx_GOTREF(__pyx_t_3);
+        } else
+        #endif
+        {
+          __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 162, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_8);
+          __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_4); __pyx_t_4 = NULL;
+          __Pyx_INCREF(__pyx_v_other);
+          __Pyx_GIVEREF(__pyx_v_other);
+          PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_other);
+          __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_11, __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 162, __pyx_L1_error)
+          __Pyx_GOTREF(__pyx_t_3);
+          __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+        }
+      }
+      __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
+      __pyx_t_11 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_T); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 162, __pyx_L1_error)
+      __Pyx_GOTREF(__pyx_t_11);
+      __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+      __pyx_r = __pyx_t_11;
+      __pyx_t_11 = 0;
       goto __pyx_L0;
-
-      /* "sophus.pyx":105
- * 
- *         if type(other) is np.ndarray:
- *             if other.size == 3:             # <<<<<<<<<<<<<<
- *                 __checkfloat64(other)
- *                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
- */
     }
 
-    /* "sophus.pyx":109
- *                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
- *             else:
- *                 pass             # <<<<<<<<<<<<<<
- *         elif type(other) is SE3:
- *             ostr = <SE3> other
- */
-    /*else*/ {
-    }
-
-    /* "sophus.pyx":104
- *         cdef SE3 ostr
+    /* "sophus.pyx":154
+ *         cdef SE3 ostr           # define an instance of SE3
  * 
  *         if type(other) is np.ndarray:             # <<<<<<<<<<<<<<
+ *             __checkfloat64(other)
  *             if other.size == 3:
- *                 __checkfloat64(other)
  */
-    goto __pyx_L3;
   }
 
-  /* "sophus.pyx":110
- *             else:
- *                 pass
+  /* "sophus.pyx":163
+ *                 other = np.hstack((other, np.ones((len(other), 1)))).T
+ *                 return x.matrix3x4().dot(other).T
  *         elif type(other) is SE3:             # <<<<<<<<<<<<<<
+ *             # SE3 * SE3
  *             ostr = <SE3> other
- *             res = SE3()
  */
   __pyx_t_2 = (((PyObject *)Py_TYPE(__pyx_v_other)) == ((PyObject *)__pyx_ptype_6sophus_SE3));
   __pyx_t_1 = (__pyx_t_2 != 0);
-  if (__pyx_t_1) {
+  if (likely(__pyx_t_1)) {
 
-    /* "sophus.pyx":111
- *                 pass
+    /* "sophus.pyx":165
  *         elif type(other) is SE3:
+ *             # SE3 * SE3
  *             ostr = <SE3> other             # <<<<<<<<<<<<<<
  *             res = SE3()
  *             res.thisptr[0] = x.thisptr.mul(deref(ostr.thisptr))
  */
-    __pyx_t_4 = __pyx_v_other;
-    __Pyx_INCREF(__pyx_t_4);
-    __pyx_v_ostr = ((struct __pyx_obj_6sophus_SE3 *)__pyx_t_4);
-    __pyx_t_4 = 0;
+    __pyx_t_11 = __pyx_v_other;
+    __Pyx_INCREF(__pyx_t_11);
+    __pyx_v_ostr = ((struct __pyx_obj_6sophus_SE3 *)__pyx_t_11);
+    __pyx_t_11 = 0;
 
-    /* "sophus.pyx":112
- *         elif type(other) is SE3:
+    /* "sophus.pyx":166
+ *             # SE3 * SE3
  *             ostr = <SE3> other
  *             res = SE3()             # <<<<<<<<<<<<<<
  *             res.thisptr[0] = x.thisptr.mul(deref(ostr.thisptr))
  *             return res
  */
-    __pyx_t_4 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6sophus_SE3)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 112, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_4);
-    __pyx_v_res = ((struct __pyx_obj_6sophus_SE3 *)__pyx_t_4);
-    __pyx_t_4 = 0;
+    __pyx_t_11 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6sophus_SE3)); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_11);
+    __pyx_v_res = ((struct __pyx_obj_6sophus_SE3 *)__pyx_t_11);
+    __pyx_t_11 = 0;
 
-    /* "sophus.pyx":113
+    /* "sophus.pyx":167
  *             ostr = <SE3> other
  *             res = SE3()
  *             res.thisptr[0] = x.thisptr.mul(deref(ostr.thisptr))             # <<<<<<<<<<<<<<
  *             return res
- * 
+ *         else:
  */
     (__pyx_v_res->thisptr[0]) = __pyx_v_x->thisptr->operator*((*__pyx_v_ostr->thisptr));
 
-    /* "sophus.pyx":114
+    /* "sophus.pyx":168
  *             res = SE3()
  *             res.thisptr[0] = x.thisptr.mul(deref(ostr.thisptr))
  *             return res             # <<<<<<<<<<<<<<
- * 
- *     def __imul__(self, SE3 y):
+ *         else:
+ *             raise "Input is not the excepted type or dimension"
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(((PyObject *)__pyx_v_res));
     __pyx_r = ((PyObject *)__pyx_v_res);
     goto __pyx_L0;
 
-    /* "sophus.pyx":110
- *             else:
- *                 pass
+    /* "sophus.pyx":163
+ *                 other = np.hstack((other, np.ones((len(other), 1)))).T
+ *                 return x.matrix3x4().dot(other).T
  *         elif type(other) is SE3:             # <<<<<<<<<<<<<<
+ *             # SE3 * SE3
  *             ostr = <SE3> other
- *             res = SE3()
  */
   }
-  __pyx_L3:;
 
-  /* "sophus.pyx":93
+  /* "sophus.pyx":170
+ *             return res
+ *         else:
+ *             raise "Input is not the excepted type or dimension"             # <<<<<<<<<<<<<<
+ * 
+ *     def __imul__(self, SE3 y):
+ */
+  /*else*/ {
+    __Pyx_Raise(__pyx_kp_s_Input_is_not_the_excepted_type_o, 0, 0, 0);
+    __PYX_ERR(0, 170, __pyx_L1_error)
+  }
+
+  /* "sophus.pyx":142
  *         return np.array_str(self.matrix())
  * 
  *     def __mul__(SE3 x, other):             # <<<<<<<<<<<<<<
  *         """
- *         SE3 * SE3 or SE3 * point (3*N np.ndarray)
+ *         SE3 * SE3 or SE3 * point (3, np.ndarray)
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_3);
   __Pyx_XDECREF(__pyx_t_4);
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_XDECREF(__pyx_t_8);
+  __Pyx_XDECREF(__pyx_t_10);
+  __Pyx_XDECREF(__pyx_t_11);
   __Pyx_AddTraceback("sophus.SE3.__mul__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_ostr);
   __Pyx_XDECREF((PyObject *)__pyx_v_res);
+  __Pyx_XDECREF(__pyx_v_other);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-/* "sophus.pyx":116
- *             return res
+/* "sophus.pyx":172
+ *             raise "Input is not the excepted type or dimension"
  * 
  *     def __imul__(self, SE3 y):             # <<<<<<<<<<<<<<
- *         self.thisptr[0] = self.thisptr.mul(deref(y.thisptr))
- *         return self
+ *         """
+ *         SE3 * SE3 inplace multiplication
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6sophus_3SE3_9__imul__(PyObject *__pyx_v_self, PyObject *__pyx_v_y); /*proto*/
+static char __pyx_doc_6sophus_3SE3_8__imul__[] = "\n        SE3 * SE3 inplace multiplication\n        -----------------------------------------\n        In: SE3\n        Out: SE3\n        -----------------------------------------\n        ";
+#if CYTHON_COMPILING_IN_CPYTHON
+struct wrapperbase __pyx_wrapperbase_6sophus_3SE3_8__imul__;
+#endif
 static PyObject *__pyx_pw_6sophus_3SE3_9__imul__(PyObject *__pyx_v_self, PyObject *__pyx_v_y) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__imul__ (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_6sophus_SE3, 1, "y", 0))) __PYX_ERR(0, 116, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_y), __pyx_ptype_6sophus_SE3, 1, "y", 0))) __PYX_ERR(0, 172, __pyx_L1_error)
   __pyx_r = __pyx_pf_6sophus_3SE3_8__imul__(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self), ((struct __pyx_obj_6sophus_SE3 *)__pyx_v_y));
 
   /* function exit code */
@@ -3923,17 +4319,17 @@ static PyObject *__pyx_pf_6sophus_3SE3_8__imul__(struct __pyx_obj_6sophus_SE3 *_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__imul__", 0);
 
-  /* "sophus.pyx":117
- * 
- *     def __imul__(self, SE3 y):
+  /* "sophus.pyx":180
+ *         -----------------------------------------
+ *         """
  *         self.thisptr[0] = self.thisptr.mul(deref(y.thisptr))             # <<<<<<<<<<<<<<
  *         return self
  * 
  */
   (__pyx_v_self->thisptr[0]) = __pyx_v_self->thisptr->operator*((*__pyx_v_y->thisptr));
 
-  /* "sophus.pyx":118
- *     def __imul__(self, SE3 y):
+  /* "sophus.pyx":181
+ *         """
  *         self.thisptr[0] = self.thisptr.mul(deref(y.thisptr))
  *         return self             # <<<<<<<<<<<<<<
  * 
@@ -3944,12 +4340,12 @@ static PyObject *__pyx_pf_6sophus_3SE3_8__imul__(struct __pyx_obj_6sophus_SE3 *_
   __pyx_r = ((PyObject *)__pyx_v_self);
   goto __pyx_L0;
 
-  /* "sophus.pyx":116
- *             return res
+  /* "sophus.pyx":172
+ *             raise "Input is not the excepted type or dimension"
  * 
  *     def __imul__(self, SE3 y):             # <<<<<<<<<<<<<<
- *         self.thisptr[0] = self.thisptr.mul(deref(y.thisptr))
- *         return self
+ *         """
+ *         SE3 * SE3 inplace multiplication
  */
 
   /* function exit code */
@@ -3959,16 +4355,17 @@ static PyObject *__pyx_pf_6sophus_3SE3_8__imul__(struct __pyx_obj_6sophus_SE3 *_
   return __pyx_r;
 }
 
-/* "sophus.pyx":120
+/* "sophus.pyx":183
  *         return self
  * 
  *     def matrix(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.matrix())
- * 
+ *         """
+ *         Returns and 4*4 np.ndarray matrix
  */
 
 /* Python wrapper */
 static PyObject *__pyx_pw_6sophus_3SE3_11matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6sophus_3SE3_10matrix[] = "\n        Returns and 4*4 np.ndarray matrix\n        ---------------------------------\n        Out: np.ndarray (4*4)\n        ---------------------------------\n        ";
 static PyObject *__pyx_pw_6sophus_3SE3_11matrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -3984,33 +4381,58 @@ static PyObject *__pyx_pf_6sophus_3SE3_10matrix(struct __pyx_obj_6sophus_SE3 *__
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("matrix", 0);
 
-  /* "sophus.pyx":121
+  /* "sophus.pyx":190
+ *         ---------------------------------
+ *         """
+ *         return ndarray(self.thisptr.matrix()).copy()             # <<<<<<<<<<<<<<
  * 
- *     def matrix(self):
- *         return ndarray(self.thisptr.matrix())             # <<<<<<<<<<<<<<
- * 
- *     def inverse(self):
+ *     def matrix3x4(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->matrix())); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_2 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->matrix())); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  if (__pyx_t_2) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else {
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
+  }
   __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sophus.pyx":120
+  /* "sophus.pyx":183
  *         return self
  * 
  *     def matrix(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.matrix())
- * 
+ *         """
+ *         Returns and 4*4 np.ndarray matrix
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
   __Pyx_AddTraceback("sophus.SE3.matrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4019,28 +4441,115 @@ static PyObject *__pyx_pf_6sophus_3SE3_10matrix(struct __pyx_obj_6sophus_SE3 *__
   return __pyx_r;
 }
 
-/* "sophus.pyx":123
- *         return ndarray(self.thisptr.matrix())
+/* "sophus.pyx":192
+ *         return ndarray(self.thisptr.matrix()).copy()
  * 
- *     def inverse(self):             # <<<<<<<<<<<<<<
- *         se3 = SE3()
- *         del se3.thisptr
+ *     def matrix3x4(self):             # <<<<<<<<<<<<<<
+ *         """
+ *         Returns and 3*4 np.ndarray matrix
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6sophus_3SE3_13inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6sophus_3SE3_13inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6sophus_3SE3_13matrix3x4(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6sophus_3SE3_12matrix3x4[] = "\n        Returns and 3*4 np.ndarray matrix\n        ---------------------------------\n        Out: np.ndarray (3*4)\n        ---------------------------------\n        ";
+static PyObject *__pyx_pw_6sophus_3SE3_13matrix3x4(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("inverse (wrapper)", 0);
-  __pyx_r = __pyx_pf_6sophus_3SE3_12inverse(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
+  __Pyx_RefNannySetupContext("matrix3x4 (wrapper)", 0);
+  __pyx_r = __pyx_pf_6sophus_3SE3_12matrix3x4(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6sophus_3SE3_12inverse(struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
+static PyObject *__pyx_pf_6sophus_3SE3_12matrix3x4(struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  __Pyx_RefNannySetupContext("matrix3x4", 0);
+
+  /* "sophus.pyx":199
+ *         ---------------------------------
+ *         """
+ *         return ndarray(self.thisptr.matrix3x4()).copy()             # <<<<<<<<<<<<<<
+ * 
+ *     def inverse(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->matrix3x4())); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  if (__pyx_t_2) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else {
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 199, __pyx_L1_error)
+  }
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "sophus.pyx":192
+ *         return ndarray(self.thisptr.matrix()).copy()
+ * 
+ *     def matrix3x4(self):             # <<<<<<<<<<<<<<
+ *         """
+ *         Returns and 3*4 np.ndarray matrix
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("sophus.SE3.matrix3x4", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "sophus.pyx":201
+ *         return ndarray(self.thisptr.matrix3x4()).copy()
+ * 
+ *     def inverse(self):             # <<<<<<<<<<<<<<
+ *         """
+ *         Inverse of a 4*4 matrix
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6sophus_3SE3_15inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6sophus_3SE3_14inverse[] = "\n        Inverse of a 4*4 matrix\n        ---------------------------------\n        Out: SE3\n        ---------------------------------\n        ";
+static PyObject *__pyx_pw_6sophus_3SE3_15inverse(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("inverse (wrapper)", 0);
+  __pyx_r = __pyx_pf_6sophus_3SE3_14inverse(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6sophus_3SE3_14inverse(struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
   struct __pyx_obj_6sophus_SE3 *__pyx_v_se3 = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
@@ -4048,20 +4557,20 @@ static PyObject *__pyx_pf_6sophus_3SE3_12inverse(struct __pyx_obj_6sophus_SE3 *_
   __pyx_t_6sophus__SE3d *__pyx_t_2;
   __Pyx_RefNannySetupContext("inverse", 0);
 
-  /* "sophus.pyx":124
- * 
- *     def inverse(self):
+  /* "sophus.pyx":208
+ *         ---------------------------------
+ *         """
  *         se3 = SE3()             # <<<<<<<<<<<<<<
  *         del se3.thisptr
  *         se3.thisptr = new _SE3d(self.thisptr.inverse())
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6sophus_SE3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 124, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6sophus_SE3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_se3 = ((struct __pyx_obj_6sophus_SE3 *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "sophus.pyx":125
- *     def inverse(self):
+  /* "sophus.pyx":209
+ *         """
  *         se3 = SE3()
  *         del se3.thisptr             # <<<<<<<<<<<<<<
  *         se3.thisptr = new _SE3d(self.thisptr.inverse())
@@ -4069,7 +4578,7 @@ static PyObject *__pyx_pf_6sophus_3SE3_12inverse(struct __pyx_obj_6sophus_SE3 *_
  */
   delete __pyx_v_se3->thisptr;
 
-  /* "sophus.pyx":126
+  /* "sophus.pyx":210
  *         se3 = SE3()
  *         del se3.thisptr
  *         se3.thisptr = new _SE3d(self.thisptr.inverse())             # <<<<<<<<<<<<<<
@@ -4080,11 +4589,11 @@ static PyObject *__pyx_pf_6sophus_3SE3_12inverse(struct __pyx_obj_6sophus_SE3 *_
     __pyx_t_2 = new __pyx_t_6sophus__SE3d(__pyx_v_self->thisptr->inverse());
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 126, __pyx_L1_error)
+    __PYX_ERR(0, 210, __pyx_L1_error)
   }
   __pyx_v_se3->thisptr = __pyx_t_2;
 
-  /* "sophus.pyx":127
+  /* "sophus.pyx":211
  *         del se3.thisptr
  *         se3.thisptr = new _SE3d(self.thisptr.inverse())
  *         return se3             # <<<<<<<<<<<<<<
@@ -4096,12 +4605,12 @@ static PyObject *__pyx_pf_6sophus_3SE3_12inverse(struct __pyx_obj_6sophus_SE3 *_
   __pyx_r = ((PyObject *)__pyx_v_se3);
   goto __pyx_L0;
 
-  /* "sophus.pyx":123
- *         return ndarray(self.thisptr.matrix())
+  /* "sophus.pyx":201
+ *         return ndarray(self.thisptr.matrix3x4()).copy()
  * 
  *     def inverse(self):             # <<<<<<<<<<<<<<
- *         se3 = SE3()
- *         del se3.thisptr
+ *         """
+ *         Inverse of a 4*4 matrix
  */
 
   /* function exit code */
@@ -4116,76 +4625,99 @@ static PyObject *__pyx_pf_6sophus_3SE3_12inverse(struct __pyx_obj_6sophus_SE3 *_
   return __pyx_r;
 }
 
-/* "sophus.pyx":129
+/* "sophus.pyx":213
  *         return se3
  * 
  *     def log(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.log()).ravel()
- * 
+ *         """
+ *         Lie algebra log
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6sophus_3SE3_15log(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6sophus_3SE3_15log(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6sophus_3SE3_17log(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6sophus_3SE3_16log[] = "\n        Lie algebra log\n        --------------------\n        Out: np.ndarray (6,)\n        --------------------\n        ";
+static PyObject *__pyx_pw_6sophus_3SE3_17log(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("log (wrapper)", 0);
-  __pyx_r = __pyx_pf_6sophus_3SE3_14log(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6sophus_3SE3_16log(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6sophus_3SE3_14log(struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
+static PyObject *__pyx_pf_6sophus_3SE3_16log(struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("log", 0);
 
-  /* "sophus.pyx":130
- * 
- *     def log(self):
- *         return ndarray(self.thisptr.log()).ravel()             # <<<<<<<<<<<<<<
+  /* "sophus.pyx":220
+ *         --------------------
+ *         """
+ *         return ndarray(self.thisptr.log()).ravel().copy()             # <<<<<<<<<<<<<<
  * 
  *     def translation(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->log())); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 130, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_ravel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_3 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->log())); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 220, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ravel); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  if (__pyx_t_3) {
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  } else {
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 220, __pyx_L1_error)
+  }
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
-  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_3))) {
-    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
     if (likely(__pyx_t_2)) {
-      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
       __Pyx_INCREF(__pyx_t_2);
       __Pyx_INCREF(function);
-      __Pyx_DECREF_SET(__pyx_t_3, function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
     }
   }
   if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sophus.pyx":129
+  /* "sophus.pyx":213
  *         return se3
  * 
  *     def log(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.log()).ravel()
- * 
+ *         """
+ *         Lie algebra log
  */
 
   /* function exit code */
@@ -4193,6 +4725,7 @@ static PyObject *__pyx_pf_6sophus_3SE3_14log(struct __pyx_obj_6sophus_SE3 *__pyx
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
   __Pyx_AddTraceback("sophus.SE3.log", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4201,46 +4734,156 @@ static PyObject *__pyx_pf_6sophus_3SE3_14log(struct __pyx_obj_6sophus_SE3 *__pyx
   return __pyx_r;
 }
 
-/* "sophus.pyx":132
- *         return ndarray(self.thisptr.log()).ravel()
+/* "sophus.pyx":222
+ *         return ndarray(self.thisptr.log()).ravel().copy()
  * 
  *     def translation(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.translation()).ravel()
- * 
+ *         """
+ *         translation of SE3
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6sophus_3SE3_17translation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6sophus_3SE3_17translation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6sophus_3SE3_19translation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6sophus_3SE3_18translation[] = "\n        translation of SE3\n        --------------------\n        Out: np.ndarray (3,)\n        --------------------\n        ";
+static PyObject *__pyx_pw_6sophus_3SE3_19translation(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("translation (wrapper)", 0);
-  __pyx_r = __pyx_pf_6sophus_3SE3_16translation(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6sophus_3SE3_18translation(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6sophus_3SE3_16translation(struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
+static PyObject *__pyx_pf_6sophus_3SE3_18translation(struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
   PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("translation", 0);
 
-  /* "sophus.pyx":133
- * 
- *     def translation(self):
- *         return ndarray(self.thisptr.translation()).ravel()             # <<<<<<<<<<<<<<
+  /* "sophus.pyx":229
+ *         --------------------
+ *         """
+ *         return ndarray(self.thisptr.translation()).ravel().copy()  # copy is neccessary             # <<<<<<<<<<<<<<
  * 
  *     def rotationMatrix(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->translation())); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_3 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->translation())); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_n_s_ravel); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_t_3 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_3 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_3)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_3);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  if (__pyx_t_3) {
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  } else {
+    __pyx_t_2 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 229, __pyx_L1_error)
+  }
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_ravel); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_4))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_4);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_4, function);
+    }
+  }
+  if (__pyx_t_2) {
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  } else {
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+  }
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "sophus.pyx":222
+ *         return ndarray(self.thisptr.log()).ravel().copy()
+ * 
+ *     def translation(self):             # <<<<<<<<<<<<<<
+ *         """
+ *         translation of SE3
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("sophus.SE3.translation", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "sophus.pyx":231
+ *         return ndarray(self.thisptr.translation()).ravel().copy()  # copy is neccessary
+ * 
+ *     def rotationMatrix(self):             # <<<<<<<<<<<<<<
+ *         """
+ *         Rotation matrix of SE3
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6sophus_3SE3_21rotationMatrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static char __pyx_doc_6sophus_3SE3_20rotationMatrix[] = "\n        Rotation matrix of SE3\n        -----------------------\n        Out: np.ndarray (3 * 3)\n        -----------------------\n        ";
+static PyObject *__pyx_pw_6sophus_3SE3_21rotationMatrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("rotationMatrix (wrapper)", 0);
+  __pyx_r = __pyx_pf_6sophus_3SE3_20rotationMatrix(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_6sophus_3SE3_20rotationMatrix(struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  __Pyx_RefNannySetupContext("rotationMatrix", 0);
+
+  /* "sophus.pyx":238
+ *         -----------------------
+ *         """
+ *         return ndarray(self.thisptr.rotationMatrix()).copy()             # <<<<<<<<<<<<<<
+ * 
+ *     def setRotationMatrix(self, np.ndarray[DTYPE_t, ndim=2] R):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_2 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->rotationMatrix())); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 238, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_2, __pyx_n_s_copy); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_2 = NULL;
@@ -4254,10 +4897,10 @@ static PyObject *__pyx_pf_6sophus_3SE3_16translation(struct __pyx_obj_6sophus_SE
     }
   }
   if (__pyx_t_2) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -4265,12 +4908,12 @@ static PyObject *__pyx_pf_6sophus_3SE3_16translation(struct __pyx_obj_6sophus_SE
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "sophus.pyx":132
- *         return ndarray(self.thisptr.log()).ravel()
+  /* "sophus.pyx":231
+ *         return ndarray(self.thisptr.translation()).ravel().copy()  # copy is neccessary
  * 
- *     def translation(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.translation()).ravel()
- * 
+ *     def rotationMatrix(self):             # <<<<<<<<<<<<<<
+ *         """
+ *         Rotation matrix of SE3
  */
 
   /* function exit code */
@@ -4278,66 +4921,6 @@ static PyObject *__pyx_pf_6sophus_3SE3_16translation(struct __pyx_obj_6sophus_SE
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_XDECREF(__pyx_t_3);
-  __Pyx_AddTraceback("sophus.SE3.translation", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __pyx_L0:;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "sophus.pyx":135
- *         return ndarray(self.thisptr.translation()).ravel()
- * 
- *     def rotationMatrix(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.rotationMatrix())
- * 
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_6sophus_3SE3_19rotationMatrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6sophus_3SE3_19rotationMatrix(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("rotationMatrix (wrapper)", 0);
-  __pyx_r = __pyx_pf_6sophus_3SE3_18rotationMatrix(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_6sophus_3SE3_18rotationMatrix(struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("rotationMatrix", 0);
-
-  /* "sophus.pyx":136
- * 
- *     def rotationMatrix(self):
- *         return ndarray(self.thisptr.rotationMatrix())             # <<<<<<<<<<<<<<
- * 
- *     def setRotationMatrix(self, np.ndarray[DTYPE_t, ndim=2] R):
- */
-  __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = ((PyObject *)eigency::ndarray(__pyx_v_self->thisptr->rotationMatrix())); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
-
-  /* "sophus.pyx":135
- *         return ndarray(self.thisptr.translation()).ravel()
- * 
- *     def rotationMatrix(self):             # <<<<<<<<<<<<<<
- *         return ndarray(self.thisptr.rotationMatrix())
- * 
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
   __Pyx_AddTraceback("sophus.SE3.rotationMatrix", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
@@ -4346,22 +4929,23 @@ static PyObject *__pyx_pf_6sophus_3SE3_18rotationMatrix(struct __pyx_obj_6sophus
   return __pyx_r;
 }
 
-/* "sophus.pyx":138
- *         return ndarray(self.thisptr.rotationMatrix())
+/* "sophus.pyx":240
+ *         return ndarray(self.thisptr.rotationMatrix()).copy()
  * 
  *     def setRotationMatrix(self, np.ndarray[DTYPE_t, ndim=2] R):             # <<<<<<<<<<<<<<
- *         R = __tofortran(R)
- *         return self.thisptr.setRotationMatrix(Map[Matrix3d](R))
+ *         """
+ *         Set rotation matrix of SE3
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6sophus_3SE3_21setRotationMatrix(PyObject *__pyx_v_self, PyObject *__pyx_v_R); /*proto*/
-static PyObject *__pyx_pw_6sophus_3SE3_21setRotationMatrix(PyObject *__pyx_v_self, PyObject *__pyx_v_R) {
+static PyObject *__pyx_pw_6sophus_3SE3_23setRotationMatrix(PyObject *__pyx_v_self, PyObject *__pyx_v_R); /*proto*/
+static char __pyx_doc_6sophus_3SE3_22setRotationMatrix[] = "\n        Set rotation matrix of SE3\n        --------------------------\n        In: np.ndarray (3 * 3)\n        --------------------------\n        ";
+static PyObject *__pyx_pw_6sophus_3SE3_23setRotationMatrix(PyObject *__pyx_v_self, PyObject *__pyx_v_R) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setRotationMatrix (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 138, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6sophus_3SE3_20setRotationMatrix(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self), ((PyArrayObject *)__pyx_v_R));
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6sophus_3SE3_22setRotationMatrix(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self), ((PyArrayObject *)__pyx_v_R));
 
   /* function exit code */
   goto __pyx_L0;
@@ -4372,7 +4956,7 @@ static PyObject *__pyx_pw_6sophus_3SE3_21setRotationMatrix(PyObject *__pyx_v_sel
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6sophus_3SE3_20setRotationMatrix(struct __pyx_obj_6sophus_SE3 *__pyx_v_self, PyArrayObject *__pyx_v_R) {
+static PyObject *__pyx_pf_6sophus_3SE3_22setRotationMatrix(struct __pyx_obj_6sophus_SE3 *__pyx_v_self, PyArrayObject *__pyx_v_R) {
   __Pyx_LocalBuf_ND __pyx_pybuffernd_R;
   __Pyx_Buffer __pyx_pybuffer_R;
   PyObject *__pyx_r = NULL;
@@ -4395,18 +4979,18 @@ static PyObject *__pyx_pf_6sophus_3SE3_20setRotationMatrix(struct __pyx_obj_6sop
   __pyx_pybuffernd_R.rcbuffer = &__pyx_pybuffer_R;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_R.rcbuffer->pybuffer, (PyObject*)__pyx_v_R, &__Pyx_TypeInfo_nn___pyx_t_6sophus_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 138, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_R.rcbuffer->pybuffer, (PyObject*)__pyx_v_R, &__Pyx_TypeInfo_nn___pyx_t_6sophus_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) __PYX_ERR(0, 240, __pyx_L1_error)
   }
   __pyx_pybuffernd_R.diminfo[0].strides = __pyx_pybuffernd_R.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_R.diminfo[0].shape = __pyx_pybuffernd_R.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_R.diminfo[1].strides = __pyx_pybuffernd_R.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_R.diminfo[1].shape = __pyx_pybuffernd_R.rcbuffer->pybuffer.shape[1];
 
-  /* "sophus.pyx":139
- * 
- *     def setRotationMatrix(self, np.ndarray[DTYPE_t, ndim=2] R):
+  /* "sophus.pyx":247
+ *         --------------------------
+ *         """
  *         R = __tofortran(R)             # <<<<<<<<<<<<<<
- *         return self.thisptr.setRotationMatrix(Map[Matrix3d](R))
+ *         self.thisptr.setRotationMatrix(Map[Matrix3d](R))
  * 
  */
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_tofortran); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_tofortran); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 247, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -4419,13 +5003,13 @@ static PyObject *__pyx_pf_6sophus_3SE3_20setRotationMatrix(struct __pyx_obj_6sop
     }
   }
   if (!__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_R)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, ((PyObject *)__pyx_v_R)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   } else {
     #if CYTHON_FAST_PYCALL
     if (PyFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, ((PyObject *)__pyx_v_R)};
-      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
@@ -4433,25 +5017,25 @@ static PyObject *__pyx_pf_6sophus_3SE3_20setRotationMatrix(struct __pyx_obj_6sop
     #if CYTHON_FAST_PYCCALL
     if (__Pyx_PyFastCFunction_Check(__pyx_t_2)) {
       PyObject *__pyx_temp[2] = {__pyx_t_3, ((PyObject *)__pyx_v_R)};
-      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyCFunction_FastCall(__pyx_t_2, __pyx_temp+1-1, 1+1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_GOTREF(__pyx_t_1);
     } else
     #endif
     {
-      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 247, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_3); __pyx_t_3 = NULL;
       __Pyx_INCREF(((PyObject *)__pyx_v_R));
       __Pyx_GIVEREF(((PyObject *)__pyx_v_R));
       PyTuple_SET_ITEM(__pyx_t_4, 0+1, ((PyObject *)__pyx_v_R));
-      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 247, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     }
   }
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 139, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 247, __pyx_L1_error)
   __pyx_t_5 = ((PyArrayObject *)__pyx_t_1);
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
@@ -4468,41 +5052,38 @@ static PyObject *__pyx_pf_6sophus_3SE3_20setRotationMatrix(struct __pyx_obj_6sop
       __pyx_t_7 = __pyx_t_8 = __pyx_t_9 = 0;
     }
     __pyx_pybuffernd_R.diminfo[0].strides = __pyx_pybuffernd_R.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_R.diminfo[0].shape = __pyx_pybuffernd_R.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_R.diminfo[1].strides = __pyx_pybuffernd_R.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_R.diminfo[1].shape = __pyx_pybuffernd_R.rcbuffer->pybuffer.shape[1];
-    if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 139, __pyx_L1_error)
+    if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 247, __pyx_L1_error)
   }
   __pyx_t_5 = 0;
   __Pyx_DECREF_SET(__pyx_v_R, ((PyArrayObject *)__pyx_t_1));
   __pyx_t_1 = 0;
 
-  /* "sophus.pyx":140
- *     def setRotationMatrix(self, np.ndarray[DTYPE_t, ndim=2] R):
+  /* "sophus.pyx":248
+ *         """
  *         R = __tofortran(R)
- *         return self.thisptr.setRotationMatrix(Map[Matrix3d](R))             # <<<<<<<<<<<<<<
+ *         self.thisptr.setRotationMatrix(Map[Matrix3d](R))             # <<<<<<<<<<<<<<
  * 
  *     def setTranslation(self, np.ndarray[DTYPE_t, ndim=1] t):
  */
-  __Pyx_XDECREF(__pyx_r);
   try {
     __pyx_t_10 = eigency::Map<Eigen::Matrix3d> (((PyArrayObject *)__pyx_v_R));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 140, __pyx_L1_error)
+    __PYX_ERR(0, 248, __pyx_L1_error)
   }
-  __pyx_t_1 = __Pyx_void_to_None(__pyx_v_self->thisptr->setRotationMatrix(__pyx_t_10)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = 0;
-  goto __pyx_L0;
+  __pyx_v_self->thisptr->setRotationMatrix(__pyx_t_10);
 
-  /* "sophus.pyx":138
- *         return ndarray(self.thisptr.rotationMatrix())
+  /* "sophus.pyx":240
+ *         return ndarray(self.thisptr.rotationMatrix()).copy()
  * 
  *     def setRotationMatrix(self, np.ndarray[DTYPE_t, ndim=2] R):             # <<<<<<<<<<<<<<
- *         R = __tofortran(R)
- *         return self.thisptr.setRotationMatrix(Map[Matrix3d](R))
+ *         """
+ *         Set rotation matrix of SE3
  */
 
   /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
@@ -4526,22 +5107,23 @@ static PyObject *__pyx_pf_6sophus_3SE3_20setRotationMatrix(struct __pyx_obj_6sop
   return __pyx_r;
 }
 
-/* "sophus.pyx":142
- *         return self.thisptr.setRotationMatrix(Map[Matrix3d](R))
+/* "sophus.pyx":250
+ *         self.thisptr.setRotationMatrix(Map[Matrix3d](R))
  * 
  *     def setTranslation(self, np.ndarray[DTYPE_t, ndim=1] t):             # <<<<<<<<<<<<<<
- *         so3 = SO3(self.rotationMatrix())
- *         del self.thisptr
+ *         """
+ *         Set translation matrix of SE3
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6sophus_3SE3_23setTranslation(PyObject *__pyx_v_self, PyObject *__pyx_v_t); /*proto*/
-static PyObject *__pyx_pw_6sophus_3SE3_23setTranslation(PyObject *__pyx_v_self, PyObject *__pyx_v_t) {
+static PyObject *__pyx_pw_6sophus_3SE3_25setTranslation(PyObject *__pyx_v_self, PyObject *__pyx_v_t); /*proto*/
+static char __pyx_doc_6sophus_3SE3_24setTranslation[] = "\n        Set translation matrix of SE3\n        -----------------------------\n        In: np.ndarray (3,)\n        -----------------------------\n        ";
+static PyObject *__pyx_pw_6sophus_3SE3_25setTranslation(PyObject *__pyx_v_self, PyObject *__pyx_v_t) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setTranslation (wrapper)", 0);
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_t), __pyx_ptype_5numpy_ndarray, 1, "t", 0))) __PYX_ERR(0, 142, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6sophus_3SE3_22setTranslation(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self), ((PyArrayObject *)__pyx_v_t));
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_t), __pyx_ptype_5numpy_ndarray, 1, "t", 0))) __PYX_ERR(0, 250, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6sophus_3SE3_24setTranslation(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self), ((PyArrayObject *)__pyx_v_t));
 
   /* function exit code */
   goto __pyx_L0;
@@ -4552,7 +5134,7 @@ static PyObject *__pyx_pw_6sophus_3SE3_23setTranslation(PyObject *__pyx_v_self, 
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6sophus_3SE3_22setTranslation(struct __pyx_obj_6sophus_SE3 *__pyx_v_self, PyArrayObject *__pyx_v_t) {
+static PyObject *__pyx_pf_6sophus_3SE3_24setTranslation(struct __pyx_obj_6sophus_SE3 *__pyx_v_self, PyArrayObject *__pyx_v_t) {
   struct __pyx_obj_6sophus_SO3 *__pyx_v_so3 = NULL;
   __Pyx_LocalBuf_ND __pyx_pybuffernd_t;
   __Pyx_Buffer __pyx_pybuffer_t;
@@ -4570,18 +5152,18 @@ static PyObject *__pyx_pf_6sophus_3SE3_22setTranslation(struct __pyx_obj_6sophus
   __pyx_pybuffernd_t.rcbuffer = &__pyx_pybuffer_t;
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
-    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_t.rcbuffer->pybuffer, (PyObject*)__pyx_v_t, &__Pyx_TypeInfo_nn___pyx_t_6sophus_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 142, __pyx_L1_error)
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_t.rcbuffer->pybuffer, (PyObject*)__pyx_v_t, &__Pyx_TypeInfo_nn___pyx_t_6sophus_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 250, __pyx_L1_error)
   }
   __pyx_pybuffernd_t.diminfo[0].strides = __pyx_pybuffernd_t.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_t.diminfo[0].shape = __pyx_pybuffernd_t.rcbuffer->pybuffer.shape[0];
 
-  /* "sophus.pyx":143
- * 
- *     def setTranslation(self, np.ndarray[DTYPE_t, ndim=1] t):
+  /* "sophus.pyx":257
+ *         -----------------------------
+ *         """
  *         so3 = SO3(self.rotationMatrix())             # <<<<<<<<<<<<<<
  *         del self.thisptr
  *         self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rotationMatrix); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_rotationMatrix); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -4594,21 +5176,21 @@ static PyObject *__pyx_pf_6sophus_3SE3_22setTranslation(struct __pyx_obj_6sophus
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 257, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_6sophus_SO3), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_CallOneArg(((PyObject *)__pyx_ptype_6sophus_SO3), __pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 257, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_so3 = ((struct __pyx_obj_6sophus_SO3 *)__pyx_t_2);
   __pyx_t_2 = 0;
 
-  /* "sophus.pyx":144
- *     def setTranslation(self, np.ndarray[DTYPE_t, ndim=1] t):
+  /* "sophus.pyx":258
+ *         """
  *         so3 = SO3(self.rotationMatrix())
  *         del self.thisptr             # <<<<<<<<<<<<<<
  *         self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
@@ -4616,7 +5198,7 @@ static PyObject *__pyx_pf_6sophus_3SE3_22setTranslation(struct __pyx_obj_6sophus
  */
   delete __pyx_v_self->thisptr;
 
-  /* "sophus.pyx":145
+  /* "sophus.pyx":259
  *         so3 = SO3(self.rotationMatrix())
  *         del self.thisptr
  *         self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))             # <<<<<<<<<<<<<<
@@ -4627,22 +5209,22 @@ static PyObject *__pyx_pf_6sophus_3SE3_22setTranslation(struct __pyx_obj_6sophus
     __pyx_t_4 = eigency::Map<Eigen::Vector3d> (((PyArrayObject *)__pyx_v_t));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 145, __pyx_L1_error)
+    __PYX_ERR(0, 259, __pyx_L1_error)
   }
   try {
     __pyx_t_5 = new __pyx_t_6sophus__SE3d((*__pyx_v_so3->thisptr), __pyx_t_4);
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 145, __pyx_L1_error)
+    __PYX_ERR(0, 259, __pyx_L1_error)
   }
   __pyx_v_self->thisptr = __pyx_t_5;
 
-  /* "sophus.pyx":142
- *         return self.thisptr.setRotationMatrix(Map[Matrix3d](R))
+  /* "sophus.pyx":250
+ *         self.thisptr.setRotationMatrix(Map[Matrix3d](R))
  * 
  *     def setTranslation(self, np.ndarray[DTYPE_t, ndim=1] t):             # <<<<<<<<<<<<<<
- *         so3 = SO3(self.rotationMatrix())
- *         del self.thisptr
+ *         """
+ *         Set translation matrix of SE3
  */
 
   /* function exit code */
@@ -4670,18 +5252,19 @@ static PyObject *__pyx_pf_6sophus_3SE3_22setTranslation(struct __pyx_obj_6sophus
   return __pyx_r;
 }
 
-/* "sophus.pyx":148
+/* "sophus.pyx":262
  * 
  *     @staticmethod
- *     def exp(np.ndarray arr):             # <<<<<<<<<<<<<<
- *         res = SE3()
- *         del res.thisptr
+ *     def exp(np.ndarray[DTYPE_t, ndim=1] arr):             # <<<<<<<<<<<<<<
+ *         """
+ *         Lie algebra exp
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6sophus_3SE3_25exp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static PyMethodDef __pyx_mdef_6sophus_3SE3_25exp = {"exp", (PyCFunction)__pyx_pw_6sophus_3SE3_25exp, METH_VARARGS|METH_KEYWORDS, 0};
-static PyObject *__pyx_pw_6sophus_3SE3_25exp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_6sophus_3SE3_27exp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_6sophus_3SE3_26exp[] = "\n        Lie algebra exp\n        --------------------\n        In: np.ndarray (6,)\n        Out: SE3\n        --------------------\n        ";
+static PyMethodDef __pyx_mdef_6sophus_3SE3_27exp = {"exp", (PyCFunction)__pyx_pw_6sophus_3SE3_27exp, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6sophus_3SE3_26exp};
+static PyObject *__pyx_pw_6sophus_3SE3_27exp(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   PyArrayObject *__pyx_v_arr = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
@@ -4705,7 +5288,7 @@ static PyObject *__pyx_pw_6sophus_3SE3_25exp(CYTHON_UNUSED PyObject *__pyx_self,
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "exp") < 0)) __PYX_ERR(0, 148, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "exp") < 0)) __PYX_ERR(0, 262, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -4716,14 +5299,14 @@ static PyObject *__pyx_pw_6sophus_3SE3_25exp(CYTHON_UNUSED PyObject *__pyx_self,
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("exp", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 148, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("exp", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 262, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("sophus.SE3.exp", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_arr), __pyx_ptype_5numpy_ndarray, 1, "arr", 0))) __PYX_ERR(0, 148, __pyx_L1_error)
-  __pyx_r = __pyx_pf_6sophus_3SE3_24exp(__pyx_v_arr);
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_arr), __pyx_ptype_5numpy_ndarray, 1, "arr", 0))) __PYX_ERR(0, 262, __pyx_L1_error)
+  __pyx_r = __pyx_pf_6sophus_3SE3_26exp(__pyx_v_arr);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4734,29 +5317,40 @@ static PyObject *__pyx_pw_6sophus_3SE3_25exp(CYTHON_UNUSED PyObject *__pyx_self,
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6sophus_3SE3_24exp(PyArrayObject *__pyx_v_arr) {
+static PyObject *__pyx_pf_6sophus_3SE3_26exp(PyArrayObject *__pyx_v_arr) {
   struct __pyx_obj_6sophus_SE3 *__pyx_v_res = NULL;
+  __Pyx_LocalBuf_ND __pyx_pybuffernd_arr;
+  __Pyx_Buffer __pyx_pybuffer_arr;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   eigency::Map<Eigen::VectorXd>  __pyx_t_2;
   __pyx_t_6sophus__SE3d *__pyx_t_3;
   __Pyx_RefNannySetupContext("exp", 0);
+  __pyx_pybuffer_arr.pybuffer.buf = NULL;
+  __pyx_pybuffer_arr.refcount = 0;
+  __pyx_pybuffernd_arr.data = NULL;
+  __pyx_pybuffernd_arr.rcbuffer = &__pyx_pybuffer_arr;
+  {
+    __Pyx_BufFmt_StackElem __pyx_stack[1];
+    if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_arr.rcbuffer->pybuffer, (PyObject*)__pyx_v_arr, &__Pyx_TypeInfo_nn___pyx_t_6sophus_DTYPE_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) __PYX_ERR(0, 262, __pyx_L1_error)
+  }
+  __pyx_pybuffernd_arr.diminfo[0].strides = __pyx_pybuffernd_arr.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_arr.diminfo[0].shape = __pyx_pybuffernd_arr.rcbuffer->pybuffer.shape[0];
 
-  /* "sophus.pyx":149
- *     @staticmethod
- *     def exp(np.ndarray arr):
+  /* "sophus.pyx":270
+ *         --------------------
+ *         """
  *         res = SE3()             # <<<<<<<<<<<<<<
  *         del res.thisptr
  *         res.thisptr = new _SE3d(_SE3d.exp(Map[VectorXd](arr)))
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6sophus_SE3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_6sophus_SE3)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 270, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_res = ((struct __pyx_obj_6sophus_SE3 *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "sophus.pyx":150
- *     def exp(np.ndarray arr):
+  /* "sophus.pyx":271
+ *         """
  *         res = SE3()
  *         del res.thisptr             # <<<<<<<<<<<<<<
  *         res.thisptr = new _SE3d(_SE3d.exp(Map[VectorXd](arr)))
@@ -4764,27 +5358,27 @@ static PyObject *__pyx_pf_6sophus_3SE3_24exp(PyArrayObject *__pyx_v_arr) {
  */
   delete __pyx_v_res->thisptr;
 
-  /* "sophus.pyx":151
+  /* "sophus.pyx":272
  *         res = SE3()
  *         del res.thisptr
  *         res.thisptr = new _SE3d(_SE3d.exp(Map[VectorXd](arr)))             # <<<<<<<<<<<<<<
  *         return res
  */
   try {
-    __pyx_t_2 = eigency::Map<Eigen::VectorXd> (__pyx_v_arr);
+    __pyx_t_2 = eigency::Map<Eigen::VectorXd> (((PyArrayObject *)__pyx_v_arr));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 151, __pyx_L1_error)
+    __PYX_ERR(0, 272, __pyx_L1_error)
   }
   try {
     __pyx_t_3 = new __pyx_t_6sophus__SE3d(Sophus::SE3<double> ::exp(__pyx_t_2));
   } catch(...) {
     __Pyx_CppExn2PyErr();
-    __PYX_ERR(0, 151, __pyx_L1_error)
+    __PYX_ERR(0, 272, __pyx_L1_error)
   }
   __pyx_v_res->thisptr = __pyx_t_3;
 
-  /* "sophus.pyx":152
+  /* "sophus.pyx":273
  *         del res.thisptr
  *         res.thisptr = new _SE3d(_SE3d.exp(Map[VectorXd](arr)))
  *         return res             # <<<<<<<<<<<<<<
@@ -4794,20 +5388,29 @@ static PyObject *__pyx_pf_6sophus_3SE3_24exp(PyArrayObject *__pyx_v_arr) {
   __pyx_r = ((PyObject *)__pyx_v_res);
   goto __pyx_L0;
 
-  /* "sophus.pyx":148
+  /* "sophus.pyx":262
  * 
  *     @staticmethod
- *     def exp(np.ndarray arr):             # <<<<<<<<<<<<<<
- *         res = SE3()
- *         del res.thisptr
+ *     def exp(np.ndarray[DTYPE_t, ndim=1] arr):             # <<<<<<<<<<<<<<
+ *         """
+ *         Lie algebra exp
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
+  { PyObject *__pyx_type, *__pyx_value, *__pyx_tb;
+    __Pyx_PyThreadState_declare
+    __Pyx_PyThreadState_assign
+    __Pyx_ErrFetch(&__pyx_type, &__pyx_value, &__pyx_tb);
+    __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_arr.rcbuffer->pybuffer);
+  __Pyx_ErrRestore(__pyx_type, __pyx_value, __pyx_tb);}
   __Pyx_AddTraceback("sophus.SE3.exp", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
+  goto __pyx_L2;
   __pyx_L0:;
+  __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_arr.rcbuffer->pybuffer);
+  __pyx_L2:;
   __Pyx_XDECREF((PyObject *)__pyx_v_res);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
@@ -4821,19 +5424,19 @@ static PyObject *__pyx_pf_6sophus_3SE3_24exp(PyArrayObject *__pyx_v_arr) {
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6sophus_3SE3_27__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_6sophus_3SE3_27__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_6sophus_3SE3_29__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw_6sophus_3SE3_29__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6sophus_3SE3_26__reduce_cython__(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
+  __pyx_r = __pyx_pf_6sophus_3SE3_28__reduce_cython__(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6sophus_3SE3_26__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
+static PyObject *__pyx_pf_6sophus_3SE3_28__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_6sophus_SE3 *__pyx_v_self) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4875,19 +5478,19 @@ static PyObject *__pyx_pf_6sophus_3SE3_26__reduce_cython__(CYTHON_UNUSED struct 
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_6sophus_3SE3_29__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_6sophus_3SE3_29__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pw_6sophus_3SE3_31__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw_6sophus_3SE3_31__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_6sophus_3SE3_28__setstate_cython__(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+  __pyx_r = __pyx_pf_6sophus_3SE3_30__setstate_cython__(((struct __pyx_obj_6sophus_SE3 *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_6sophus_3SE3_28__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6sophus_SE3 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+static PyObject *__pyx_pf_6sophus_3SE3_30__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_6sophus_SE3 *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -7416,9 +8019,9 @@ static void __pyx_tp_dealloc_6sophus_SO3(PyObject *o) {
 }
 
 static PyMethodDef __pyx_methods_6sophus_SO3[] = {
-  {"matrix", (PyCFunction)__pyx_pw_6sophus_3SO3_7matrix, METH_NOARGS, 0},
-  {"log", (PyCFunction)__pyx_pw_6sophus_3SO3_9log, METH_NOARGS, 0},
-  {"inverse", (PyCFunction)__pyx_pw_6sophus_3SO3_11inverse, METH_NOARGS, 0},
+  {"matrix", (PyCFunction)__pyx_pw_6sophus_3SO3_7matrix, METH_NOARGS, __pyx_doc_6sophus_3SO3_6matrix},
+  {"log", (PyCFunction)__pyx_pw_6sophus_3SO3_9log, METH_NOARGS, __pyx_doc_6sophus_3SO3_8log},
+  {"inverse", (PyCFunction)__pyx_pw_6sophus_3SO3_11inverse, METH_NOARGS, __pyx_doc_6sophus_3SO3_10inverse},
   {"__reduce_cython__", (PyCFunction)__pyx_pw_6sophus_3SO3_13__reduce_cython__, METH_NOARGS, 0},
   {"__setstate_cython__", (PyCFunction)__pyx_pw_6sophus_3SO3_15__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
@@ -7450,7 +8053,7 @@ static PyTypeObject __pyx_type_6sophus_SO3 = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
-  0, /*tp_doc*/
+  "Class of SO3", /*tp_doc*/
   0, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -7515,16 +8118,17 @@ static void __pyx_tp_dealloc_6sophus_SE3(PyObject *o) {
 }
 
 static PyMethodDef __pyx_methods_6sophus_SE3[] = {
-  {"matrix", (PyCFunction)__pyx_pw_6sophus_3SE3_11matrix, METH_NOARGS, 0},
-  {"inverse", (PyCFunction)__pyx_pw_6sophus_3SE3_13inverse, METH_NOARGS, 0},
-  {"log", (PyCFunction)__pyx_pw_6sophus_3SE3_15log, METH_NOARGS, 0},
-  {"translation", (PyCFunction)__pyx_pw_6sophus_3SE3_17translation, METH_NOARGS, 0},
-  {"rotationMatrix", (PyCFunction)__pyx_pw_6sophus_3SE3_19rotationMatrix, METH_NOARGS, 0},
-  {"setRotationMatrix", (PyCFunction)__pyx_pw_6sophus_3SE3_21setRotationMatrix, METH_O, 0},
-  {"setTranslation", (PyCFunction)__pyx_pw_6sophus_3SE3_23setTranslation, METH_O, 0},
-  {"exp", (PyCFunction)__pyx_pw_6sophus_3SE3_25exp, METH_VARARGS|METH_KEYWORDS, 0},
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_6sophus_3SE3_27__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_6sophus_3SE3_29__setstate_cython__, METH_O, 0},
+  {"matrix", (PyCFunction)__pyx_pw_6sophus_3SE3_11matrix, METH_NOARGS, __pyx_doc_6sophus_3SE3_10matrix},
+  {"matrix3x4", (PyCFunction)__pyx_pw_6sophus_3SE3_13matrix3x4, METH_NOARGS, __pyx_doc_6sophus_3SE3_12matrix3x4},
+  {"inverse", (PyCFunction)__pyx_pw_6sophus_3SE3_15inverse, METH_NOARGS, __pyx_doc_6sophus_3SE3_14inverse},
+  {"log", (PyCFunction)__pyx_pw_6sophus_3SE3_17log, METH_NOARGS, __pyx_doc_6sophus_3SE3_16log},
+  {"translation", (PyCFunction)__pyx_pw_6sophus_3SE3_19translation, METH_NOARGS, __pyx_doc_6sophus_3SE3_18translation},
+  {"rotationMatrix", (PyCFunction)__pyx_pw_6sophus_3SE3_21rotationMatrix, METH_NOARGS, __pyx_doc_6sophus_3SE3_20rotationMatrix},
+  {"setRotationMatrix", (PyCFunction)__pyx_pw_6sophus_3SE3_23setRotationMatrix, METH_O, __pyx_doc_6sophus_3SE3_22setRotationMatrix},
+  {"setTranslation", (PyCFunction)__pyx_pw_6sophus_3SE3_25setTranslation, METH_O, __pyx_doc_6sophus_3SE3_24setTranslation},
+  {"exp", (PyCFunction)__pyx_pw_6sophus_3SE3_27exp, METH_VARARGS|METH_KEYWORDS, __pyx_doc_6sophus_3SE3_26exp},
+  {"__reduce_cython__", (PyCFunction)__pyx_pw_6sophus_3SE3_29__reduce_cython__, METH_NOARGS, 0},
+  {"__setstate_cython__", (PyCFunction)__pyx_pw_6sophus_3SE3_31__setstate_cython__, METH_O, 0},
   {0, 0, 0, 0}
 };
 
@@ -7616,7 +8220,7 @@ static PyTypeObject __pyx_type_6sophus_SE3 = {
   0, /*tp_setattro*/
   0, /*tp_as_buffer*/
   Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
-  0, /*tp_doc*/
+  "Class of SE3", /*tp_doc*/
   0, /*tp_traverse*/
   0, /*tp_clear*/
   0, /*tp_richcompare*/
@@ -7690,8 +8294,10 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_u_Format_string_allocated_too_shor, __pyx_k_Format_string_allocated_too_shor, sizeof(__pyx_k_Format_string_allocated_too_shor), 0, 1, 0, 0},
   {&__pyx_kp_u_Format_string_allocated_too_shor_2, __pyx_k_Format_string_allocated_too_shor_2, sizeof(__pyx_k_Format_string_allocated_too_shor_2), 0, 1, 0, 0},
   {&__pyx_n_s_ImportError, __pyx_k_ImportError, sizeof(__pyx_k_ImportError), 0, 0, 1, 1},
+  {&__pyx_kp_s_Input_is_not_the_excepted_type_o, __pyx_k_Input_is_not_the_excepted_type_o, sizeof(__pyx_k_Input_is_not_the_excepted_type_o), 0, 0, 1, 0},
   {&__pyx_kp_u_Non_native_byte_order_not_suppor, __pyx_k_Non_native_byte_order_not_suppor, sizeof(__pyx_k_Non_native_byte_order_not_suppor), 0, 1, 0, 0},
   {&__pyx_n_s_RuntimeError, __pyx_k_RuntimeError, sizeof(__pyx_k_RuntimeError), 0, 0, 1, 1},
+  {&__pyx_n_s_T, __pyx_k_T, sizeof(__pyx_k_T), 0, 0, 1, 1},
   {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
   {&__pyx_n_s_arr, __pyx_k_arr, sizeof(__pyx_k_arr), 0, 0, 1, 1},
@@ -7700,14 +8306,18 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_asfortranarray, __pyx_k_asfortranarray, sizeof(__pyx_k_asfortranarray), 0, 0, 1, 1},
   {&__pyx_n_s_checkfloat64, __pyx_k_checkfloat64, sizeof(__pyx_k_checkfloat64), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
+  {&__pyx_n_s_copy, __pyx_k_copy, sizeof(__pyx_k_copy), 0, 0, 1, 1},
+  {&__pyx_n_s_dot, __pyx_k_dot, sizeof(__pyx_k_dot), 0, 0, 1, 1},
   {&__pyx_n_s_dtype, __pyx_k_dtype, sizeof(__pyx_k_dtype), 0, 0, 1, 1},
   {&__pyx_n_s_exp, __pyx_k_exp, sizeof(__pyx_k_exp), 0, 0, 1, 1},
   {&__pyx_n_s_flags, __pyx_k_flags, sizeof(__pyx_k_flags), 0, 0, 1, 1},
   {&__pyx_n_s_float64, __pyx_k_float64, sizeof(__pyx_k_float64), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
+  {&__pyx_n_s_hstack, __pyx_k_hstack, sizeof(__pyx_k_hstack), 0, 0, 1, 1},
   {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_matrix, __pyx_k_matrix, sizeof(__pyx_k_matrix), 0, 0, 1, 1},
+  {&__pyx_n_s_matrix3x4, __pyx_k_matrix3x4, sizeof(__pyx_k_matrix3x4), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_u_ndarray_is_not_C_contiguous, __pyx_k_ndarray_is_not_C_contiguous, sizeof(__pyx_k_ndarray_is_not_C_contiguous), 0, 1, 0, 0},
   {&__pyx_kp_u_ndarray_is_not_Fortran_contiguou, __pyx_k_ndarray_is_not_Fortran_contiguou, sizeof(__pyx_k_ndarray_is_not_Fortran_contiguou), 0, 1, 0, 0},
@@ -7716,6 +8326,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_numpy, __pyx_k_numpy, sizeof(__pyx_k_numpy), 0, 0, 1, 1},
   {&__pyx_kp_s_numpy_core_multiarray_failed_to, __pyx_k_numpy_core_multiarray_failed_to, sizeof(__pyx_k_numpy_core_multiarray_failed_to), 0, 0, 1, 0},
   {&__pyx_kp_s_numpy_core_umath_failed_to_impor, __pyx_k_numpy_core_umath_failed_to_impor, sizeof(__pyx_k_numpy_core_umath_failed_to_impor), 0, 0, 1, 0},
+  {&__pyx_n_s_ones, __pyx_k_ones, sizeof(__pyx_k_ones), 0, 0, 1, 1},
   {&__pyx_n_s_other, __pyx_k_other, sizeof(__pyx_k_other), 0, 0, 1, 1},
   {&__pyx_n_s_range, __pyx_k_range, sizeof(__pyx_k_range), 0, 0, 1, 1},
   {&__pyx_n_s_ravel, __pyx_k_ravel, sizeof(__pyx_k_ravel), 0, 0, 1, 1},
@@ -7737,7 +8348,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_builtin_staticmethod = __Pyx_GetBuiltinName(__pyx_n_s_staticmethod); if (!__pyx_builtin_staticmethod) __PYX_ERR(0, 261, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(2, 229, __pyx_L1_error)
   __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(2, 242, __pyx_L1_error)
@@ -7887,41 +8498,41 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__13);
   __Pyx_GIVEREF(__pyx_tuple__13);
 
-  /* "sophus.pyx":15
+  /* "sophus.pyx":16
  * 
  * # helper functions
  * def __checkfloat64(np.ndarray arr):             # <<<<<<<<<<<<<<
  *     """make sure arr is float64, which corresponds to <double>"""
- *     if arr.dtype != np.float64:
+ *     if arr.dtype != DTYPE:
  */
-  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_n_s_arr); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(1, __pyx_n_s_arr); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_sophus_pyx, __pyx_n_s_checkfloat64, 15, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_sophus_pyx, __pyx_n_s_checkfloat64, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 16, __pyx_L1_error)
 
-  /* "sophus.pyx":20
+  /* "sophus.pyx":21
  *         raise "arr has to be float64!!!"
  * 
  * def __tofortran(np.ndarray arr):             # <<<<<<<<<<<<<<
  *     """Eigency expects 'F_CONTIGUOUS' layout, convert if this is not the case"""
  *     if not arr.flags['C_CONTIGUOUS']:
  */
-  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_n_s_arr); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_n_s_arr); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
-  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_sophus_pyx, __pyx_n_s_tofortran, 20, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_codeobj__17 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__16, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_sophus_pyx, __pyx_n_s_tofortran, 21, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__17)) __PYX_ERR(0, 21, __pyx_L1_error)
 
-  /* "sophus.pyx":148
+  /* "sophus.pyx":262
  * 
  *     @staticmethod
- *     def exp(np.ndarray arr):             # <<<<<<<<<<<<<<
- *         res = SE3()
- *         del res.thisptr
+ *     def exp(np.ndarray[DTYPE_t, ndim=1] arr):             # <<<<<<<<<<<<<<
+ *         """
+ *         Lie algebra exp
  */
-  __pyx_tuple__18 = PyTuple_Pack(2, __pyx_n_s_arr, __pyx_n_s_res); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(2, __pyx_n_s_arr, __pyx_n_s_res); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
-  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_sophus_pyx, __pyx_n_s_exp, 148, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_codeobj__19 = (PyObject*)__Pyx_PyCode_New(1, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__18, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_sophus_pyx, __pyx_n_s_exp, 262, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__19)) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -7931,6 +8542,7 @@ static int __Pyx_InitCachedConstants(void) {
 
 static int __Pyx_InitGlobals(void) {
   if (__Pyx_InitStrings(__pyx_string_tab) < 0) __PYX_ERR(0, 1, __pyx_L1_error);
+  __pyx_int_1 = PyInt_FromLong(1); if (unlikely(!__pyx_int_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_int_3 = PyInt_FromLong(3); if (unlikely(!__pyx_int_3)) __PYX_ERR(0, 1, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -7973,22 +8585,32 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_6sophus_SO3) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6sophus_SO3) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
   __pyx_type_6sophus_SO3.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6sophus_SO3.tp_dictoffset && __pyx_type_6sophus_SO3.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_6sophus_SO3.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (PyObject_SetAttrString(__pyx_m, "SO3", (PyObject *)&__pyx_type_6sophus_SO3) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6sophus_SO3) < 0) __PYX_ERR(0, 26, __pyx_L1_error)
+  #if CYTHON_COMPILING_IN_CPYTHON
+  {
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_6sophus_SO3, "__str__"); if (unlikely(!wrapper)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (Py_TYPE(wrapper) == &PyWrapperDescr_Type) {
+      __pyx_wrapperbase_6sophus_3SO3_4__str__ = *((PyWrapperDescrObject *)wrapper)->d_base;
+      __pyx_wrapperbase_6sophus_3SO3_4__str__.doc = __pyx_doc_6sophus_3SO3_4__str__;
+      ((PyWrapperDescrObject *)wrapper)->d_base = &__pyx_wrapperbase_6sophus_3SO3_4__str__;
+    }
+  }
+  #endif
+  if (PyObject_SetAttrString(__pyx_m, "SO3", (PyObject *)&__pyx_type_6sophus_SO3) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6sophus_SO3) < 0) __PYX_ERR(0, 28, __pyx_L1_error)
   __pyx_ptype_6sophus_SO3 = &__pyx_type_6sophus_SO3;
-  if (PyType_Ready(&__pyx_type_6sophus_SE3) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_6sophus_SE3) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
   __pyx_type_6sophus_SE3.tp_print = 0;
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_6sophus_SE3.tp_dictoffset && __pyx_type_6sophus_SE3.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_6sophus_SE3.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
   #if CYTHON_COMPILING_IN_CPYTHON
   {
-    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_6sophus_SE3, "__str__"); if (unlikely(!wrapper)) __PYX_ERR(0, 61, __pyx_L1_error)
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_6sophus_SE3, "__str__"); if (unlikely(!wrapper)) __PYX_ERR(0, 99, __pyx_L1_error)
     if (Py_TYPE(wrapper) == &PyWrapperDescr_Type) {
       __pyx_wrapperbase_6sophus_3SE3_4__str__ = *((PyWrapperDescrObject *)wrapper)->d_base;
       __pyx_wrapperbase_6sophus_3SE3_4__str__.doc = __pyx_doc_6sophus_3SE3_4__str__;
@@ -7998,7 +8620,7 @@ static int __Pyx_modinit_type_init_code(void) {
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON
   {
-    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_6sophus_SE3, "__mul__"); if (unlikely(!wrapper)) __PYX_ERR(0, 61, __pyx_L1_error)
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_6sophus_SE3, "__mul__"); if (unlikely(!wrapper)) __PYX_ERR(0, 99, __pyx_L1_error)
     if (Py_TYPE(wrapper) == &PyWrapperDescr_Type) {
       __pyx_wrapperbase_6sophus_3SE3_6__mul__ = *((PyWrapperDescrObject *)wrapper)->d_base;
       __pyx_wrapperbase_6sophus_3SE3_6__mul__.doc = __pyx_doc_6sophus_3SE3_6__mul__;
@@ -8006,8 +8628,18 @@ static int __Pyx_modinit_type_init_code(void) {
     }
   }
   #endif
-  if (PyObject_SetAttrString(__pyx_m, "SE3", (PyObject *)&__pyx_type_6sophus_SE3) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6sophus_SE3) < 0) __PYX_ERR(0, 61, __pyx_L1_error)
+  #if CYTHON_COMPILING_IN_CPYTHON
+  {
+    PyObject *wrapper = PyObject_GetAttrString((PyObject *)&__pyx_type_6sophus_SE3, "__imul__"); if (unlikely(!wrapper)) __PYX_ERR(0, 99, __pyx_L1_error)
+    if (Py_TYPE(wrapper) == &PyWrapperDescr_Type) {
+      __pyx_wrapperbase_6sophus_3SE3_8__imul__ = *((PyWrapperDescrObject *)wrapper)->d_base;
+      __pyx_wrapperbase_6sophus_3SE3_8__imul__.doc = __pyx_doc_6sophus_3SE3_8__imul__;
+      ((PyWrapperDescrObject *)wrapper)->d_base = &__pyx_wrapperbase_6sophus_3SE3_8__imul__;
+    }
+  }
+  #endif
+  if (PyObject_SetAttrString(__pyx_m, "SE3", (PyObject *)&__pyx_type_6sophus_SE3) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_6sophus_SE3) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
   __pyx_ptype_6sophus_SE3 = &__pyx_type_6sophus_SE3;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -8254,56 +8886,56 @@ if (!__Pyx_RefNanny) {
   if (PyDict_SetItem(__pyx_d, __pyx_n_s_DTYPE, __pyx_t_2) < 0) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "sophus.pyx":15
+  /* "sophus.pyx":16
  * 
  * # helper functions
  * def __checkfloat64(np.ndarray arr):             # <<<<<<<<<<<<<<
  *     """make sure arr is float64, which corresponds to <double>"""
- *     if arr.dtype != np.float64:
+ *     if arr.dtype != DTYPE:
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6sophus_1__checkfloat64, NULL, __pyx_n_s_sophus); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6sophus_1__checkfloat64, NULL, __pyx_n_s_sophus); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_checkfloat64, __pyx_t_2) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_checkfloat64, __pyx_t_2) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "sophus.pyx":20
+  /* "sophus.pyx":21
  *         raise "arr has to be float64!!!"
  * 
  * def __tofortran(np.ndarray arr):             # <<<<<<<<<<<<<<
  *     """Eigency expects 'F_CONTIGUOUS' layout, convert if this is not the case"""
  *     if not arr.flags['C_CONTIGUOUS']:
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6sophus_3__tofortran, NULL, __pyx_n_s_sophus); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6sophus_3__tofortran, NULL, __pyx_n_s_sophus); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_tofortran, __pyx_t_2) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_tofortran, __pyx_t_2) < 0) __PYX_ERR(0, 21, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "sophus.pyx":148
+  /* "sophus.pyx":262
  * 
  *     @staticmethod
- *     def exp(np.ndarray arr):             # <<<<<<<<<<<<<<
- *         res = SE3()
- *         del res.thisptr
+ *     def exp(np.ndarray[DTYPE_t, ndim=1] arr):             # <<<<<<<<<<<<<<
+ *         """
+ *         Lie algebra exp
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6sophus_3SE3_25exp, NULL, __pyx_n_s_sophus); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_6sophus_3SE3_27exp, NULL, __pyx_n_s_sophus); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_6sophus_SE3->tp_dict, __pyx_n_s_exp, __pyx_t_2) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6sophus_SE3->tp_dict, __pyx_n_s_exp, __pyx_t_2) < 0) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   PyType_Modified(__pyx_ptype_6sophus_SE3);
 
-  /* "sophus.pyx":147
+  /* "sophus.pyx":261
  *         self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
  * 
  *     @staticmethod             # <<<<<<<<<<<<<<
- *     def exp(np.ndarray arr):
- *         res = SE3()
+ *     def exp(np.ndarray[DTYPE_t, ndim=1] arr):
+ *         """
  */
-  __pyx_t_2 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6sophus_SE3, __pyx_n_s_exp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetNameInClass((PyObject *)__pyx_ptype_6sophus_SE3, __pyx_n_s_exp); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_builtin_staticmethod, __pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem((PyObject *)__pyx_ptype_6sophus_SE3->tp_dict, __pyx_n_s_exp, __pyx_t_1) < 0) __PYX_ERR(0, 148, __pyx_L1_error)
+  if (PyDict_SetItem((PyObject *)__pyx_ptype_6sophus_SE3->tp_dict, __pyx_n_s_exp, __pyx_t_1) < 0) __PYX_ERR(0, 262, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   PyType_Modified(__pyx_ptype_6sophus_SE3);
 

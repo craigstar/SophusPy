@@ -71,7 +71,7 @@ cdef class SO3:
         Out: np.ndarray (3*3)
         ---------------------------------
         """
-        return ndarray(self.thisptr.matrix())
+        return ndarray(self.thisptr.matrix()).copy()
 
     def log(self):
         """
@@ -80,7 +80,7 @@ cdef class SO3:
         Out: np.ndarray (3,)
         --------------------
         """
-        return ndarray(self.thisptr.log()).ravel()
+        return ndarray(self.thisptr.log()).ravel().copy()
 
     def inverse(self):
         """
@@ -155,8 +155,7 @@ cdef class SE3:
             __checkfloat64(other)
             if other.size == 3:
                 # SE3 * [x, y, z]
-                __checkfloat64(other)
-                return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
+                return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel().copy()
             else:
                 # SE3 * [[x1, y1, z1], ..., [xn, yn, zn]] (N*3) np.array
                 other = np.hstack((other, np.ones((len(other), 1)))).T
@@ -188,7 +187,7 @@ cdef class SE3:
         Out: np.ndarray (4*4)
         ---------------------------------
         """
-        return ndarray(self.thisptr.matrix())
+        return ndarray(self.thisptr.matrix()).copy()
 
     def matrix3x4(self):
         """
@@ -197,7 +196,7 @@ cdef class SE3:
         Out: np.ndarray (3*4)
         ---------------------------------
         """
-        return ndarray(self.thisptr.matrix3x4())
+        return ndarray(self.thisptr.matrix3x4()).copy()
 
     def inverse(self):
         """
@@ -218,7 +217,7 @@ cdef class SE3:
         Out: np.ndarray (6,)
         --------------------
         """
-        return ndarray(self.thisptr.log()).ravel()
+        return ndarray(self.thisptr.log()).ravel().copy()
 
     def translation(self):
         """
@@ -227,7 +226,7 @@ cdef class SE3:
         Out: np.ndarray (3,)
         --------------------
         """
-        return ndarray(self.thisptr.translation()).ravel()
+        return ndarray(self.thisptr.translation()).ravel().copy()  # copy is neccessary
 
     def rotationMatrix(self):
         """
@@ -236,7 +235,7 @@ cdef class SE3:
         Out: np.ndarray (3 * 3)
         -----------------------
         """
-        return ndarray(self.thisptr.rotationMatrix())
+        return ndarray(self.thisptr.rotationMatrix()).copy()
 
     def setRotationMatrix(self, np.ndarray[DTYPE_t, ndim=2] R):
         """
