@@ -1,6 +1,7 @@
 import numpy as np
 import unittest
 import pytest
+import copy
 
 import sophus as sp
 
@@ -102,6 +103,18 @@ class TestSE3(unittest.TestCase):
         T = sp.SE3(self.Tnp)
         Tprime = sp.SE3.exp(T.log())
         self.assertTrue(np.allclose(T.matrix(), Tprime.matrix()))
+
+    def test_copy_method(self):
+        T = sp.SE3(self.Tnp)
+        Tprime = T.copy()
+        self.assertTrue(np.allclose(T.matrix(), Tprime.matrix()))
+
+    def test_copy_lib(self):
+        T = sp.SE3(self.Tnp)
+        T1 = copy.copy(T)
+        T2 = copy.deepcopy(T)
+        self.assertTrue(np.allclose(T.matrix(), T1.matrix()))
+        self.assertTrue(np.allclose(T.matrix(), T2.matrix()))
 
     def test_constructor_type_fault(self):
         with pytest.raises(TypeError):
