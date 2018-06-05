@@ -64,6 +64,24 @@ cdef class SO3:
         """
         return np.array_str(self.matrix())
 
+    def __reduce__(self):
+        """
+        For deepcopy purpose
+        -----------------------------
+        Out: tuple
+        -----------------------------
+        """
+        return (self.__class__, (self.matrix(),))
+        
+    def __copy__(self):
+        """
+        Return a copy of SO3
+        -----------------------------
+        Out: SO3
+        -----------------------------
+        """
+        return SO3(self)
+
     def matrix(self):
         """
         Returns and 3*3 np.ndarray matrix
@@ -94,6 +112,15 @@ cdef class SO3:
         del so3.thisptr         # clear pointer before assignment 
         so3.thisptr = new _SO3d(self.thisptr.inverse())
         return so3
+
+    def copy(self):
+        """
+        Return a copy of SO3
+        -----------------------------
+        Out: SO3
+        -----------------------------
+        """
+        return self.__copy__()
 
 
 cdef class SE3:
@@ -180,6 +207,24 @@ cdef class SE3:
         self.thisptr[0] = self.thisptr.mul(deref(y.thisptr))
         return self
 
+    def __reduce__(self):
+        """
+        For deepcopy purpose
+        -----------------------------
+        Out: tuple
+        -----------------------------
+        """
+        return (self.__class__, (self.matrix(),))
+
+    def __copy__(self):
+        """
+        Return a copy of SE3
+        -----------------------------
+        Out: SE3
+        -----------------------------
+        """
+        return SE3(self)
+
     def matrix(self):
         """
         Returns and 4*4 np.ndarray matrix
@@ -257,6 +302,15 @@ cdef class SE3:
         so3 = SO3(self.rotationMatrix())
         del self.thisptr
         self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
+
+    def copy(self):
+        """
+        Return a copy of SE3
+        -----------------------------
+        Out: SE3
+        -----------------------------
+        """
+        return self.__copy__()
 
     @staticmethod
     def exp(np.ndarray[DTYPE_t, ndim=1] arr):
