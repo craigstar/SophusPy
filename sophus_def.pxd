@@ -13,6 +13,11 @@ cdef extern from "<sophus/so3.hpp>" namespace "Sophus":
 
         Vector3d log()
         SO3 inverse()
+        
+        @staticmethod
+        Matrix3d hat(const Map[Vector3d]&)
+        @staticmethod
+        SO3[Scalar] exp(const Map[Vector3d]&)
 
 
 cdef extern from "<sophus/se3.hpp>" namespace "Sophus":

@@ -117,25 +117,46 @@ class TestSE3(unittest.TestCase):
         self.assertTrue(np.allclose(T.matrix(), T2.matrix()))
 
     def test_constructor_type_fault(self):
-        with pytest.raises(TypeError):
+        with pytest.raises(AssertionError) as e:
             sp.SE3(np.eye(4, dtype=np.float32))
+        self.assertTrue('float64' in str(e.value))
 
-        with pytest.raises(TypeError):
+        with pytest.raises(AssertionError) as e:
             sp.SE3(np.eye(4, dtype=int))
+        self.assertTrue('float64' in str(e.value))
 
-        with pytest.raises(TypeError):
+        with pytest.raises(AssertionError) as e:
             sp.SE3(np.eye(3, dtype=np.float32), np.ones(3))
+        self.assertTrue('float64' in str(e.value))
 
-        with pytest.raises(ValueError):
+        with pytest.raises(ValueError) as e:
             sp.SE3(np.eye(3), np.ones(3, dtype=np.float32))
+        self.assertTrue('Buffer dtype mismatch' in str(e.value))
+
+    def test_constructor_size_fault(self):
+        with pytest.raises(AssertionError) as e:
+            sp.SE3(np.eye(3), np.ones(2))
+        self.assertTrue('expected size' in str(e.value))
+
+        with pytest.raises(AssertionError) as e:
+            sp.SE3(np.ones((3,4)))
+        self.assertTrue('expected size' in str(e.value))
 
     def test_set_type_fault(self):
         T = sp.SE3()
-        with pytest.raises(ValueError):
+        with pytest.raises(ValueError) as e:
             T.setRotationMatrix(np.eye(3, dtype=np.float32))
+        self.assertTrue('Buffer dtype mismatch' in str(e.value))
 
-        with pytest.raises(ValueError):
+        with pytest.raises(ValueError) as e:
             T.setTranslation(np.ones(3, dtype=np.float32))
+        self.assertTrue('Buffer dtype mismatch' in str(e.value))
 
-        with pytest.raises(ValueError):
+        with pytest.raises(ValueError) as e:
             sp.SE3.exp(np.zeros(6, dtype=np.float32))
+        self.assertTrue('Buffer dtype mismatch' in str(e.value))
+
+    def test_set_size_fault(self):
+        with pytest.raises(AssertionError) as e:
+            sp.SE3().setRotationMatrix(np.eye(4))
+        self.assertTrue('expected size' in str(e.value))

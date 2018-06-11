@@ -15,8 +15,7 @@ ctypedef np.float64_t DTYPE_t
 # helper functions
 def __checkfloat64(np.ndarray arr):
     """make sure arr is float64, which corresponds to <double>"""
-    if arr.dtype != DTYPE:
-        raise "arr has to be float64!!!"
+    assert arr.dtype == DTYPE, "arr type should to be float64!!!"
 
 def __tofortran(np.ndarray arr):
     """Eigency expects 'F_CONTIGUOUS' layout, convert if this is not the case"""
@@ -24,6 +23,9 @@ def __tofortran(np.ndarray arr):
         return arr
     return np.asfortranarray(arr)
 
+def __checksize(np.ndarray arr, int size):
+    """make sure arr has expected size"""
+    assert arr.size == size, ("arr size %d, expected size %d" % (arr.size, size))
 
 cdef class SO3:
     """Class of SO3"""
@@ -45,6 +47,7 @@ cdef class SO3:
         elif other is not None and type(other) is np.ndarray:
             # 3*3 np.array constructor
             __checkfloat64(other)
+            __checksize(other, 9)
             other = __tofortran(other)
             self.thisptr = new _SO3d(Map[Matrix3d](other))        
         else:
@@ -122,6 +125,33 @@ cdef class SO3:
         """
         return self.__copy__()
 
+    @staticmethod
+    def hat(np.ndarray[DTYPE_t, ndim=1] v):
+        """
+        Hat of SO3 is to calculate the skew matrix
+        -----------------------
+        In: np.ndarray (3,)
+        Out: np.ndarray (3 * 3)
+        -----------------------
+        """
+        __checksize(v, 3)
+        return ndarray(_SO3d.hat(Map[Vector3d](v))).copy()
+
+    @staticmethod
+    def exp(np.ndarray[DTYPE_t, ndim=1] v):
+        """
+        Computes the exponential map of a 3x1 so3 element
+        ----------------------
+        In: np.ndarray (3,)
+        Out: SO3
+        ----------------------
+        """
+        __checksize(v, 3)
+        so3 = SO3()
+        del so3.thisptr
+        so3.thisptr = new _SO3d(_SO3d.exp(Map[Vector3d](v)))
+        return so3
+
 
 cdef class SE3:
     """Class of SE3"""
@@ -138,11 +168,14 @@ cdef class SE3:
         cdef SE3 ostr           # define an instance of SE3
         if t is not None and type(other) is np.ndarray:
             # compose R (3*3) and t (3,) into T (4*4)
+            __checkfloat64(t)
+            __checksize(t, 3)
             so3 = SO3(other)
             self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
         elif other is not None and type(other) is np.ndarray:
             # 4*4 np.array constructor
             __checkfloat64(other)
+            __checksize(other, 16)
             other = __tofortran(other)
             self.thisptr = new _SE3d(Map[Matrix4d](other))
         elif other is not None and type(other) is SE3:
@@ -290,6 +323,7 @@ cdef class SE3:
         --------------------------
         """
         R = __tofortran(R)
+        __checksize(R, 9)
         self.thisptr.setRotationMatrix(Map[Matrix3d](R))
 
     def setTranslation(self, np.ndarray[DTYPE_t, ndim=1] t):
@@ -299,6 +333,7 @@ cdef class SE3:
         In: np.ndarray (3,)
         -----------------------------
         """
+        __checksize(t, 3)
         so3 = SO3(self.rotationMatrix())
         del self.thisptr
         self.thisptr = new _SE3d(deref(so3.thisptr), Map[Vector3d](t))
@@ -321,6 +356,7 @@ cdef class SE3:
         Out: SE3
         --------------------
         """
+        __checksize(arr, 6)
         res = SE3()
         del res.thisptr
         res.thisptr = new _SE3d(_SE3d.exp(Map[VectorXd](arr)))

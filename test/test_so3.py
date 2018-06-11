@@ -50,10 +50,41 @@ class TestSO3(unittest.TestCase):
         R2 = copy.deepcopy(R)
         self.assertTrue(np.allclose(R.matrix(), R1.matrix()))
         self.assertTrue(np.allclose(R.matrix(), R2.matrix()))
+
+    def test_static_hat(self):
+        v = np.ones(3)
+        skew_v = np.array([[ 0, -1,  1],
+                           [ 1,  0, -1],
+                           [-1,  1,  0]], dtype=np.float64)
+        self.assertTrue(np.allclose(sp.SO3.hat(v), skew_v))
+
+    def test_static_exp(self):
+        R = sp.SO3(self.Rnp)
+        Rprime = sp.SO3.exp(R.log())
+        self.assertTrue(np.allclose(R.matrix(), Rprime.matrix()))
         
     def test_type_fault(self):
-        with pytest.raises(TypeError):
+        with pytest.raises(AssertionError) as e:
             sp.SO3(np.eye(3, dtype=np.float32))
+        self.assertTrue('float64' in str(e.value))
 
-        with pytest.raises(TypeError):
+        with pytest.raises(AssertionError) as e:
             sp.SO3(np.eye(3, dtype=int))
+        self.assertTrue('float64' in str(e.value))
+
+        with pytest.raises(ValueError) as e:
+            sp.SO3.exp(np.ones(3, dtype=int))
+        self.assertTrue('Buffer dtype mismatch' in str(e.value))
+
+    def test_size_fault(self):
+        with pytest.raises(AssertionError) as e:
+            sp.SO3(np.ones((3,2)))
+        self.assertTrue('expected size' in str(e.value))
+
+        with pytest.raises(AssertionError) as e:
+            sp.SO3.hat(np.ones(1))
+        self.assertTrue('expected size' in str(e.value))
+
+        with pytest.raises(AssertionError) as e:
+            sp.SO3.exp(np.ones(2))
+        self.assertTrue('expected size' in str(e.value))
