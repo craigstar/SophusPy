@@ -39,6 +39,10 @@ class TestSE3(unittest.TestCase):
         T = sp.SE3(self.Tnp)
         self.assertEqual(str(T), np.array_str(self.Tnp))
 
+    def test_so3(self):
+        T = sp.SE3(self.Tnp)
+        self.assertTrue(np.allclose(T.so3().matrix(), self.Rnp))
+
     def test_inverse(self):
         T = sp.SE3(self.Tnp)
         T_inv = T.inverse()

@@ -35,6 +35,7 @@ cdef extern from "<sophus/se3.hpp>" namespace "Sophus":
         Matrix4d& matrix()
         MatrixXd& matrix3x4()
 
+        SO3 so3()
         SE3 inverse()
         VectorXd log()
         Vector3d translation()

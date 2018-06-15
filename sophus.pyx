@@ -27,6 +27,32 @@ def __checksize(np.ndarray arr, int size):
     """make sure arr has expected size"""
     assert arr.size == size, ("arr size %d, expected size %d" % (arr.size, size))
 
+
+def _copytoSO3(SO3 dst, SO3 src):
+    """helper function for copying SO3 in place"""
+    del dst.thisptr
+    dst.thisptr = new _SO3d(deref(src.thisptr))
+
+def _copytoSE3(SE3 dst, SE3 src):
+    """helper function for copying SE3 in place"""
+    del dst.thisptr
+    dst.thisptr = new _SE3d(deref(src.thisptr))
+
+def copyto(dst, src):
+    """
+    Copy SO3 or SE3 in place
+    ----------------------------
+    In: (SO3, SO3) or (SE3, SE3)
+    ----------------------------
+    """
+    if type(src) is SO3 and type(dst) is SO3:
+        _copytoSO3(dst, src)
+    elif type(src) is SE3 and type(dst) is SE3:
+        _copytoSE3(dst, src)
+    else:
+        raise TypeError("input type does not match SO3-SO3 or SE3-SE3 pair")
+
+
 cdef class SO3:
     """Class of SO3"""
     cdef _SO3d *thisptr         # pointer of C++ SO3<double> instance
@@ -275,6 +301,15 @@ cdef class SE3:
         ---------------------------------
         """
         return ndarray(self.thisptr.matrix3x4()).copy()
+
+    def so3(self):
+        """
+        Returns a SO3 rotation instance
+        ---------------------------------
+        Out: SO3
+        ---------------------------------
+        """
+        return SO3(ndarray(self.thisptr.so3().matrix()))
 
     def inverse(self):
         """
