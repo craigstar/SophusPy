@@ -45,3 +45,6 @@ cdef extern from "<sophus/se3.hpp>" namespace "Sophus":
 
         @staticmethod
         SE3[Scalar] exp(const Map[VectorXd]&)
+
+cdef extern from "<sophus/useful.hpp>" namespace "Sophus":
+    cdef MatrixXd& transformPointsByPoses(const Map[MatrixXd]&, const Map[MatrixXd]&)

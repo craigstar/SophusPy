@@ -4,6 +4,7 @@ from cython.operator cimport dereference as deref
 
 from sophus_def cimport SO3 as _SO3
 from sophus_def cimport SE3 as _SE3
+from sophus_def cimport transformPointsByPoses
 
 DTYPE = np.float64
 
@@ -396,3 +397,8 @@ cdef class SE3:
         del res.thisptr
         res.thisptr = new _SE3d(_SE3d.exp(Map[VectorXd](arr)))
         return res
+
+def transform_points_by_poses(np.ndarray[DTYPE_t, ndim=2] poses, np.ndarray[DTYPE_t, ndim=2] points):
+    poses = __tofortran(poses)
+    points = __tofortran(points)
+    transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points))
