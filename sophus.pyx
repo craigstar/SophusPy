@@ -28,6 +28,10 @@ def __checksize(np.ndarray arr, int size):
     """make sure arr has expected size"""
     assert arr.size == size, ("arr size %d, expected size %d" % (arr.size, size))
 
+def __checkcols(np.ndarray arr, int ncols):
+    """make sure arr has expected number of columns"""
+    assert arr.shape[1] == ncols, ("arr cols %d, expected cols %d" % (arr.shape[1], ncols))
+
 
 def _copytoSO3(SO3 dst, SO3 src):
     """helper function for copying SO3 in place"""
@@ -401,4 +405,9 @@ cdef class SE3:
 def transform_points_by_poses(np.ndarray[DTYPE_t, ndim=2] poses, np.ndarray[DTYPE_t, ndim=2] points):
     poses = __tofortran(poses)
     points = __tofortran(points)
-    transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points))
+    __checkcols(poses, 12)
+    __checkcols(points, 3)
+    from time import time
+    res = ndarray(transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points)))
+    return 
+    
