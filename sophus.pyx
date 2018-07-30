@@ -407,7 +407,5 @@ def transform_points_by_poses(np.ndarray[DTYPE_t, ndim=2] poses, np.ndarray[DTYP
     points = __tofortran(points)
     __checkcols(poses, 12)
     __checkcols(points, 3)
-    from time import time
-    res = ndarray(transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points)))
-    return 
+    return ndarray(transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points)))
     
