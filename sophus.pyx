@@ -20,7 +20,7 @@ def __checkfloat64(np.ndarray arr):
 
 def __tofortran(np.ndarray arr):
     """Eigency expects 'F_CONTIGUOUS' layout, convert if this is not the case"""
-    if not arr.flags['C_CONTIGUOUS']:
+    if arr.flags['F_CONTIGUOUS']:
         return arr
     return np.asfortranarray(arr)
 
