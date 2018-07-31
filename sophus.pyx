@@ -1,6 +1,7 @@
 import numpy as np
 from eigency.core cimport *
 from cython.operator cimport dereference as deref
+from libcpp cimport bool
 
 from sophus_def cimport SO3 as _SO3
 from sophus_def cimport SE3 as _SE3
@@ -57,7 +58,8 @@ def copyto(dst, src):
     else:
         raise TypeError("input type does not match SO3-SO3 or SE3-SE3 pair")
 
-def transform_points_by_poses(np.ndarray[DTYPE_t, ndim=2] poses, np.ndarray[DTYPE_t, ndim=2] points):
+def transform_points_by_poses(np.ndarray[DTYPE_t, ndim=2] poses, np.ndarray[DTYPE_t, ndim=2] points,
+                              bool is_inverse=False):
     """
     Transform points by stack of poses, 
     ----------------------------
@@ -68,7 +70,7 @@ def transform_points_by_poses(np.ndarray[DTYPE_t, ndim=2] poses, np.ndarray[DTYP
     points = __tofortran(points)
     __checkcols(poses, 12)
     __checkcols(points, 3)
-    return ndarray(transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points)))
+    return ndarray(transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points), is_inverse))
 
 
 cdef class SO3:

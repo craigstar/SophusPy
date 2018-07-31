@@ -42,13 +42,16 @@ class TestRoot(unittest.TestCase):
             sp.copyto(T, R)
         self.assertTrue('SO3-SO3 or SE3-SE3 pair' in str(e.value))
 
-    def test_transform_points_by_poses(self):
+    def _prepare_points_and_poses(self):
         points = np.array([[1, -1, 1],
                            [2,  3, 4]], dtype=np.float64)
         pose1 = self.Tnp[:3]
         pose2 = np.linalg.inv(self.Tnp)[:3]
         poses = np.vstack((pose1.ravel(), pose2.ravel()))
+        return (poses, points, pose1, pose2)
 
+    def test_transform_points_by_poses(self):
+        poses, points, pose1, pose2 = self._prepare_points_and_poses()
         points_homo = np.hstack((points, np.ones((2, 1))))
 
         new_points1 = pose1.dot(points_homo.T).T
@@ -56,4 +59,17 @@ class TestRoot(unittest.TestCase):
         new_points = np.vstack((new_points1, new_points2))
 
         sp_new_points = sp.transform_points_by_poses(poses, points)
+        self.assertTrue(np.allclose(sp_new_points, new_points))
+
+    def test_transform_points_by_poses_inverse(self):
+        poses, points, pose_inv2, pose_inv1 = self._prepare_points_and_poses()
+        points_homo = np.hstack((points, np.ones((2, 1))))
+
+        new_points1 = pose_inv1.dot(points_homo.T).T
+        new_points2 = pose_inv2.dot(points_homo.T).T
+        new_points = np.vstack((new_points1, new_points2))
+        print(new_points, 'true')
+
+        sp_new_points = sp.transform_points_by_poses(poses, points, True)
+        print(sp_new_points)
         self.assertTrue(np.allclose(sp_new_points, new_points))

@@ -20,10 +20,11 @@ namespace Sophus {
 
 @param poses (N, 12) matrix, each row is a 3 * 4 transform. Row order
        points (M, 3) 3d points
+       bInv flag of inverting pose or not
 
 @return PointsXd new position of (M * N, 3) matrix
  */
-Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen::PointsXd &points)
+Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen::PointsXd &points, const bool bInv)
 {
 	const int nPoints = points.rows();
 	const int nPoses = poses.rows();
@@ -39,10 +40,19 @@ Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen:
 	{
 		Eigen::RowVector12d p(poses.row(i));
 		Eigen::MapRowPose34d pose(p.data(), 3, 4);
+		Eigen::Matrix3d R = pose.topLeftCorner(3, 3);
+		Eigen::Vector3d t = pose.col(3);
+
+		// invert pose
+		if (bInv)
+		{
+			R = -R;
+			t = -R * t;
+		}
 		
 		for (int j = 0; j < points.rows(); ++j)
 		{
-			Eigen::Vector3d pt = pose * Eigen::Vector4d(points.row(j).homogeneous());
+			Eigen::Vector3d pt = R * Eigen::Vector3d(points.row(j)) + t;
 			newPoints.row(i * nPoints + j) = pt;
 		}
 	}

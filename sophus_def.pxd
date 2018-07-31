@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from eigency.core cimport *
+from libcpp cimport bool
 
 
 cdef extern from "<sophus/so3.hpp>" namespace "Sophus":
@@ -47,4 +48,4 @@ cdef extern from "<sophus/se3.hpp>" namespace "Sophus":
         SE3[Scalar] exp(const Map[VectorXd]&)
 
 cdef extern from "<sophus/useful.hpp>" namespace "Sophus":
-    cdef MatrixXd& transformPointsByPoses(const Map[MatrixXd]&, const Map[MatrixXd]&)
+    cdef MatrixXd& transformPointsByPoses(const Map[MatrixXd]&, const Map[MatrixXd]&, const bool)
