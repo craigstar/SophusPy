@@ -3,43 +3,49 @@
 
 #include <Eigen/Dense>
 
-typedef Eigen::Matrix<double, Eigen::Dynamic, 3> PointsXd;
-typedef Eigen::Matrix<double, Eigen::Dynamic, 12> PosesXd;
-typedef Eigen::Matrix<double, 3, 4, Eigen::RowMajor> RowPose34d;
-typedef Eigen::Map<const RowPose34d> MapRowPose34d;
-typedef Eigen::Matrix<double, 1, 12, Eigen::RowMajor> RowVector12d;
+namespace Eigen 
+{
+	typedef Matrix<double, Dynamic, 3> PointsXd;
+	typedef Matrix<double, Dynamic, 12> PosesXd;
+	typedef Matrix<double, 3, 4, RowMajor> RowPose34d;
+	typedef Map<const RowPose34d> MapRowPose34d;
+	typedef Matrix<double, 1, 12, RowMajor> RowVector12d;
+}
+
 
 namespace Sophus {
 
-PointsXd transformPointsByPoses(const PosesXd &poses, const PointsXd &points)
+/** @brief Transform 3d points to new position by sequence of poses.
+		   New points are stacked points of poses order.
+
+@param poses (N, 12) matrix, each row is a 3 * 4 transform. Row order
+       points (M, 3) 3d points
+
+@return PointsXd new position of (M * N, 3) matrix
+ */
+Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen::PointsXd &points)
 {
-	const clock_t begin_time = std::clock();
+	const int nPoints = points.rows();
+	const int nPoses = poses.rows();
+	Eigen::PointsXd newPoints(nPoints * nPoses, 3);
 
-	int nPoints = points.rows();
-	int nPoses = poses.rows();
-	PointsXd newPoints(nPoints * nPoses, 3);
-
-	if (nPoses <= 0 || nPoints <= 0 || poses.cols() != 12 || points.cols() != 3)
+	if (0 >= nPoses || 0 >= nPoints)
 	{
 		return newPoints;
 	}
 
-	// all points need to map all poses 
-	Eigen::Vector3d pt;
-
 	// transform points by pose
 	for (int i = 0; i < poses.rows(); ++i)
 	{
-		RowVector12d p(poses.row(i));
-		MapRowPose34d pose(p.data(), 3, 4);
+		Eigen::RowVector12d p(poses.row(i));
+		Eigen::MapRowPose34d pose(p.data(), 3, 4);
 		
 		for (int j = 0; j < points.rows(); ++j)
 		{
-			pt = pose * Eigen::Vector4d(points.row(j).homogeneous());
+			Eigen::Vector3d pt = pose * Eigen::Vector4d(points.row(j).homogeneous());
 			newPoints.row(i * nPoints + j) = pt;
 		}
 	}
-	std::cout << float( std::clock () - begin_time ) /  CLOCKS_PER_SEC;
 	return newPoints;
 }
 }  // namespace Sophus

@@ -57,6 +57,19 @@ def copyto(dst, src):
     else:
         raise TypeError("input type does not match SO3-SO3 or SE3-SE3 pair")
 
+def transform_points_by_poses(np.ndarray[DTYPE_t, ndim=2] poses, np.ndarray[DTYPE_t, ndim=2] points):
+    """
+    Transform points by stack of poses, 
+    ----------------------------
+    In: (SO3, SO3) or (SE3, SE3)
+    ----------------------------
+    """
+    poses = __tofortran(poses)
+    points = __tofortran(points)
+    __checkcols(poses, 12)
+    __checkcols(points, 3)
+    return ndarray(transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points)))
+
 
 cdef class SO3:
     """Class of SO3"""
@@ -246,11 +259,11 @@ cdef class SE3:
             __checkfloat64(other)
             if other.size == 3:
                 # SE3 * [x, y, z]
-                return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel().copy()
+                return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
             else:
                 # SE3 * [[x1, y1, z1], ..., [xn, yn, zn]] (N*3) np.array
-                other = np.hstack((other, np.ones((len(other), 1)))).T
-                return x.matrix3x4().dot(other).T
+                poses = x.matrix3x4().reshape((1, 12))
+                return transform_points_by_poses(poses, other)
         elif type(other) is SE3:
             # SE3 * SE3
             ostr = <SE3> other
@@ -401,11 +414,3 @@ cdef class SE3:
         del res.thisptr
         res.thisptr = new _SE3d(_SE3d.exp(Map[VectorXd](arr)))
         return res
-
-def transform_points_by_poses(np.ndarray[DTYPE_t, ndim=2] poses, np.ndarray[DTYPE_t, ndim=2] points):
-    poses = __tofortran(poses)
-    points = __tofortran(points)
-    __checkcols(poses, 12)
-    __checkcols(points, 3)
-    return ndarray(transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points)))
-    
