@@ -68,8 +68,6 @@ class TestRoot(unittest.TestCase):
         new_points1 = pose_inv1.dot(points_homo.T).T
         new_points2 = pose_inv2.dot(points_homo.T).T
         new_points = np.vstack((new_points1, new_points2))
-        print(new_points, 'true')
 
         sp_new_points = sp.transform_points_by_poses(poses, points, True)
-        print(sp_new_points)
         self.assertTrue(np.allclose(sp_new_points, new_points))

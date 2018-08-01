@@ -40,13 +40,13 @@ Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen:
 	{
 		Eigen::RowVector12d p(poses.row(i));
 		Eigen::MapRowPose34d pose(p.data(), 3, 4);
-		Eigen::Matrix3d R = pose.topLeftCorner(3, 3);
+		Eigen::Matrix3d R = pose.leftCols(3);
 		Eigen::Vector3d t = pose.col(3);
 
 		// invert pose
 		if (bInv)
 		{
-			R = -R;
+			R.transposeInPlace();
 			t = -R * t;
 		}
 		
