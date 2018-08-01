@@ -71,3 +71,12 @@ class TestRoot(unittest.TestCase):
 
         sp_new_points = sp.transform_points_by_poses(poses, points, True)
         self.assertTrue(np.allclose(sp_new_points, new_points))
+
+    def test_transform_points_by_poses_empty_poses_points_failure(self):
+        with pytest.raises(ValueError) as e:
+            poses, points, pose1, pose2 = self._prepare_points_and_poses()
+            sp_new_points = sp.transform_points_by_poses(np.zeros((0, 12)), points)
+
+        with pytest.raises(ValueError) as e:
+            poses, points, pose1, pose2 = self._prepare_points_and_poses()
+            sp_new_points = sp.transform_points_by_poses(poses, np.zeros((0, 3)))
