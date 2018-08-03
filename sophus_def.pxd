@@ -49,3 +49,4 @@ cdef extern from "<sophus/se3.hpp>" namespace "Sophus":
 
 cdef extern from "<sophus/useful.hpp>" namespace "Sophus":
     cdef MatrixXd& transformPointsByPoses(const Map[MatrixXd]&, const Map[MatrixXd]&, const bool)
+    cdef MatrixXd& invertPoses(const Map[MatrixXd]&)

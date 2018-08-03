@@ -10,6 +10,7 @@ namespace Eigen
 	typedef Matrix<double, 3, 4, RowMajor> RowPose34d;
 	typedef Map<const RowPose34d> MapRowPose34d;
 	typedef Matrix<double, 1, 12, RowMajor> RowVector12d;
+	typedef Map<const RowVector12d> MapRowVector12d;
 }
 
 
@@ -57,6 +58,38 @@ Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen:
 		}
 	}
 	return newPoints;
+}
+
+/** @brief Inverse a batch of poses together
+
+@param poses (N, 12) matrix, each row is a 3 * 4 transform. Row order
+
+@return PosesXd new inverted poses of (N, 12) matrix
+ */
+Eigen::PosesXd invertPoses(const Eigen::PosesXd &poses)
+{
+	const int nPoses = poses.rows();
+	Eigen::PosesXd newPoses(nPoses, 12);
+
+	if (0 >= nPoses)
+	{
+		return newPoses;
+	}
+
+	// invert poses
+	Eigen::RowPose34d newPose;
+	for (int i = 0; i < poses.rows(); ++i)
+	{
+		Eigen::RowVector12d p(poses.row(i));
+		Eigen::MapRowPose34d pose(p.data(), 3, 4);
+		Eigen::Matrix3d R = pose.leftCols(3);
+		Eigen::Vector3d t = pose.col(3);
+
+		newPose.leftCols(3) = R.transpose();
+		newPose.col(3) = -R.transpose() * t;
+		newPoses.row(i) = Eigen::MapRowVector12d(newPose.data(), 12);
+	}
+	return newPoses;
 }
 }  // namespace Sophus
 

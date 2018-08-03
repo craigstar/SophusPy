@@ -50,7 +50,7 @@ class TestRoot(unittest.TestCase):
         poses = np.vstack((pose1.ravel(), pose2.ravel()))
         return (poses, points, pose1, pose2)
 
-    def test_transform_points_by_poses(self):
+    def test_transform_points_by_poses_multi_success(self):
         poses, points, pose1, pose2 = self._prepare_points_and_poses()
         points_homo = np.hstack((points, np.ones((2, 1))))
 
@@ -61,15 +61,31 @@ class TestRoot(unittest.TestCase):
         sp_new_points = sp.transform_points_by_poses(poses, points)
         self.assertTrue(np.allclose(sp_new_points, new_points))
 
-    def test_transform_points_by_poses_inverse(self):
-        poses, points, pose_inv2, pose_inv1 = self._prepare_points_and_poses()
+    def test_transform_points_by_poses_single_success(self):
+        poses, points, pose1, _ = self._prepare_points_and_poses()
         points_homo = np.hstack((points, np.ones((2, 1))))
 
-        new_points1 = pose_inv1.dot(points_homo.T).T
-        new_points2 = pose_inv2.dot(points_homo.T).T
+        new_points = pose1.dot(points_homo.T).T
+        sp_new_points = sp.transform_points_by_poses(poses[0], points)
+        self.assertTrue(np.allclose(sp_new_points, new_points))
+
+    def test_transform_points_by_poses_inverse_multi_success(self):
+        poses, points, pose2_inv, pose1_inv = self._prepare_points_and_poses()
+        points_homo = np.hstack((points, np.ones((2, 1))))
+
+        new_points1 = pose1_inv.dot(points_homo.T).T
+        new_points2 = pose2_inv.dot(points_homo.T).T
         new_points = np.vstack((new_points1, new_points2))
 
         sp_new_points = sp.transform_points_by_poses(poses, points, True)
+        self.assertTrue(np.allclose(sp_new_points, new_points))
+
+    def test_transform_points_by_poses_inverse_single_success(self):
+        poses, points, _, pose1_inv = self._prepare_points_and_poses()
+        points_homo = np.hstack((points, np.ones((2, 1))))
+
+        new_points = pose1_inv.dot(points_homo.T).T
+        sp_new_points = sp.transform_points_by_poses(poses[0], points, True)
         self.assertTrue(np.allclose(sp_new_points, new_points))
 
     def test_transform_points_by_poses_empty_poses_points_failure(self):
@@ -80,3 +96,18 @@ class TestRoot(unittest.TestCase):
         with pytest.raises(ValueError) as e:
             poses, points, pose1, pose2 = self._prepare_points_and_poses()
             sp_new_points = sp.transform_points_by_poses(poses, np.zeros((0, 3)))
+
+    def test_invert_poses_multi_success(self):
+        poses, _, pose2_inv, pose1_inv = self._prepare_points_and_poses()
+        new_poses = np.vstack((pose1_inv.ravel(), pose2_inv.ravel()))
+        sp_new_poses = sp.invert_poses(poses)
+        self.assertTrue(np.allclose(sp_new_poses, new_poses))
+
+    def test_invert_poses_single_success(self):
+        poses, _, pose2_inv, pose1_inv = self._prepare_points_and_poses()   
+        sp_new_pose = sp.invert_poses(poses[0])
+        self.assertTrue(np.allclose(sp_new_pose, pose1_inv.ravel()))
+
+    def test_invert_poses_empty_poses_failure(self):
+        with pytest.raises(ValueError) as e:
+            sp_new_poses = sp.invert_poses(np.zeros((0, 12)))

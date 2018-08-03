@@ -5,7 +5,7 @@ from libcpp cimport bool
 
 from sophus_def cimport SO3 as _SO3
 from sophus_def cimport SE3 as _SE3
-from sophus_def cimport transformPointsByPoses
+from sophus_def cimport transformPointsByPoses, invertPoses
 
 DTYPE = np.float64
 
@@ -58,19 +58,51 @@ def copyto(dst, src):
     else:
         raise TypeError("input type does not match SO3-SO3 or SE3-SE3 pair")
 
-def transform_points_by_poses(np.ndarray[DTYPE_t, ndim=2] poses, np.ndarray[DTYPE_t, ndim=2] points,
+def transform_points_by_poses(np.ndarray poses, np.ndarray[DTYPE_t, ndim=2] points,
                               bool is_inverse=False):
     """
     Transform points by stack of poses, 
-    ----------------------------
-    In: (SO3, SO3) or (SE3, SE3)
-    ----------------------------
+    --------------------------------
+    In: np.ndarray (N * 12) or (12,)
+        np.ndarray (M * 3)
+        bool
+    Out: np.ndarray (NM * 12)
+    --------------------------------
     """
+    if poses.ndim > 2:
+        raise TypeError("poses dimension must be 1 or 2")
+
+    __checkfloat64(poses)
     poses = __tofortran(poses)
     points = __tofortran(points)
-    __checkcols(poses, 12)
+
     __checkcols(points, 3)
+    if poses.ndim == 1:
+        poses = poses[None, :]
+    
+    __checkcols(poses, 12)
     return ndarray(transformPointsByPoses(Map[MatrixXd](poses), Map[MatrixXd](points), is_inverse))
+
+def invert_poses(np.ndarray poses):
+    """
+    Inverse a batch of poses together
+    ---------------------------------
+    In: np.ndarray (N * 12) or (12,)
+    ---------------------------------
+    """
+    if poses.ndim > 2:
+        raise TypeError("input dimension must be 1 or 2")
+
+    __checkfloat64(poses)
+    poses = __tofortran(poses)
+
+    if poses.ndim == 1:
+        poses = poses[None, :]
+        __checkcols(poses, 12)
+        return ndarray(invertPoses(Map[MatrixXd](poses))).ravel()
+    elif poses.ndim == 2:
+        __checkcols(poses, 12)
+        return ndarray(invertPoses(Map[MatrixXd](poses)))
 
 
 cdef class SO3:
@@ -264,7 +296,7 @@ cdef class SE3:
                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
             else:
                 # SE3 * [[x1, y1, z1], ..., [xn, yn, zn]] (N*3) np.array
-                poses = x.matrix3x4().reshape((1, 12))
+                poses = x.matrix3x4()[None, :]
                 return transform_points_by_poses(poses, other)
         elif type(other) is SE3:
             # SE3 * SE3
