@@ -296,7 +296,7 @@ cdef class SE3:
                 return ndarray(x.thisptr.mul(Map[Vector3d](other))).ravel()
             else:
                 # SE3 * [[x1, y1, z1], ..., [xn, yn, zn]] (N*3) np.array
-                poses = x.matrix3x4()[None, :]
+                poses = x.matrix3x4().reshape((1, 12))
                 return transform_points_by_poses(poses, other)
         elif type(other) is SE3:
             # SE3 * SE3
