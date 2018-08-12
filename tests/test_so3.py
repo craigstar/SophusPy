@@ -24,9 +24,12 @@ class TestSO3(unittest.TestCase):
         R = sp.SO3(self.Rnp)
         self.assertTrue(np.allclose(R.matrix(), self.Rnp))
 
-    def test_str(self):
-        R = sp.SO3(self.Rnp)
-        self.assertEqual(str(R), np.array_str(self.Rnp))
+    def test_str_representation(self):
+        R = sp.SO3()
+        answer = ('1 0 0\n'
+                  '0 1 0\n'
+                  '0 0 1')
+        self.assertEqual(str(R), answer)
 
     def test_inverse(self):
         R = sp.SO3(self.Rnp)
@@ -36,13 +39,14 @@ class TestSO3(unittest.TestCase):
     def test_log(self):
         R1 = sp.SO3()
         R2 = sp.SO3(self.Rnp)
+        self.assertTrue(np.allclose(R1.log().shape, (3,)))
         self.assertTrue(np.allclose(R1.log(), np.zeros(3)))
         self.assertTrue(np.allclose(R2.log(), np.array([0.06646925, 1.59563459, 0.04069513])))
 
     def test_copy_method(self):
         R = sp.SO3(self.Rnp)
-        Rprime = R.copy()
-        self.assertTrue(np.allclose(R.matrix(), Rprime.matrix()))
+        R_copied = R.copy()
+        self.assertTrue(np.allclose(R.matrix(), R_copied.matrix()))
 
     def test_copy_lib(self):
         R = sp.SO3(self.Rnp)
@@ -52,39 +56,41 @@ class TestSO3(unittest.TestCase):
         self.assertTrue(np.allclose(R.matrix(), R2.matrix()))
 
     def test_static_hat(self):
-        v = np.ones(3)
+        v1 = np.ones(3)
+        v2 = np.ones((3, 1))
         skew_v = np.array([[ 0, -1,  1],
                            [ 1,  0, -1],
                            [-1,  1,  0]], dtype=np.float64)
-        self.assertTrue(np.allclose(sp.SO3.hat(v), skew_v))
+        self.assertTrue(np.allclose(sp.SO3.hat(v1), skew_v))
+        self.assertTrue(np.allclose(sp.SO3.hat(v2), skew_v))
 
     def test_static_exp(self):
         R = sp.SO3(self.Rnp)
-        Rprime = sp.SO3.exp(R.log())
-        self.assertTrue(np.allclose(R.matrix(), Rprime.matrix()))
+        R_prime = sp.SO3.exp(R.log())
+        self.assertTrue(np.allclose(R.matrix(), R_prime.matrix()))
         
-    def test_type_fault(self):
-        with pytest.raises(AssertionError) as e:
-            sp.SO3(np.eye(3, dtype=np.float32))
-        self.assertTrue('float64' in str(e.value))
-
-        with pytest.raises(AssertionError) as e:
-            sp.SO3(np.eye(3, dtype=int))
-        self.assertTrue('float64' in str(e.value))
-
-        with pytest.raises(ValueError) as e:
-            sp.SO3.exp(np.ones(3, dtype=int))
-        self.assertTrue('Buffer dtype mismatch' in str(e.value))
+    def test_type_incompatibility(self):
+        R1 = sp.SO3(np.eye(3, dtype=np.float32))
+        R2 = sp.SO3(np.eye(3, dtype=int))
+        self.assertTrue(R1, np.eye(3))
+        self.assertTrue(R2, np.eye(3))
 
     def test_size_fault(self):
-        with pytest.raises(AssertionError) as e:
-            sp.SO3(np.ones((3,2)))
-        self.assertTrue('expected size' in str(e.value))
+        with pytest.raises(TypeError) as e:
+            sp.SO3(np.eye(4))
+        self.assertTrue('incompatible constructor arguments' in str(e.value))
 
-        with pytest.raises(AssertionError) as e:
-            sp.SO3.hat(np.ones(1))
-        self.assertTrue('expected size' in str(e.value))
+        with pytest.raises(TypeError) as e:
+            sp.SO3(np.eye(3).flatten())
+        self.assertTrue('incompatible constructor arguments' in str(e.value))
 
-        with pytest.raises(AssertionError) as e:
-            sp.SO3.exp(np.ones(2))
-        self.assertTrue('expected size' in str(e.value))
+        with pytest.raises(TypeError) as e:
+            sp.SO3.exp(np.ones(((1, 3))))
+        self.assertTrue('incompatible function arguments' in str(e.value))
+
+    # TODO: find a way to test below.
+    # def test_R_is_not_orthogonal_fault(self):
+    #     with self.assertRaises(SystemExit) as e:
+    #         R = np.eye(3)
+    #         R[0, 1] = 1e-9
+    #         sp.SO3(R)
