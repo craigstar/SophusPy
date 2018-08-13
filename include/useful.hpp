@@ -14,7 +14,7 @@ namespace Sophus
 
 @return PointsXd new position of (M * N, 3) matrix
  */
-Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen::PointsXd &points, const bool bInv)
+Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen::PointsXd &points, const bool bInv=false)
 {
 	const int nPoints = points.rows();
 	const int nPoses = poses.rows();

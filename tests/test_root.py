@@ -16,31 +16,31 @@ class TestRoot(unittest.TestCase):
                              [ -0.9973639407428014, 0.06771608759556018, -0.02607107950853105,  798.7780129474496],
                              [                   0,                   0,                    0,                  1]])
 
-    def test_copy_so3_inplace(self):
-        R1, R2 = sp.SO3(), sp.SO3(self.Rnp)
-        id_old = id(R1)
-        sp.copyto(R1, R2)
-        id_new = id(R1)
-        self.assertTrue(np.allclose(R1.matrix(), R2.matrix()))
-        self.assertEqual(id_old, id_new)
+    # def test_copy_so3_inplace(self):
+    #     R1, R2 = sp.SO3(), sp.SO3(self.Rnp)
+    #     id_old = id(R1)
+    #     sp.copyto(R1, R2)
+    #     id_new = id(R1)
+    #     self.assertTrue(np.allclose(R1.matrix(), R2.matrix()))
+    #     self.assertEqual(id_old, id_new)
 
-    def test_copy_se3_inplace(self):
-        T1, T2 = sp.SE3(), sp.SE3(self.Tnp)
-        id_old = id(T1)
-        sp.copyto(T1, T2)
-        id_new = id(T1)
-        self.assertTrue(np.allclose(T1.matrix(), T2.matrix()))
-        self.assertEqual(id_old, id_new)
+    # def test_copy_se3_inplace(self):
+    #     T1, T2 = sp.SE3(), sp.SE3(self.Tnp)
+    #     id_old = id(T1)
+    #     sp.copyto(T1, T2)
+    #     id_new = id(T1)
+    #     self.assertTrue(np.allclose(T1.matrix(), T2.matrix()))
+    #     self.assertEqual(id_old, id_new)
 
-    def test_copy_inplace_failure(self):
-        R, T = sp.SO3(), sp.SE3()
-        with pytest.raises(TypeError) as e:
-            sp.copyto(R, T)
-        self.assertTrue('SO3-SO3 or SE3-SE3 pair' in str(e.value))
+    # def test_copy_inplace_failure(self):
+    #     R, T = sp.SO3(), sp.SE3()
+    #     with pytest.raises(TypeError) as e:
+    #         sp.copyto(R, T)
+    #     self.assertTrue('SO3-SO3 or SE3-SE3 pair' in str(e.value))
 
-        with pytest.raises(TypeError) as e:
-            sp.copyto(T, R)
-        self.assertTrue('SO3-SO3 or SE3-SE3 pair' in str(e.value))
+    #     with pytest.raises(TypeError) as e:
+    #         sp.copyto(T, R)
+    #     self.assertTrue('SO3-SO3 or SE3-SE3 pair' in str(e.value))
 
     def _prepare_points_and_poses(self):
         points = np.array([[1, -1, 1],
@@ -88,14 +88,14 @@ class TestRoot(unittest.TestCase):
         sp_new_points = sp.transform_points_by_poses(poses[0], points, True)
         self.assertTrue(np.allclose(sp_new_points, new_points))
 
-    def test_transform_points_by_poses_empty_poses_points_failure(self):
-        with pytest.raises(ValueError) as e:
-            poses, points, pose1, pose2 = self._prepare_points_and_poses()
-            sp_new_points = sp.transform_points_by_poses(np.zeros((0, 12)), points)
+    def test_transform_points_by_poses_empty_poses_points_success(self):
+        poses, points, pose1, pose2 = self._prepare_points_and_poses()
+        sp_new_points = sp.transform_points_by_poses(np.zeros((0, 12)), points)
+        self.assertEqual(sp_new_points.shape, (0, 3))
 
-        with pytest.raises(ValueError) as e:
-            poses, points, pose1, pose2 = self._prepare_points_and_poses()
-            sp_new_points = sp.transform_points_by_poses(poses, np.zeros((0, 3)))
+        poses, points, pose1, pose2 = self._prepare_points_and_poses()
+        sp_new_points = sp.transform_points_by_poses(poses, np.zeros((0, 3)))
+        self.assertEqual(sp_new_points.shape, (0, 3))
 
     def test_invert_poses_multi_success(self):
         poses, _, pose2_inv, pose1_inv = self._prepare_points_and_poses()
@@ -108,6 +108,6 @@ class TestRoot(unittest.TestCase):
         sp_new_pose = sp.invert_poses(poses[0])
         self.assertTrue(np.allclose(sp_new_pose, pose1_inv.ravel()))
 
-    def test_invert_poses_empty_poses_failure(self):
-        with pytest.raises(ValueError) as e:
-            sp_new_poses = sp.invert_poses(np.zeros((0, 12)))
+    def test_invert_poses_empty_poses_success(self):
+        sp_new_poses = sp.invert_poses(np.zeros((0, 12)))
+        self.assertEqual(sp_new_poses.shape, (0, 12))

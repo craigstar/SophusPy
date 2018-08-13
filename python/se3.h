@@ -1,6 +1,7 @@
 #include <pybind11/operators.h>
 #include <pybind11/pybind11.h>
 #include "se3.hpp"
+#include "so3.hpp"
 #include "se3_extension.hpp"
 #include "useful.hpp"
 
@@ -25,18 +26,24 @@ void declareSE3(py::module &m)
     
     // operators
     cls.def(py::self * py::self);
-    cls.def("__imul__", [](SE3d &self, SE3d const &other) { self *= other; });
     cls.def(py::self * Eigen::Vector3d());
     cls.def("__mul__", &se3MulPoints);
+    cls.def("__imul__", (SE3d & (SE3d::*)(const SE3d &)) &SE3d::operator*=);
 
     // public functions
     cls.def("matrix", &SE3d::matrix, "Returns a 4 * 4 np.ndarray");
-    // cls.def("log", &SO3d::log, "Lie algebra log");
-    // cls.def("inverse", &SO3d::inverse, "Inverse of a 3*3 othogonal matrix is the transpose of it");
-    cls.def("copy", [](const SE3d &self) { return SE3d(self); }, "Return a copy of SE3");
+    cls.def("matrix3x4", &SE3d::matrix3x4, "Returns a 3 * 4 np.ndarray");
+    cls.def("so3", (SO3d & (SE3d::*)()) & SE3d::so3, "Returns a SO3 rotation instance");
+    cls.def("log", &SE3d::log, "Lie algebra log");
+    cls.def("inverse", &SE3d::inverse, "Inverse of a 4 * 4 matrix");
+    cls.def("copy", [](SE3d const &self) { return SE3d(self); }, "Return a copy of SE3");
+    cls.def("translation", (Eigen::Vector3d & (SE3d::*)()) & SE3d::translation, "translation of SE3");
+    cls.def("rotationMatrix", (Eigen::Matrix3d & (SE3d::*)()) & SE3d::rotationMatrix, "rotation matrix of SE3");
+    cls.def("setRotationMatrix", &SE3d::setRotationMatrix, "Set rotation matrix of SE3");
+    cls.def("setTranslation", [](SE3d &self, Eigen::Vector3d const &t) { self.translation() = t; }, "Set translation vector of SE3");
 
     // // static methods
-    // cls.def("hat", &SO3d::hat, "Hat of SO3 is to calculate the skew matrix");
-    // cls.def("exp", &SO3d::exp, "Computes the exponential map of a 3x1 so3 element");
+    cls.def("hat", &SE3d::hat, "Hat of SE3");
+    cls.def("exp", &SE3d::exp, "Computes the exponential map of a 6x1 se3 element");
 }
 } // end namespace Sophus

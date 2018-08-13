@@ -54,16 +54,16 @@ class TestSE3(unittest.TestCase):
         pt = T * np.ones(3)
         self.assertTrue(np.allclose(pt, np.ones(3)))
 
-    # def test_mul_points(self):
-    #     T = sp.SE3()
-    #     pt = T * np.ones((4, 3))
-    #     self.assertTrue(np.allclose(pt, np.ones((4, 3))))
+    def test_mul_points(self):
+        T = sp.SE3()
+        pt = T * np.ones((4, 3))
+        self.assertTrue(np.allclose(pt, np.ones((4, 3))))
 
-    # def test_imul_SE3(self):
-    #     T1 = sp.SE3(self.Tnp)
-    #     T2 = sp.SE3()
-    #     T1 *= T2
-    #     self.assertTrue(np.allclose(T1.matrix(), self.Tnp))
+    def test_imul_SE3(self):
+        T1 = sp.SE3()
+        T2 = sp.SE3(self.Tnp)
+        T1 *= T2
+        self.assertTrue(np.allclose(T1.matrix(), self.Tnp))
 
     def test_copy_method(self):
         T1 = sp.SE3(self.Tnp)
@@ -77,94 +77,81 @@ class TestSE3(unittest.TestCase):
         self.assertTrue(np.allclose(T.matrix(), T1.matrix()))
         self.assertTrue(np.allclose(T.matrix(), T2.matrix()))
 
-    # def test_so3(self):
-    #     T = sp.SE3(self.Tnp)
-    #     self.assertTrue(np.allclose(T.so3().matrix(), self.Rnp))
+    def test_so3(self):
+        T = sp.SE3(self.Tnp)
+        self.assertTrue(np.allclose(T.so3().matrix(), self.Rnp))
 
-    # def test_inverse(self):
-    #     T = sp.SE3(self.Tnp)
-    #     T_inv = T.inverse()
+    def test_inverse(self):
+        T = sp.SE3(self.Tnp)
+        T_inv = T.inverse()
 
-    #     Tnp_inv = np.eye(4)
-    #     Rnp_inv = self.Tnp[:3, :3].T
-    #     tnp = self.Tnp[:3, 3]
+        Tnp_inv = np.eye(4)
+        Rnp_inv = self.Tnp[:3, :3].T
+        tnp = self.Tnp[:3, 3]
 
-    #     Tnp_inv[:3, :3] = Rnp_inv
-    #     Tnp_inv[:3, 3] = -Rnp_inv.dot(tnp)
+        Tnp_inv[:3, :3] = Rnp_inv
+        Tnp_inv[:3, 3] = -Rnp_inv.dot(tnp)
 
-    #     self.assertTrue(np.allclose(T_inv.matrix(), Tnp_inv))
+        self.assertTrue(np.allclose(T_inv.matrix(), Tnp_inv))
 
-    # def test_translation(self):
-    #     T = sp.SE3(self.Tnp)
-    #     self.assertTrue(np.allclose(T.translation(), self.Tnp[:3, 3]))
+    def test_translation(self):
+        T = sp.SE3(self.Tnp)
+        self.assertTrue(np.allclose(T.translation(), self.Tnp[:3, 3]))
 
-    # def test_rotationMatrix(self):
-    #     T = sp.SE3(self.Tnp)
-    #     self.assertTrue(np.allclose(T.rotationMatrix(), self.Tnp[:3, :3]))
+    def test_rotationMatrix(self):
+        T = sp.SE3(self.Tnp)
+        self.assertTrue(np.allclose(T.rotationMatrix(), self.Tnp[:3, :3]))
 
-    # def test_matrix3x4(self):
-    #     T = sp.SE3(self.Tnp)
-    #     self.assertTrue(np.allclose(T.matrix3x4(), self.Tnp[:3]))
+    def test_matrix3x4(self):
+        T = sp.SE3(self.Tnp)
+        self.assertTrue(np.allclose(T.matrix3x4(), self.Tnp[:3]))
 
-    # def test_setRotationMatrix(self):
-    #     T = sp.SE3()
-    #     T.setRotationMatrix(self.Rnp)
-    #     self.Tnp[:3, 3] = np.zeros(3)
-    #     self.assertTrue(np.allclose(T.matrix(), self.Tnp))
+    def test_setRotationMatrix(self):
+        T = sp.SE3()
+        T.setRotationMatrix(self.Rnp)
+        self.Tnp[:3, 3] = np.zeros(3)
+        self.assertTrue(np.allclose(T.matrix(), self.Tnp))
 
-    # def test_setTranslation(self):
-    #     T = sp.SE3()
-    #     T.setTranslation(np.ones(3))
-    #     Tprime = np.eye(4)
-    #     Tprime[:3, 3] = np.ones(3)
-    #     self.assertTrue(np.allclose(T.matrix(), Tprime))
+    def test_setTranslation(self):
+        T = sp.SE3()
+        T.setTranslation(np.ones(3))
+        Tprime = np.eye(4)
+        Tprime[:3, 3] = np.ones(3)
+        self.assertTrue(np.allclose(T.matrix(), Tprime))
 
-    # def test_exp(self):
-    #     T = sp.SE3(self.Tnp)
-    #     Tprime = sp.SE3.exp(T.log())
-    #     self.assertTrue(np.allclose(T.matrix(), Tprime.matrix()))
+    def test_static_hat(self):
+        v = np.ones(6)
+        hat = np.array([[ 0, -1,  1, 1],
+                        [ 1,  0, -1, 1],
+                        [-1,  1,  0, 1],
+                        [ 0,  0,  0, 0]], dtype=np.float64)
+        self.assertTrue(np.allclose(sp.SE3.hat(v), hat))
 
-    # def test_constructor_type_fault(self):
-    #     with pytest.raises(AssertionError) as e:
-    #         sp.SE3(np.eye(4, dtype=np.float32))
-    #     self.assertTrue('float64' in str(e.value))
+    def test_exp(self):
+        T = sp.SE3(self.Tnp)
+        T_prime = sp.SE3.exp(T.log())
+        self.assertTrue(np.allclose(T.matrix(), T_prime.matrix()))
 
-    #     with pytest.raises(AssertionError) as e:
-    #         sp.SE3(np.eye(4, dtype=int))
-    #     self.assertTrue('float64' in str(e.value))
+    def test_data_type_compatibility(self):
+        T1 = sp.SE3(np.eye(4, dtype=np.float32))
+        T2 = sp.SE3(np.eye(4, dtype=int))
+        self.assertTrue(T1, np.eye(4))
+        self.assertTrue(T2, np.eye(4))
 
-    #     with pytest.raises(AssertionError) as e:
-    #         sp.SE3(np.eye(3, dtype=np.float32), np.ones(3))
-    #     self.assertTrue('float64' in str(e.value))
+    def test_data_size_compatibility(self):
+        T1 = sp.SE3.hat(np.ones(6))
+        T2 = sp.SE3.hat(np.ones((6, 1)))
+        self.assertTrue(np.allclose(T1, T2))
 
-    #     with pytest.raises(ValueError) as e:
-    #         sp.SE3(np.eye(3), np.ones(3, dtype=np.float32))
-    #     self.assertTrue('Buffer dtype mismatch' in str(e.value))
+    def test_size_fault(self):
+        with pytest.raises(TypeError) as e:
+            sp.SE3(np.eye(3))
+        self.assertTrue('incompatible constructor arguments' in str(e.value))
 
-    # def test_constructor_size_fault(self):
-    #     with pytest.raises(AssertionError) as e:
-    #         sp.SE3(np.eye(3), np.ones(2))
-    #     self.assertTrue('expected size' in str(e.value))
+        with pytest.raises(TypeError) as e:
+            sp.SO3(np.eye(4).flatten())
+        self.assertTrue('incompatible constructor arguments' in str(e.value))
 
-    #     with pytest.raises(AssertionError) as e:
-    #         sp.SE3(np.ones((3,4)))
-    #     self.assertTrue('expected size' in str(e.value))
-
-    # def test_set_type_fault(self):
-    #     T = sp.SE3()
-    #     with pytest.raises(ValueError) as e:
-    #         T.setRotationMatrix(np.eye(3, dtype=np.float32))
-    #     self.assertTrue('Buffer dtype mismatch' in str(e.value))
-
-    #     with pytest.raises(ValueError) as e:
-    #         T.setTranslation(np.ones(3, dtype=np.float32))
-    #     self.assertTrue('Buffer dtype mismatch' in str(e.value))
-
-    #     with pytest.raises(ValueError) as e:
-    #         sp.SE3.exp(np.zeros(6, dtype=np.float32))
-    #     self.assertTrue('Buffer dtype mismatch' in str(e.value))
-
-    # def test_set_size_fault(self):
-    #     with pytest.raises(AssertionError) as e:
-    #         sp.SE3().setRotationMatrix(np.eye(4))
-    #     self.assertTrue('expected size' in str(e.value))
+        with pytest.raises(TypeError) as e:
+            sp.SE3.hat(np.ones(((1, 6))))
+        self.assertTrue('incompatible function arguments' in str(e.value))

@@ -69,11 +69,16 @@ class TestSO3(unittest.TestCase):
         R_prime = sp.SO3.exp(R.log())
         self.assertTrue(np.allclose(R.matrix(), R_prime.matrix()))
         
-    def test_type_incompatibility(self):
+    def test_data_type_compatibility(self):
         R1 = sp.SO3(np.eye(3, dtype=np.float32))
         R2 = sp.SO3(np.eye(3, dtype=int))
         self.assertTrue(R1, np.eye(3))
         self.assertTrue(R2, np.eye(3))
+
+    def test_data_size_compatibility(self):
+        R1 = sp.SE3.hat(np.ones(3))
+        R2 = sp.SE3.hat(np.ones((3, 1)))
+        self.assertTrue(np.allclose(R1, R2))
 
     def test_size_fault(self):
         with pytest.raises(TypeError) as e:
