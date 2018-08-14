@@ -107,6 +107,7 @@ class TestRoot(unittest.TestCase):
         poses, _, pose2_inv, pose1_inv = self._prepare_points_and_poses()   
         sp_new_pose = sp.invert_poses(poses[0])
         self.assertTrue(np.allclose(sp_new_pose, pose1_inv.ravel()))
+        self.assertEqual(sp_new_pose.shape, (12,))
 
     def test_invert_poses_empty_poses_success(self):
         sp_new_poses = sp.invert_poses(np.zeros((0, 12)))

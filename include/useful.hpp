@@ -80,6 +80,17 @@ Eigen::PosesXd invertPoses(const Eigen::PosesXd &poses)
 	}
 	return newPoses;
 }
+
+/** @brief Inverse a single of pose
+
+@param poses Vector12d, is a 3 * 4 transform. Row order
+
+@return Vector12d new inverted pose
+ */
+Eigen::Vector12d invertSinglePose(const Eigen::Vector12d &pose)
+{
+	return invertPoses(pose);
+}
 } // namespace Sophus
 
 #endif

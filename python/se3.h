@@ -38,11 +38,12 @@ void declareSE3(py::module &m)
     cls.def("inverse", &SE3d::inverse, "Inverse of a 4 * 4 matrix");
     cls.def("copy", [](SE3d const &self) { return SE3d(self); }, "Return a copy of SE3");
     cls.def("translation", (Eigen::Vector3d & (SE3d::*)()) & SE3d::translation, "translation of SE3");
-    cls.def("rotationMatrix", (Eigen::Matrix3d & (SE3d::*)()) & SE3d::rotationMatrix, "rotation matrix of SE3");
+    // cls.def("rotationMatrix", (Eigen::Matrix3d const &(SE3d::*)()) & SE3d::rotationMatrix, "rotation matrix of SE3");
+    cls.def("rotationMatrix", &SE3d::rotationMatrix, "rotation matrix of SE3");
     cls.def("setRotationMatrix", &SE3d::setRotationMatrix, "Set rotation matrix of SE3");
     cls.def("setTranslation", [](SE3d &self, Eigen::Vector3d const &t) { self.translation() = t; }, "Set translation vector of SE3");
 
-    // // static methods
+    // static methods
     cls.def("hat", &SE3d::hat, "Hat of SE3");
     cls.def("exp", &SE3d::exp, "Computes the exponential map of a 6x1 se3 element");
 }

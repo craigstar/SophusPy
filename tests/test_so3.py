@@ -76,8 +76,8 @@ class TestSO3(unittest.TestCase):
         self.assertTrue(R2, np.eye(3))
 
     def test_data_size_compatibility(self):
-        R1 = sp.SE3.hat(np.ones(3))
-        R2 = sp.SE3.hat(np.ones((3, 1)))
+        R1 = sp.SO3.hat(np.ones(3))
+        R2 = sp.SO3.hat(np.ones((3, 1)))
         self.assertTrue(np.allclose(R1, R2))
 
     def test_size_fault(self):
