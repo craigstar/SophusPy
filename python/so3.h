@@ -1,5 +1,5 @@
 #include "so3.hpp"
-#include "useful.hpp"
+#include "rootex.hpp"
 
 namespace py = pybind11;
 

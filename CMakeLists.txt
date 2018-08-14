@@ -9,7 +9,8 @@ find_package(eigen3 REQUIRED)
 
 include_directories(
     ${EIGEN3_INCLUDE_DIR}
-    ${PROJECT_SOURCE_DIR}/include
+    ${PROJECT_SOURCE_DIR}/include/original
+    ${PROJECT_SOURCE_DIR}/include/extension
 )
 
 pybind11_add_module(sophus sophuspy.cpp)

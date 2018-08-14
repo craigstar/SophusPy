@@ -2,8 +2,8 @@
 #include <pybind11/pybind11.h>
 #include "se3.hpp"
 #include "so3.hpp"
-#include "se3_extension.hpp"
-#include "useful.hpp"
+#include "se3ex.hpp"
+#include "rootex.hpp"
 
 namespace py = pybind11;
 
@@ -40,8 +40,8 @@ void declareSE3(py::module &m)
     cls.def("translation", (Eigen::Vector3d & (SE3d::*)()) & SE3d::translation, "translation of SE3");
     // cls.def("rotationMatrix", (Eigen::Matrix3d const &(SE3d::*)()) & SE3d::rotationMatrix, "rotation matrix of SE3");
     cls.def("rotationMatrix", &SE3d::rotationMatrix, "rotation matrix of SE3");
-    cls.def("setRotationMatrix", &SE3d::setRotationMatrix, "Set rotation matrix of SE3");
-    cls.def("setTranslation", [](SE3d &self, Eigen::Vector3d const &t) { self.translation() = t; }, "Set translation vector of SE3");
+    cls.def("setRotationMatrix", &SE3d::setRotationMatrix, "Set rotation matrix of SE3", py::arg("R"));
+    cls.def("setTranslation", [](SE3d &self, Eigen::Vector3d const &t) { self.translation() = t; }, "Set translation vector of SE3", py::arg("t"));
 
     // static methods
     cls.def("hat", &SE3d::hat, "Hat of SE3");

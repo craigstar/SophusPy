@@ -1,7 +1,9 @@
 #ifndef SOPHUS_USEFUL_HPP
 #define SOPHUS_USEFUL_HPP
 
-#include "eigen.hpp"
+#include "so3.hpp"
+#include "se3.hpp"
+#include "eigenex.hpp"
 
 namespace Sophus
 {
@@ -87,10 +89,26 @@ Eigen::PosesXd invertPoses(const Eigen::PosesXd &poses)
 
 @return Vector12d new inverted pose
  */
-Eigen::Vector12d invertSinglePose(const Eigen::Vector12d &pose)
-{
-	return invertPoses(pose);
-}
+Eigen::Vector12d invertSinglePose(const Eigen::Vector12d &pose) { return invertPoses(pose); }
+
+/** @brief Copy one SO3d to another
+
+@param dst SO3d
+	   src SO3d
+
+@return void
+ */
+void copytoSO3(SO3d &dst, const SO3d &src) { dst = src; }
+
+/** @brief Copy one SE3d to another
+
+@param dst SE3d
+	   src SE3d
+
+@return void
+ */
+void copytoSE3(SE3d &dst, const SE3d &src) { dst = src; }
+
 } // namespace Sophus
 
 #endif

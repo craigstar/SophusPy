@@ -1,4 +1,4 @@
-#include "useful.hpp"
+#include "rootex.hpp"
 
 namespace py = pybind11;
 
@@ -12,5 +12,7 @@ void declareRoot(py::module &m)
           &transformPointsByPoses,
           "Transform 3d points to new position by sequence of poses. New points are stacked points of poses order.",
           py::arg("poses"), py::arg("points"), py::arg("need_inverse") = false);
+    m.def("copyto", &copytoSO3, py::arg("dst"), py::arg("src"));
+    m.def("copyto", &copytoSE3, py::arg("dst"), py::arg("src"));
 }
 } // end namespace Sophus

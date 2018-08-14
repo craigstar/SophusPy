@@ -1,7 +1,7 @@
 #ifndef SOPHUS_SE3_EXTENSION_HPP
 #define SOPHUS_SE3_EXTENSION_HPP
 
-#include "eigen.hpp"
+#include "eigenex.hpp"
 
 namespace Sophus
 {
