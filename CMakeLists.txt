@@ -5,7 +5,7 @@ set(PYBIND11_CPP_STANDARD -std=c++11)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
 find_package(pybind11 REQUIRED)
-find_package(eigen3 REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 include_directories(
     ${EIGEN3_INCLUDE_DIR}
