@@ -109,6 +109,17 @@ void copytoSO3(SO3d &dst, const SO3d &src) { dst = src; }
  */
 void copytoSE3(SE3d &dst, const SE3d &src) { dst = src; }
 
+/** @brief convert matrix to orthogonal
+
+@param R Eigen::Matrix3d
+
+@return Eigen::Matrix3d
+ */
+Eigen::Matrix3d toOrthogonal(const Eigen::Matrix3d &R)
+{	
+	Eigen::Quaterniond q(R);
+	return q.toRotationMatrix();
+}
 } // namespace Sophus
 
 #endif

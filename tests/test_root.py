@@ -112,3 +112,12 @@ class TestRoot(unittest.TestCase):
     def test_invert_poses_empty_poses_success(self):
         sp_new_poses = sp.invert_poses(np.zeros((0, 12)))
         self.assertEqual(sp_new_poses.shape, (0, 12))
+
+    def test_to_orthogonal_success(self):
+        R = np.eye(3)
+        R[0, 1] = 1e-3
+        R = sp.to_orthogonal(R)
+        ans = np.array([[ 9.99999875e-01,  5.00000000e-04,  0.00000000e+00],
+                        [-5.00000000e-04,  9.99999875e-01, -0.00000000e+00],
+                        [-0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
+        self.assertTrue(np.allclose(R, ans))
