@@ -118,7 +118,7 @@ void copytoSE3(SE3d &dst, const SE3d &src) { dst = src; }
 Eigen::Matrix3d toOrthogonal(const Eigen::Matrix3d &R)
 {	
 	Eigen::Quaterniond q(R);
-	return q.toRotationMatrix();
+	return q.normalized().toRotationMatrix();
 }
 } // namespace Sophus
 
