@@ -149,7 +149,7 @@ class TestSE3(unittest.TestCase):
         self.assertTrue('incompatible constructor arguments' in str(e.value))
 
         with pytest.raises(TypeError) as e:
-            sp.SO3(np.eye(4).flatten())
+            sp.SE3(np.eye(4).flatten())
         self.assertTrue('incompatible constructor arguments' in str(e.value))
 
         with pytest.raises(TypeError) as e:

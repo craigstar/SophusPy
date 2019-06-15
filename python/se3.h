@@ -3,7 +3,6 @@
 #include "se3.hpp"
 #include "so3.hpp"
 #include "se3ex.hpp"
-#include "rootex.hpp"
 
 namespace py = pybind11;
 
@@ -44,7 +43,7 @@ void declareSE3(py::module &m)
     cls.def("setTranslation", [](SE3d &self, Eigen::Vector3d const &t) { self.translation() = t; }, "Set translation vector of SE3", py::arg("t"));
 
     // static methods
-    cls.def("hat", &SE3d::hat, "Hat of SE3");
-    cls.def("exp", &SE3d::exp, "Computes the exponential map of a 6x1 se3 element");
+    cls.def_static("hat", &SE3d::hat, "Hat of SE3");
+    cls.def_static("exp", &SE3d::exp, "Computes the exponential map of a 6x1 se3 element");
 }
 } // end namespace Sophus

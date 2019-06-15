@@ -43,6 +43,28 @@ class TestSO3(unittest.TestCase):
         self.assertTrue(np.allclose(R1.log(), np.zeros(3)))
         self.assertTrue(np.allclose(R2.log(), np.array([0.06646925, 1.59563459, 0.04069513])))
 
+    def test_mul_SO3(self):
+        R1 = sp.SO3(self.Rnp)
+        R2 = sp.SO3()
+        R12 = R1 * R2
+        self.assertTrue(np.allclose(R12.matrix(), self.Rnp))
+
+    def test_mul_point(self):
+        R = sp.SO3()
+        pt = R * np.ones(3)
+        self.assertTrue(np.allclose(pt, np.ones(3)))
+
+    def test_mul_points(self):
+        R = sp.SO3()
+        pts = R * np.ones((4, 3))
+        self.assertTrue(np.allclose(pts, np.ones((4, 3))))
+
+    def test_imul_SO3(self):
+        R1 = sp.SO3()
+        R2 = sp.SO3(self.Rnp)
+        R1 *= R2
+        self.assertTrue(np.allclose(R1.matrix(), self.Rnp))
+
     def test_copy_method(self):
         R = sp.SO3(self.Rnp)
         R_copied = R.copy()

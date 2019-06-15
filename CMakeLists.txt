@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 project(sophus)
- 
+
+set(CMAKE_BUILD_TYPE Release)
 set(PYBIND11_CPP_STANDARD -std=c++11)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR})
 
