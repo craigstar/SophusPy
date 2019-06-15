@@ -2,16 +2,25 @@
 A python binding using pybind11 for Sophus which is a C++ Lie library.
 
 ## installation:
+```bash
 cd SophusPy && mkdir build
 cd build
 cmake .. && make
+```
 
 after sophus\*.so generated, you can copy it to your python site-packages, or add this path to your python path, shown below
 <br/>
+```bash
 export PYTHONPATH="$PYTHONPATH:/Path/to/your/SophusPy"
+```
+
+## test:
+```py
+pytest tests/
+```
 
 ## Examples
-```
+```py
 import sophus as sp
 
 # 1. create SO3 and SE3
