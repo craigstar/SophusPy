@@ -52,7 +52,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="sophus",
-    version="0.0.4",
+    version="0.0.5",
     author="Craigstar",
     author_email="work.craigzhang@gmail.com",
     keywords="Lie Group",
