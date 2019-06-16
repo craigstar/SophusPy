@@ -51,8 +51,8 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="sophuspy",
-    version="0.0.7",
+    name="sophus",
+    version="0.0.4",
     author="Craigstar",
     author_email="work.craigzhang@gmail.com",
     keywords="Lie Group",
@@ -66,7 +66,6 @@ setup(
     include_package_data=True,
     platforms=["all"],
     classifiers=[
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
     ],

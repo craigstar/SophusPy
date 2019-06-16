@@ -3,7 +3,7 @@ A python binding using pybind11 for Sophus which is a C++ Lie library.
 
 ## installation:
 ```bash
-pip install sophuspy
+pip install sophus
 ```
 
 ## Examples

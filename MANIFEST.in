@@ -1,3 +1,5 @@
 include CMakeLists.txt
+global-exclude *.pyc
+global-exclude .DS_Store
 recursive-include eigen3 *
 recursive-include sophus *
