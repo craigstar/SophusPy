@@ -48,8 +48,8 @@ SE3([[1, 0, 0, 1],
 ```py
 R = sp.SO3()
 R1 = sp.SO3([[0, 1, 0],
-        	 [0, 0, 1],
-        	 [1, 0, 0]])
+             [0, 0, 1],
+             [1, 0, 0]])
 R * R1
 '''
 SO3([[0, 1, 0],
@@ -68,34 +68,34 @@ SE3([[0, 1, 0, 1],
      [1, 0, 0, 1],
      [0, 0, 0, 1]])
 '''
-T1 *= T 	# T1 = T1 * T
+T1 *= T     # T1 = T1 * T
 ```
 
 ### 3. rotate and translate points
 ```py
 R = sp.SO3([[0, 1, 0],
-        	[0, 0, 1],
-        	[1, 0, 0]])
+            [0, 0, 1],
+            [1, 0, 0]])
 T = sp.SE3(R.matrix(), np.ones(3))
 
 pt = np.array([1, 2, 3])
 pts = np.array([[1, 2, 3],
-				[4, 5, 6]])
+                [4, 5, 6]])
 
-R * pt 	# array([2., 3., 1.])
+R * pt  # array([2., 3., 1.])
 R * pts # array([[2., 3., 1.],
-       	# 		 [5., 6., 4.]])
+        #        [5., 6., 4.]])
 
-T * pt 	# array([3., 4., 2.])
+T * pt  # array([3., 4., 2.])
 T * pts # array([[3., 4., 2.],
-        # 		 [6., 7., 5.]])
+        #        [6., 7., 5.]])
 ```
 
 ### 4. interfaces
 ```py
 R = sp.SO3([[0, 1, 0],
-        	[0, 0, 1],
-        	[1, 0, 0]])
+            [0, 0, 1],
+            [1, 0, 0]])
 T = sp.SE3(R.matrix(), np.ones(3))
 
 R.matrix()
@@ -153,8 +153,8 @@ array([[0., 1., 0.],
        [0., 0., 1.],
        [1., 0., 0.]])
 '''
-T.setRotationMatrix(np.eye(3)) 	# set SO3 matrix
-T.setTranslation(np.zeros(3))	# set translation
+T.setRotationMatrix(np.eye(3))  # set SO3 matrix
+T.setTranslation(np.zeros(3))   # set translation
 ```
 
 ### 5. static methods
@@ -200,27 +200,27 @@ Eigen::Quaterniond q(R);
 q.normalized().toRotationMatrix();
 '''
 R_matrix = np.array([[1.   , 0.001, 0.   ],
-       				 [0.   , 1.   , 0.   ],
-       				 [0.   , 0.   , 1.   ]])
+                     [0.   , 1.   , 0.   ],
+                     [0.   , 0.   , 1.   ]])
 sp.to_orthogonal(R_matrix)
 '''
 array([[ 9.99999875e-01,  4.99999969e-04,  0.00000000e+00],
        [-4.99999969e-04,  9.99999875e-01, -0.00000000e+00],
        [-0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
 '''
-pose = T.matrix3x4().ravel() 	# array([1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.])
-sp.invert_poses(pose) 			# array([1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.]) identity matrix returns the same
+pose = T.matrix3x4().ravel()    # array([1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.])
+sp.invert_poses(pose)           # array([1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.]) identity matrix returns the same
 
 poses = np.array([[1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.],
-				  [0., 1., 0., 1., 0., 0., 1., 1., 1., 0., 0., 1.]])
+                  [0., 1., 0., 1., 0., 0., 1., 1., 1., 0., 0., 1.]])
 sp.invert_poses(poses)
 '''
 array([[ 1.,  0.,  0., -0.,  0.,  1.,  0., -0.,  0.,  0.,  1., -0.],
        [ 0.,  0.,  1., -1.,  1.,  0.,  0., -1.,  0.,  1.,  0., -1.]])
 '''
 points = np.array([[1., 2., 3.],
-       			   [4., 5., 6.],
-       			   [7., 8., 9.]])
+                   [4., 5., 6.],
+                   [7., 8., 9.]])
 sp.transform_points_by_poses(poses, points)
 '''
 array([[ 1.,  2.,  3.],
