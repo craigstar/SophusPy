@@ -1,0 +1,3 @@
+include CMakeLists.txt
+recursive-include eigen3 *
+recursive-include sophus *
