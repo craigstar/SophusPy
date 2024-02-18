@@ -13,7 +13,7 @@ pip install sophuspy
 ### 1. create SO3 and SE3
 ```py
 import numpy as np
-import sophus as sp
+import sophuspy as sp
 
 # 1. default constructor of SO3
 sp.SO3()

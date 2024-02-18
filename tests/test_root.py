@@ -2,7 +2,7 @@ import numpy as np
 import unittest
 import pytest
 
-import sophus as sp
+import sophuspy as sp
 
 
 class TestRoot(unittest.TestCase):

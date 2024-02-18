@@ -3,7 +3,7 @@ import unittest
 import pytest
 import copy
 
-import sophus as sp
+import sophuspy as sp
 
 class TestSO3(unittest.TestCase):
     def setUp(self):
@@ -26,9 +26,7 @@ class TestSO3(unittest.TestCase):
 
     def test_str_representation(self):
         R = sp.SO3()
-        answer = ('1 0 0\n'
-                  '0 1 0\n'
-                  '0 0 1')
+        answer = 'SO3([[1, 0, 0],\n     [0, 1, 0],\n     [0, 0, 1]])'
         self.assertEqual(str(R), answer)
 
     def test_inverse(self):

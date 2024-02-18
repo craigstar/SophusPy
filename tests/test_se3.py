@@ -3,7 +3,7 @@ import unittest
 import pytest
 import copy
 
-import sophus as sp
+import sophuspy as sp
 
 
 class TestSE3(unittest.TestCase):
@@ -37,10 +37,7 @@ class TestSE3(unittest.TestCase):
 
     def test_str(self):
         T = sp.SE3()
-        answer = ('1 0 0 0\n'
-                  '0 1 0 0\n'
-                  '0 0 1 0\n'
-                  '0 0 0 1')
+        answer = 'SE3([[1, 0, 0, 0],\n     [0, 1, 0, 0],\n     [0, 0, 1, 0],\n     [0, 0, 0, 1]])'
         self.assertEqual(str(T), answer)
 
     def test_mul_SE3(self):

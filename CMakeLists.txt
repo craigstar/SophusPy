@@ -12,9 +12,9 @@ find_package(pybind11 REQUIRED)
 message("-- cmake python version: ${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}.${PYTHON_VERSION_PATCH}")
 include_directories(
     ${PROJECT_SOURCE_DIR}/eigen3/
-    ${PROJECT_SOURCE_DIR}/sophus/
-    ${PROJECT_SOURCE_DIR}/sophus/include/original
-    ${PROJECT_SOURCE_DIR}/sophus/include/extension
+    ${PROJECT_SOURCE_DIR}/sophuspy/
+    ${PROJECT_SOURCE_DIR}/sophuspy/include/original
+    ${PROJECT_SOURCE_DIR}/sophuspy/include/extension
 )
 
-pybind11_add_module(sophuspy sophus/sophuspy.cpp)
+pybind11_add_module(sophuspy sophuspy/sophuspy.cpp)

@@ -61,15 +61,15 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/craigstar/SophusPy",
-    packages=['sophus'],
-    install_requires=['numpy', 'pybind11'],
+    packages=['sophuspy'],
+    install_requires=['numpy'],
     include_package_data=True,
     platforms=["all"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
     ],
-    ext_modules=[CMakeExtension('sophus/sophuspy')],
+    ext_modules=[CMakeExtension('sophuspy/sophuspy')],
     cmdclass={
         'build_ext': build_ext,
     }

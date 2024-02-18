@@ -107,7 +107,7 @@ venv.bak/
 
 # build
 **/build/
-**/sophus.cpp
+**/sophuspy.cpp
 
 # pycharm cache
 **/.idea/
