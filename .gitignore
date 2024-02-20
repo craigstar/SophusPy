@@ -104,10 +104,10 @@ venv.bak/
 .mypy_cache/
 
 
+.DS_Store
 
 # build
 **/build/
-**/sophuspy.cpp
 
 # pycharm cache
 **/.idea/
