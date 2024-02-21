@@ -1,62 +1,33 @@
-import os
-import sys
-import pathlib
-
-from setuptools import setup, Extension
-from setuptools.command.build_ext import build_ext as build_ext_orig
+from setuptools import setup
+from pybind11.setup_helpers import Pybind11Extension, build_ext
 
 __author__ = 'Craigstar'
-__date__ = '2019/06/15'
+__date__ = '2024/02/21'
+__version__ = "0.1.0"
 
 
-class CMakeExtension(Extension):
-    def __init__(self, name):
-        # don't invoke the original build_ext for this special extension
-        super().__init__(name, sources=[])
-
-
-class build_ext(build_ext_orig):
-    def run(self):
-        cwd = pathlib.Path().absolute()
-        os.system("pip install pybind11")
-        print("Done installed pybind11")
-
-        for ext in self.extensions:
-            self.build_cmake(ext)
-        super().run()
-
-    def build_cmake(self, ext):
-        cwd = pathlib.Path().absolute()
-
-        build_temp = pathlib.Path(self.build_temp)
-        build_temp.mkdir(parents=True, exist_ok=True)
-        extdir = pathlib.Path(self.get_ext_fullpath(ext.name))
-
-        # example of cmake args
-        cmake_args = [
-            '-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + str(extdir.parent.absolute()),
-            '-DPYTHON_EXECUTABLE=' + sys.executable # make sure cmake uses the same python version
-        ]
-
-        # example of build args
-        build_args = [
-            '--config', 'Release',
-            '--', '-j4'
-        ]
-
-        os.chdir(str(build_temp))
-        self.spawn(['cmake', str(cwd)] + cmake_args)
-        if not self.dry_run:
-            self.spawn(['cmake', '--build', '.'] + build_args)
-        os.chdir(str(cwd))
-
+ext_modules = [
+    Pybind11Extension(
+        "sophuspy",
+        ["sophuspy/sophuspy.cpp"],
+        include_dirs=[
+            "eigen3",
+            "sophuspy",
+            "sophuspy/include/original",
+            "sophuspy/include/extension",
+        ],
+        language='c++',
+        # Example: passing in the version to the compiled code
+        define_macros=[("VERSION_INFO", __version__)],
+    ),
+]
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name="sophuspy",
-    version="0.1.0",
+    version=__version__,
     author="Craigstar",
     author_email="work.craigzhang@gmail.com",
     keywords="Lie Group",
@@ -73,7 +44,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Operating System :: OS Independent",
     ],
-    ext_modules=[CMakeExtension('sophuspy/sophuspy')],
+    ext_modules=ext_modules,
     cmdclass={
         'build_ext': build_ext,
     }
