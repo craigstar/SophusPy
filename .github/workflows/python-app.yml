@@ -35,9 +35,10 @@ jobs:
         sudo apt-get install patchelf
         python -m pip install --upgrade pip
         pip install setuptools wheel twine auditwheel
-        ./build_pybind11.sh
     - name: Install cibuildwheel
       run: python -m pip install cibuildwheel==2.16.5
 
     - name: Build wheels
       run: python -m cibuildwheel --output-dir wheelhouse
+      env:
+        CIBW_BEFORE_ALL: ./build_pybind11.sh
