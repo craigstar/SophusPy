@@ -10,14 +10,12 @@ permissions:
   contents: read
 
 jobs:
-  build:
-
-    name: Build wheels on ${{ matrix.os }}  
-    runs-on: ${{ matrix.os }}  
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
     strategy:
-      matrix:  
-        os: [ubuntu-latest]  
-        python-version: [3.8]
+      matrix:
+        os: [ubuntu-latest]
 
     steps:
     - name: Setup cmake
