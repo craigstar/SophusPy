@@ -18,7 +18,8 @@ class CMakeExtension(Extension):
 class build_ext(build_ext_orig):
     def run(self):
         cwd = pathlib.Path().absolute()
-        os.system("/bin/bash -c {}/build_pybind11.sh".format(cwd))
+        os.system("pip install pybind11")
+        print("Done installed pybind11")
 
         for ext in self.extensions:
             self.build_cmake(ext)
