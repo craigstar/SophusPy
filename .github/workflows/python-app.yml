@@ -41,4 +41,4 @@ jobs:
     - name: Build wheels
       run: python -m cibuildwheel --output-dir wheelhouse
       env:
-        CIBW_BEFORE_ALL: ./build_pybind11.sh
+        CIBW_BEFORE_ALL: bash /project/build_pybind11.sh
