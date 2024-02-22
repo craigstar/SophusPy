@@ -1,10 +1,7 @@
 # SophusPy
-A python binding using pybind11 for Sophus which is a C++ Lie library.(SO3 && SE3)
+A python binding using pybind11 for Sophus, which is a C++ Lie library.(SO3 && SE3)
 
-## Requirements:
-1. Pybind11 https://github.com/pybind/pybind11 (Do not use pip to install, download the project and use camke to install manually)
-
-## installation:
+## Installation:
 ```bash
 pip install sophuspy
 ```
