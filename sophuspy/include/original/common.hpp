@@ -1,6 +1,8 @@
 #ifndef SOPHUS_COMMON_HPP
 #define SOPHUS_COMMON_HPP
 
+// The line below is important to windows system ref: https://stackoverflow.com/questions/26065359/m-pi-flagged-as-undeclared-identifier
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include <cstdio>
 #include <cstdlib>
