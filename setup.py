@@ -2,7 +2,7 @@ from setuptools import setup
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 
 __author__ = 'Craigstar'
-__date__ = '2024/02/21'
+__date__ = '2024/02/22'
 __version__ = "1.0.0"
 
 
