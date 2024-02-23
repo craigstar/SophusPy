@@ -4,6 +4,8 @@
 #include "so3.hpp"
 #include "se3.hpp"
 #include "eigenex.hpp"
+#include <Eigen/Geometry>
+
 
 namespace Sophus
 {
@@ -14,13 +16,13 @@ namespace Sophus
        points (M, 3) 3d points
        bInv flag of inverting pose or not
 
-@return PointsXd new position of (M * N, 3) matrix
+@return MatrixX3d new position of (M * N, 3) matrix
  */
-Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen::PointsXd &points, const bool bInv=false)
+Eigen::MatrixX3d transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen::MatrixX3d &points, const bool bInv=false)
 {
 	const int nPoints = points.rows();
 	const int nPoses = poses.rows();
-	Eigen::PointsXd newPoints(nPoints * nPoses, 3);
+	Eigen::MatrixX3d newPoints(nPoints * nPoses, 3);
 
 	if (0 >= nPoses || 0 >= nPoints)
 	{
@@ -111,12 +113,25 @@ void copytoSE3(SE3d &dst, const SE3d &src) { dst = src; }
 
 /** @brief convert matrix to orthogonal
 
+@param R Eigen::Matrix2d
+
+@return Eigen::Matrix2d
+ */
+Eigen::Matrix2d toOrthogonal2D(const Eigen::Matrix2d &R)
+{	
+	Eigen::Rotation2Dd Rotation;
+	Rotation.fromRotationMatrix(R);
+	return Rotation.toRotationMatrix();
+}
+
+/** @brief convert matrix to orthogonal
+
 @param R Eigen::Matrix3d
 
 @return Eigen::Matrix3d
  */
-Eigen::Matrix3d toOrthogonal(const Eigen::Matrix3d &R)
-{	
+Eigen::Matrix3d toOrthogonal3D(const Eigen::Matrix3d &R)
+{
 	Eigen::Quaterniond q(R);
 	return q.normalized().toRotationMatrix();
 }

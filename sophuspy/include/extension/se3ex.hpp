@@ -12,7 +12,7 @@ namespace Sophus
 
 @return std::string string representation of the input matrix
  */
-std::string repr(const Eigen::Matrix4d &mat)
+std::string reprSE3(const Eigen::Matrix4d &mat)
 {
     std::stringstream ss;
 	Eigen::IOFormat HeavyFmt(Eigen::FullPrecision, 0, ", ", ",\n", "    [", "]", "[", "]");
@@ -22,9 +22,9 @@ std::string repr(const Eigen::Matrix4d &mat)
     return out;
 }
 
-Eigen::PointsXd se3MulPoints(const SE3d &self, const Eigen::PointsXd &pts)
+Eigen::MatrixX3d se3MulPoints(const SE3d &self, const Eigen::MatrixX3d &pts)
 {
-    Eigen::PointsXd newPts(pts.rows(), 3);
+    Eigen::MatrixX3d newPts(pts.rows(), 3);
     for (int i = 0; i<pts.rows(); ++i)
     {
         newPts.row(i) = self * pts.row(i);

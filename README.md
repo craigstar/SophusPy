@@ -10,26 +10,52 @@ pip install sophuspy
 ```
 
 ## Examples
-### 1. create SO3 and SE3
+### 1. create SO2, SE2, SO3 and SE3
 ```py
 import numpy as np
 import sophuspy as sp
 
-# 1. default constructor of SO3
-sp.SO3()
+# 1. constructor of SO2
+sp.SO2()                    # default
+sp.SO2([[1, 0],
+        [0, 1]])            # list
+sp.SO2(np.eye(2))           # numpy
+'''
+SO2([[1, 0],
+     [0, 1]])
+'''
+
+# 2. constructor of SO3
+sp.SO3()                    # default
+sp.SO3([[1, 0, 0],
+        [0, 1, 0],
+        [0, 0, 1]])         # list
+sp.SO3(np.eye(3))           # numpy
 '''
 SO3([[1, 0, 0],
      [0, 1, 0],
      [0, 0, 1]])
 '''
 
-# 2. constructor of SO3, accepts numpy and list
-sp.SO3([[1, 0, 0],
+# 3. constructor of SE2
+sp.SE2()                    # default
+sp.SE2([[1, 0, 0],
         [0, 1, 0],
-        [0, 0, 1]])
+        [0, 0, 1]])         # list
+sp.SE2(np.eye(3))           # numpy
+'''
+SE2([[1, 0, 0],
+     [0, 1, 0],
+     [0, 0, 1]])
+'''
 
-# 3. default constructor of SE3
-sp.SE3()
+# 4. constructor of SE3
+sp.SE3()                    # default
+sp.SE3([[1, 0, 0, 0],
+        [0, 1, 0, 0],
+        [0, 0, 1, 0],
+        [0, 0, 0, 1]])      # list
+sp.SE3(np.eye(4))           # numpy
 '''
 SE3([[1, 0, 0, 0],
      [0, 1, 0, 0],
@@ -37,10 +63,15 @@ SE3([[1, 0, 0, 0],
      [0, 0, 0, 1]])
 '''
 
-# 4. constructor of SE3, accepts numpy and list
-sp.SE3(np.eye(4))
+# 5. R, t constructor of SE2
+sp.SE2(np.eye(2), np.ones(2)) # R, t
+'''
+SE2([[1, 0, 1],
+     [0, 1, 1],
+     [0, 0, 1]])
+'''
 
-# 5. R, t constructor of SE3
+# 6. R, t constructor of SE3
 sp.SE3(np.eye(3), np.ones(3)) # R, t
 '''
 SE3([[1, 0, 0, 1],
@@ -50,7 +81,7 @@ SE3([[1, 0, 0, 1],
 '''
 ```
 
-### 2. multiplication
+### 2. multiplication (SO2 & SE2 are similar)
 ```py
 R = sp.SO3()
 R1 = sp.SO3([[0, 1, 0],
@@ -84,7 +115,32 @@ SE3([[0, 1, 0, 1],
 T1 *= T
 ```
 
-### 3. rotate and translate points
+### 3. rotate and translate points (SO2 & SE2)
+```py
+R = sp.SO2([[0, -1],
+            [1,  0]])
+T = sp.SE2(R.matrix(), np.ones(2))
+
+pt = np.array([1, 2])
+pts = np.array([[1, 2],
+                [3, 4]])
+
+# 1. single point
+R * pt  # array([-2., 1.])
+
+# 2. N points
+R * pts # array([[-2., 1.],
+        #        [-4., 3.]])
+
+# 3. single point
+T * pt  # array([-1., 2.])
+
+# 4. N points
+T * pts # array([[-1.,  2.],
+        #        [-3.,  4.]])
+```
+
+### 4. rotate and translate points (SO3 & SE3)
 ```py
 R = sp.SO3([[0, 1, 0],
             [0, 0, 1],
@@ -110,7 +166,7 @@ T * pts # array([[3., 4., 2.],
         #        [6., 7., 5.]])
 ```
 
-### 4. interfaces
+### 5. interfaces (SO2 & SE2 are similar)
 ```py
 R = sp.SO3([[0, 1, 0],
             [0, 0, 1],
@@ -155,6 +211,7 @@ array([[0., 1., 0., 1.],
        [0., 0., 1., 1.],
        [1., 0., 0., 1.]])
 '''
+T_SE2.matrix2x3() # For SE2
 
 # 7.
 T.so3()
@@ -199,7 +256,12 @@ T.setTranslation(np.zeros(3))   # set translation
 
 ### 5. static methods
 ```py
-# 1.
+sp.SO2.hat(1)
+'''
+array([[ 0., -1.],
+       [ 1.,  0.]])
+'''
+
 sp.SO3.hat(np.ones(3))
 '''
 array([[ 0., -1.,  1.],
@@ -207,7 +269,12 @@ array([[ 0., -1.,  1.],
        [-1.,  1.,  0.]])
 '''
 
-# 2.
+sp.SO2.exp(1)
+'''
+SO2([[  0.54030230586814, -0.841470984807897],
+     [ 0.841470984807897,   0.54030230586814]])
+'''
+
 sp.SO3.exp(np.ones(3))
 '''
 array([[ 0.22629564, -0.18300792,  0.95671228],
@@ -215,7 +282,13 @@ array([[ 0.22629564, -0.18300792,  0.95671228],
        [-0.18300792,  0.95671228,  0.22629564]])
 '''
 
-# 3.
+sp.SE2.hat(np.ones(3))
+'''
+array([[ 0., -1.,  1.],
+       [ 1.,  0.,  1.],
+       [ 0.,  0.,  0.]])
+'''
+
 sp.SE3.hat(np.ones(6))
 '''
 array([[ 0., -1.,  1.,  1.],
@@ -224,7 +297,13 @@ array([[ 0., -1.,  1.,  1.],
        [ 0.,  0.,  0.,  0.]])
 '''
 
-# 4.
+sp.SE2.exp(np.ones(3))
+'''
+SE2([[  0.54030230586814, -0.841470984807897,  0.381773290676036],
+     [ 0.841470984807897,   0.54030230586814,   1.30116867893976],
+     [                 0,                  0,                  1]])
+'''
+
 sp.SE3.exp(np.ones(6))
 '''
 array([[ 0.22629564, -0.18300792,  0.95671228,  1.        ],
@@ -251,11 +330,17 @@ R_matrix = np.array([[1.   , 0.001, 0.   ],
                      [0.   , 0.   , 1.   ]])
 
 sp.to_orthogonal(R_matrix)
+sp.to_orthogonal_3d(R_matrix)      # the same as to_orthogonal
 '''
 array([[ 9.99999875e-01,  4.99999969e-04,  0.00000000e+00],
        [-4.99999969e-04,  9.99999875e-01, -0.00000000e+00],
        [-0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
 '''
+# if R(2D) is not a strict rotation matrix, normalize it. Uses Eigen3 
+# Eigen::Rotation2Dd rotation;
+# rotation.fromRotationMatrix(R);
+# rotation.toRotationMatrix();
+sp.to_orthogonal_2d(matrix2x2)      # 2D verison to_orthogonal 
 
 # 4. invert N poses in a row
 pose = T.matrix3x4().ravel()    # array([1., 0., 0., 0., 0., 1., 0., 0., 0., 0., 1., 0.])

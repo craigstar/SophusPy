@@ -5,7 +5,6 @@
 
 namespace Eigen
 {
-typedef Matrix<double, Dynamic, 3> PointsXd;
 typedef Matrix<double, Dynamic, 12> PosesXd;
 typedef Matrix<double, 3, 4, RowMajor> RowPose34d;
 typedef Map<const RowPose34d> MapRowPose34d;

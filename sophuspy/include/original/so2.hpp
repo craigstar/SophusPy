@@ -213,7 +213,7 @@ class SO2Base {
 
   // In-place group multiplication.
   //
-  SOPHUS_FUNC SO2Base<Derived> operator*=(SO2<Scalar> const& other) {
+  SOPHUS_FUNC SO2Base<Derived>& operator*=(SO2<Scalar> const& other) {
     Scalar lhs_real = unit_complex().x();
     Scalar lhs_imag = unit_complex().y();
     Scalar const& rhs_real = other.unit_complex().x();

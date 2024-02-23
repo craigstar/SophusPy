@@ -113,11 +113,21 @@ class TestRoot(unittest.TestCase):
         sp_new_poses = sp.invert_poses(np.zeros((0, 12)))
         self.assertEqual(sp_new_poses.shape, (0, 12))
 
-    def test_to_orthogonal_success(self):
+    def test_to_orthogonal_2d_success(self):
+        R = np.array([[ 0.1, -1. ],
+                      [ 1. ,  1. ]])
+        R = sp.to_orthogonal_2d(R)
+        ans = np.array([[ 0.09950372, -0.99503719],
+                        [ 0.99503719,  0.09950372]])
+        self.assertTrue(np.allclose(R, ans))
+
+    def test_to_orthogonal_3d_success(self):
         R = np.eye(3)
         R[0, 1] = 1e-3
         R = sp.to_orthogonal(R)
+        R2 = sp.to_orthogonal_3d(R)
         ans = np.array([[ 9.99999875e-01,  5.00000000e-04,  0.00000000e+00],
                         [-5.00000000e-04,  9.99999875e-01, -0.00000000e+00],
                         [-0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
         self.assertTrue(np.allclose(R, ans))
+        self.assertTrue(np.allclose(R2, ans))

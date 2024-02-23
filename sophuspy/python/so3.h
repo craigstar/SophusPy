@@ -16,7 +16,7 @@ void declareSO3(py::module &m)
     cls.def(py::init<Eigen::Matrix3d const &>(), py::arg("other"));
 
     // private functions
-    cls.def("__repr__", [](SO3d const &so3) { return repr(so3.matrix()); });
+    cls.def("__repr__", [](SO3d const &so3) { return reprSO3(so3.matrix()); });
     cls.def("__copy__", [](SO3d const &so3) { return SO3d(so3); });
     cls.def("__reduce__", [cls](SO3d const &so3) { return py::make_tuple(cls, py::make_tuple(so3.matrix())); });
 

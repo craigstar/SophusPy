@@ -3,7 +3,7 @@ from pybind11.setup_helpers import Pybind11Extension, build_ext
 
 __author__ = 'Craigstar'
 __date__ = '2024/02/22'
-__version__ = "1.0.1"
+__version__ = "1.2.0"
 
 
 ext_modules = [
