@@ -1,3 +1,4 @@
+// Sophus version: Standard jacobian convention(#156) 13fb328 committed on Apr 16, 2018
 #ifndef SOPHUS_COMMON_HPP
 #define SOPHUS_COMMON_HPP
 
@@ -36,7 +37,7 @@
 
 #define SOPHUS_FUNC EIGEN_DEVICE_FUNC
 
-namespace Sophus {
+    namespace Sophus {
 namespace details {
 
 // Following: http://stackoverflow.com/a/22759544

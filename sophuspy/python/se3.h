@@ -19,7 +19,7 @@ void declareSE3(py::module &m)
     cls.def(py::init<Eigen::Matrix3d const &, Eigen::Vector3d const &>(), py::arg("R"), py::arg("t"));
 
     // private functions
-    cls.def("__repr__", [](SE3d const &self) { return repr(self.matrix()); });
+    cls.def("__repr__", [](SE3d const &self) { return reprSE3(self.matrix()); });
     cls.def("__copy__", [](SE3d const &self) { return SE3d(self); });
     cls.def("__reduce__", [cls](SE3d const &self) { return py::make_tuple(cls, py::make_tuple(self.matrix())); });
     

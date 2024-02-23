@@ -14,13 +14,13 @@ namespace Sophus
        points (M, 3) 3d points
        bInv flag of inverting pose or not
 
-@return PointsXd new position of (M * N, 3) matrix
+@return MatrixX3d new position of (M * N, 3) matrix
  */
-Eigen::PointsXd transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen::PointsXd &points, const bool bInv=false)
+Eigen::MatrixX3d transformPointsByPoses(const Eigen::PosesXd &poses, const Eigen::MatrixX3d &points, const bool bInv=false)
 {
 	const int nPoints = points.rows();
 	const int nPoses = poses.rows();
-	Eigen::PointsXd newPoints(nPoints * nPoses, 3);
+	Eigen::MatrixX3d newPoints(nPoints * nPoses, 3);
 
 	if (0 >= nPoses || 0 >= nPoints)
 	{
