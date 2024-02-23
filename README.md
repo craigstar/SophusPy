@@ -336,6 +336,10 @@ array([[ 9.99999875e-01,  4.99999969e-04,  0.00000000e+00],
        [-4.99999969e-04,  9.99999875e-01, -0.00000000e+00],
        [-0.00000000e+00,  0.00000000e+00,  1.00000000e+00]])
 '''
+# if R(2D) is not a strict rotation matrix, normalize it. Uses Eigen3 
+# Eigen::Rotation2Dd rotation;
+# rotation.fromRotationMatrix(R);
+# rotation.toRotationMatrix();
 sp.to_orthogonal_2d(matrix2x2)      # 2D verison to_orthogonal 
 
 # 4. invert N poses in a row
