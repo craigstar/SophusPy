@@ -32,7 +32,7 @@ setup(
     author_email="work.craigzhang@gmail.com",
     keywords="Lie Group",
     license="MIT",
-    description=("A python binding using pybind11 for Sophus which is a C++ Lie library.(SO3 && SE3)"),
+    description=("A python binding using pybind11 for Sophus, which is a C++ Lie library.(SO3 && SE3)"),
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/craigstar/SophusPy",
