@@ -1,5 +1,6 @@
 # SophusPy
 A python binding using pybind11 for Sophus, which is a C++ Lie library.(SO3 && SE3)
+It's perfectly compatible with Numpy
 
 ## Installation:
 ```bash
